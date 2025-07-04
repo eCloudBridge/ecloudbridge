@@ -24,15 +24,15 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center text-gray-300">
                 <Phone className="h-4 w-4 mr-2" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91-6366477677</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <Mail className="h-4 w-4 mr-2" />
-                <span>info@ecloudbridge.com</span>
+                <span>hello@ecloudbridge.com</span>
               </div>
-              <div className="flex items-center text-gray-300">
-                <MapPin className="h-4 w-4 mr-2" />
-                <span>123 Cloud Street, Digital City, DC 12345</span>
+              <div className="flex items-start text-gray-300">
+                <MapPin className="h-4 w-4 mr-2 mt-1 flex-shrink-0" />
+                <span>No.112, AKR Tech Park, "A" Block, 7th Mile Hosur Rd, Krishna Reddy Industrial Area, Bengaluru, Karnataka, India – 560068</span>
               </div>
             </div>
           </div>
@@ -53,8 +53,8 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-gray-300">
               <li><a href="#" className="hover:text-orange-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-orange-400 transition-colors">Blog</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Products</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Case Studies</a></li>
               <li><a href="#" className="hover:text-orange-400 transition-colors">Contact</a></li>
             </ul>
           </div>

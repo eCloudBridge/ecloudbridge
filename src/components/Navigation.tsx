@@ -42,10 +42,22 @@ const Navigation = () => {
                 Services
               </button>
               <button
+                onClick={() => scrollToSection('products')}
+                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
+              >
+                Products
+              </button>
+              <button
                 onClick={() => scrollToSection('about')}
                 className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
               >
                 About
+              </button>
+              <button
+                onClick={() => scrollToSection('case-studies')}
+                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
+              >
+                Case Studies
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
@@ -93,10 +105,22 @@ const Navigation = () => {
                 Services
               </button>
               <button
+                onClick={() => scrollToSection('products')}
+                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+              >
+                Products
+              </button>
+              <button
                 onClick={() => scrollToSection('about')}
                 className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
               >
                 About
+              </button>
+              <button
+                onClick={() => scrollToSection('case-studies')}
+                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+              >
+                Case Studies
               </button>
               <button
                 onClick={() => scrollToSection('contact')}

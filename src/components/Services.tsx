@@ -1,5 +1,5 @@
 
-import { Cloud, Database, Shield, Settings, Users, Zap, GitBranch } from 'lucide-react';
+import { Cloud, Database, Shield, Users, Zap, GitBranch } from 'lucide-react';
 
 const services = [
   {
@@ -25,12 +25,6 @@ const services = [
     title: "DevOps Services",
     description: "Enabling businesses through seamless DevOps integration for faster software delivery and increased agility.",
     features: ["CI/CD Automation", "Infrastructure as Code", "Continuous Monitoring"]
-  },
-  {
-    icon: Settings,
-    title: "DevOps & Automation",
-    description: "Streamline your development pipeline with CI/CD automation and infrastructure as code.",
-    features: ["CI/CD Pipelines", "Infrastructure as Code", "Container Orchestration"]
   },
   {
     icon: Users,
