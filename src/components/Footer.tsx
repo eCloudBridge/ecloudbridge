@@ -1,5 +1,5 @@
 
-import { Cloud, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,14 +11,15 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <Cloud className="h-8 w-8 text-blue-500 mr-2" />
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                eCloudBridge
-              </h3>
+              <img 
+                src="/lovable-uploads/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
+                alt="eCloudBridge Logo" 
+                className="h-8 w-auto mr-2"
+              />
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Bridging the gap between your business and the cloud. We provide comprehensive 
-              cloud solutions that drive digital transformation and business growth.
+              cloud and DevOps solutions that drive digital transformation and business growth.
             </p>
             <div className="space-y-2">
               <div className="flex items-center text-gray-300">
@@ -40,10 +41,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Cloud Migration</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Security & Compliance</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Data Management</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">DevOps & Automation</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Cloud Migration</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Security & Compliance</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Data Management</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">DevOps Services</a></li>
             </ul>
           </div>
 
@@ -51,10 +52,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-blue-400 transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-blue-400 transition-colors">Contact</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">About Us</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Blog</a></li>
+              <li><a href="#" className="hover:text-orange-400 transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>

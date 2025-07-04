@@ -1,5 +1,5 @@
 
-import { Cloud, Database, Shield, Settings, Users, Zap } from 'lucide-react';
+import { Cloud, Database, Shield, Settings, Users, Zap, GitBranch } from 'lucide-react';
 
 const services = [
   {
@@ -19,6 +19,12 @@ const services = [
     title: "Data Management",
     description: "Optimize your data architecture for better performance, scalability, and insights.",
     features: ["Big Data Analytics", "Real-time Processing", "Data Warehousing"]
+  },
+  {
+    icon: GitBranch,
+    title: "DevOps Services",
+    description: "Enabling businesses through seamless DevOps integration for faster software delivery and increased agility.",
+    features: ["CI/CD Automation", "Infrastructure as Code", "Continuous Monitoring"]
   },
   {
     icon: Settings,
@@ -49,7 +55,7 @@ const Services = () => {
             Our Cloud Services
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive cloud solutions designed to accelerate your digital transformation
+            Comprehensive cloud and DevOps solutions designed to accelerate your digital transformation
           </p>
         </div>
 
@@ -60,7 +66,7 @@ const Services = () => {
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100"
             >
               <div className="flex items-center mb-6">
-                <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
+                <div className="p-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg">
                   <service.icon className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 ml-4">
@@ -75,7 +81,7 @@ const Services = () => {
               <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
                     {feature}
                   </li>
                 ))}
