@@ -18,13 +18,11 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simulate form submission
     toast({
       title: "Message Sent!",
       description: "Thank you for your interest. We'll get back to you within 24 hours.",
     });
     
-    // Reset form
     setFormData({ name: '', email: '', company: '', message: '' });
   };
 
@@ -65,7 +63,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-medium text-gray-900">Phone</div>
-                  <div className="text-gray-600">+1 (555) 123-4567</div>
+                  <div className="text-gray-600">+91-6366477677</div>
                 </div>
               </div>
 
@@ -75,17 +73,20 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-medium text-gray-900">Email</div>
-                  <div className="text-gray-600">info@ecloudbridge.com</div>
+                  <div className="text-gray-600">hello@ecloudbridge.com</div>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4">
+              <div className="flex items-start space-x-4">
                 <div className="p-3 bg-blue-600 rounded-lg">
                   <MapPin className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Office</div>
-                  <div className="text-gray-600">123 Cloud Street, Digital City, DC 12345</div>
+                  <div className="font-medium text-gray-900">Address</div>
+                  <div className="text-gray-600">
+                    No.112, AKR Tech Park, "A" Block, 7th Mile Hosur Rd, 
+                    Krishna Reddy Industrial Area, Bengaluru, Karnataka, India – 560068
+                  </div>
                 </div>
               </div>
             </div>

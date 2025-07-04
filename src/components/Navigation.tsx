@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,127 +14,110 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0 flex items-center">
+          {/* Logo - Made bigger */}
+          <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
             <img 
               src="/lovable-uploads/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
               alt="eCloudBridge Logo" 
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <button
-                onClick={() => scrollToSection('home')}
-                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection('services')}
-                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Services
-              </button>
-              <button
-                onClick={() => scrollToSection('products')}
-                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Products
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection('case-studies')}
-                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Case Studies
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Contact
-              </button>
-            </div>
-          </div>
 
-          <div className="hidden md:block">
+          {/* Desktop navigation menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <button 
+              onClick={() => scrollToSection('home')}
+              className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200"
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => scrollToSection('services')}
+              className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200"
+            >
+              Services
+            </button>
+            <button 
+              onClick={() => scrollToSection('products')}
+              className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200"
+            >
+              Products
+            </button>
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200"
+            >
+              About
+            </button>
+            <button 
+              onClick={() => scrollToSection('case-studies')}
+              className="text-gray-700 hover:text-orange-600 font-medium transition-colors duration-200"
+            >
+              Case Studies
+            </button>
             <Button 
               onClick={() => scrollToSection('contact')}
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
             >
-              Get Started
+              Contact
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-orange-500 p-2"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              <button
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+              <button 
                 onClick={() => scrollToSection('home')}
-                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
               >
                 Home
               </button>
-              <button
+              <button 
                 onClick={() => scrollToSection('services')}
-                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
               >
                 Services
               </button>
-              <button
+              <button 
                 onClick={() => scrollToSection('products')}
-                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
               >
                 Products
               </button>
-              <button
+              <button 
                 onClick={() => scrollToSection('about')}
-                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
               >
                 About
               </button>
-              <button
+              <button 
                 onClick={() => scrollToSection('case-studies')}
-                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+                className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
               >
                 Case Studies
               </button>
-              <button
+              <button 
                 onClick={() => scrollToSection('contact')}
-                className="text-gray-700 hover:text-orange-500 block px-3 py-2 text-base font-medium w-full text-left"
+                className="block w-full text-left px-3 py-2 text-orange-600 font-medium"
               >
                 Contact
               </button>
-              <div className="px-3 py-2">
-                <Button 
-                  onClick={() => scrollToSection('contact')}
-                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
-                >
-                  Get Started
-                </Button>
-              </div>
             </div>
           </div>
         )}
