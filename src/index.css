@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -203,6 +204,34 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes nebula-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(-100px) translateY(-100px) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -243,6 +272,14 @@ All colors MUST be HSL.
   animation: float-orbit-reverse 25s linear infinite;
 }
 
+.animate-nebula-pulse {
+  animation: nebula-pulse 8s ease-in-out infinite;
+}
+
+.animate-shooting-star {
+  animation: shooting-star 15s linear infinite;
+}
+
 .animation-delay-2000 {
   animation-delay: 2s;
 }
@@ -253,6 +290,58 @@ All colors MUST be HSL.
 
 .animation-delay-300 {
   animation-delay: 300ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-900 {
+  animation-delay: 900ms;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.animation-delay-1800 {
+  animation-delay: 1.8s;
+}
+
+.animation-delay-2100 {
+  animation-delay: 2.1s;
+}
+
+.animation-delay-2400 {
+  animation-delay: 2.4s;
+}
+
+.animation-delay-2700 {
+  animation-delay: 2.7s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+
+.animation-delay-3300 {
+  animation-delay: 3.3s;
+}
+
+.animation-delay-3600 {
+  animation-delay: 3.6s;
+}
+
+.animation-delay-6000 {
+  animation-delay: 6s;
+}
+
+.animation-delay-8000 {
+  animation-delay: 8s;
+}
+
+.animation-delay-12000 {
+  animation-delay: 12s;
 }
 
 /* Smooth scrolling */

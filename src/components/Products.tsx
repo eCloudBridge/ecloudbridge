@@ -36,17 +36,17 @@ const Products = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {products.map((product, index) => (
             <div 
               key={index}
-              className={`group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105 animate-fade-in ${
+              className={`group relative bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:scale-105 animate-fade-in h-full flex flex-col ${
                 index % 2 === 0 ? 'lg:hover:rotate-1' : 'lg:hover:-rotate-1'
               }`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
               {/* Product Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-64 overflow-hidden flex-shrink-0">
                 <img 
                   src={`https://images.unsplash.com/${product.image}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
                   alt={product.title}
@@ -61,12 +61,12 @@ const Products = () => {
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-8 flex-grow flex flex-col">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-orange-600 transition-colors duration-300">
                   {product.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
                   {product.description}
                 </p>
                 
@@ -84,7 +84,7 @@ const Products = () => {
                 </div>
 
                 {/* CTA Button */}
-                <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl mt-auto">
                   Learn More
                 </button>
               </div>
