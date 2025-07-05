@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -232,6 +231,23 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes shooting-star-horizontal {
+  0% {
+    transform: translateX(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) rotate(0deg);
+    opacity: 0;
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -278,6 +294,10 @@ All colors MUST be HSL.
 
 .animate-shooting-star {
   animation: shooting-star 15s linear infinite;
+}
+
+.animate-shooting-star-horizontal {
+  animation: shooting-star-horizontal 12s linear infinite;
 }
 
 .animation-delay-2000 {
@@ -362,4 +382,9 @@ html {
     linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
+}
+
+/* Radial gradients for nebula effects */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
 }
