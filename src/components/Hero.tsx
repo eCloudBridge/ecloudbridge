@@ -1,5 +1,5 @@
 
-import { ArrowRight, Cloud, Shield, Zap, Play } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -11,31 +11,38 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-16 overflow-hidden">
-      {/* Professional animated background elements */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-black pt-16 overflow-hidden">
+      {/* Animated Universe Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-gradient-to-r from-orange-400/20 to-blue-400/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-r from-blue-500/15 to-orange-500/15 rounded-full blur-3xl animate-float animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-gradient-to-r from-orange-300/10 to-blue-300/10 rounded-full blur-2xl animate-float animation-delay-4000"></div>
+        {/* Stars */}
+        <div className="absolute top-10 left-10 w-2 h-2 bg-white rounded-full animate-pulse"></div>
+        <div className="absolute top-20 right-20 w-1 h-1 bg-blue-300 rounded-full animate-pulse animation-delay-2000"></div>
+        <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-orange-300 rounded-full animate-pulse animation-delay-4000"></div>
+        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-white rounded-full animate-pulse animation-delay-300"></div>
+        <div className="absolute top-1/3 left-1/5 w-1 h-1 bg-blue-200 rounded-full animate-pulse"></div>
+        <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-orange-200 rounded-full animate-pulse animation-delay-2000"></div>
         
-        {/* Geometric shapes for professional look */}
-        <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-orange-400 rotate-45 animate-pulse"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-blue-500 rounded-full animate-bounce"></div>
-        <div className="absolute top-2/3 right-1/3 w-2 h-8 bg-gradient-to-b from-orange-500 to-blue-500 animate-pulse animation-delay-300"></div>
+        {/* Floating orbs */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-full blur-xl animate-float animation-delay-2000"></div>
+        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-xl animate-float animation-delay-4000"></div>
+        
+        {/* Grid lines */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-center lg:text-left animate-fade-in">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
               Bridge Your Business to the
-              <span className="block bg-gradient-to-r from-orange-500 to-blue-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
                 Cloud Future
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
               Transform your digital infrastructure with our cutting-edge cloud and DevOps solutions. 
               Secure, scalable, and seamless services for your business growth.
             </p>
@@ -54,49 +61,51 @@ const Hero = () => {
                 variant="outline" 
                 size="lg"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-orange-500 text-orange-600 hover:bg-orange-50 px-8 py-3 text-lg hover:scale-105 transition-all duration-200 group"
+                className="border-2 border-orange-400 text-orange-400 hover:bg-orange-400/10 px-8 py-3 text-lg hover:scale-105 transition-all duration-200 group bg-transparent"
               >
                 <Play className="mr-2 h-5 w-5 group-hover:animate-pulse" />
                 Watch Demo
               </Button>
             </div>
 
-            {/* Feature highlights */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="flex items-center justify-center lg:justify-start space-x-3 p-6 bg-white/70 backdrop-blur-sm rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:scale-105 group">
-                <Cloud className="h-8 w-8 text-orange-500 group-hover:scale-110 transition-transform duration-200" />
-                <span className="text-gray-700 font-medium">Cloud Migration</span>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 text-center">
+              <div className="p-4">
+                <div className="text-3xl font-bold text-orange-400 mb-2">99.9%</div>
+                <div className="text-gray-400 text-sm">Uptime</div>
               </div>
-              
-              <div className="flex items-center justify-center lg:justify-start space-x-3 p-6 bg-white/70 backdrop-blur-sm rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:scale-105 group">
-                <Shield className="h-8 w-8 text-orange-600 group-hover:scale-110 transition-transform duration-200" />
-                <span className="text-gray-700 font-medium">Security First</span>
+              <div className="p-4">
+                <div className="text-3xl font-bold text-blue-400 mb-2">500+</div>
+                <div className="text-gray-400 text-sm">Projects</div>
               </div>
-              
-              <div className="flex items-center justify-center lg:justify-start space-x-3 p-6 bg-white/70 backdrop-blur-sm rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 hover:scale-105 group">
-                <Zap className="h-8 w-8 text-orange-500 group-hover:scale-110 transition-transform duration-200" />
-                <span className="text-gray-700 font-medium">DevOps Integration</span>
+              <div className="p-4">
+                <div className="text-3xl font-bold text-orange-400 mb-2">24/7</div>
+                <div className="text-gray-400 text-sm">Support</div>
               </div>
             </div>
           </div>
 
-          {/* Right Content - Professional DevOps Hero Image */}
+          {/* Right Content - DevOps Visualization */}
           <div className="relative animate-fade-in animation-delay-300">
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="DevOps Technology - Circuit Board"
-                className="w-full h-[500px] object-cover rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700"
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="DevOps Infrastructure - Network Servers"
+                className="w-full h-[600px] object-cover rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-blue-500/20 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-orange-900/40 rounded-2xl"></div>
               
-              {/* Professional floating elements */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-4 animate-float">
-                <Cloud className="w-full h-full text-orange-500" />
+              {/* Floating tech badges */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-lg shadow-lg animate-float text-sm font-medium">
+                Kubernetes
               </div>
               
-              <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-r from-orange-500 to-blue-600 rounded-xl shadow-xl p-3 animate-float animation-delay-2000">
-                <Shield className="w-full h-full text-white" />
+              <div className="absolute top-1/2 -left-6 bg-gradient-to-r from-orange-600 to-red-600 text-white px-4 py-2 rounded-lg shadow-lg animate-float animation-delay-2000 text-sm font-medium">
+                Docker
+              </div>
+              
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg shadow-lg animate-float animation-delay-4000 text-sm font-medium">
+                AWS/Azure
               </div>
             </div>
           </div>

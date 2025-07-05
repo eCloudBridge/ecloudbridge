@@ -1,5 +1,5 @@
 
-import { Cloud, Database, Shield, Users, Zap, GitBranch } from 'lucide-react';
+import { Cloud, Shield, Users, Zap, GitBranch, Brain } from 'lucide-react';
 
 const services = [
   {
@@ -15,10 +15,10 @@ const services = [
     features: ["SOC 2 Compliance", "Data Encryption", "24/7 Monitoring"]
   },
   {
-    icon: Database,
-    title: "Data Management",
-    description: "Optimize your data architecture for better performance, scalability, and insights.",
-    features: ["Big Data Analytics", "Real-time Processing", "Data Warehousing"]
+    icon: Brain,
+    title: "MLOps & Data Analytics",
+    description: "Machine Learning Operations and advanced data analytics for intelligent business insights and automated workflows.",
+    features: ["ML Pipeline Automation", "Real-time Analytics", "Data Orchestration"]
   },
   {
     icon: GitBranch,

@@ -28,7 +28,7 @@ const caseStudies = [
     company: "InnovateLab",
     industry: "Healthcare",
     challenge: "Data management and analytics",
-    solution: "Big data platform with real-time analytics",
+    solution: "MLOps platform with real-time analytics",
     results: ["Real-time insights", "95% data accuracy", "Improved patient care"],
     metrics: { icon: Clock, value: "24/7", label: "Monitoring" }
   },
@@ -101,58 +101,12 @@ const CaseStudies = () => {
           </p>
         </div>
 
-        {/* Marquee Animation for Case Studies */}
-        <div className="relative mb-16">
-          <div className="flex animate-marquee-reverse space-x-8">
-            {[...caseStudies.slice(0, 4), ...caseStudies.slice(0, 4)].map((study, index) => (
-              <div 
-                key={`${study.id}-${index}`}
-                className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
-                onClick={() => handleCaseStudyClick(study.id)}
-              >
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={study.logo} 
-                    alt={`${study.company} case study`}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-semibold text-gray-900">{study.company}</h3>
-                    <span className="text-sm text-orange-600 bg-orange-100 px-2 py-1 rounded">
-                      {study.industry}
-                    </span>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <h4 className="font-medium text-gray-700 mb-2">Challenge:</h4>
-                    <p className="text-gray-600 text-sm">{study.challenge}</p>
-                  </div>
-                  
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    <div className="flex items-center space-x-2">
-                      <study.metrics.icon className="h-5 w-5 text-orange-500" />
-                      <div>
-                        <div className="text-lg font-bold text-gray-900">{study.metrics.value}</div>
-                        <div className="text-xs text-gray-600">{study.metrics.label}</div>
-                      </div>
-                    </div>
-                    <ArrowRight className="h-5 w-5 text-orange-500" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Second row with opposite direction */}
+        {/* Single Marquee Line */}
         <div className="relative">
           <div className="flex animate-marquee space-x-8">
-            {[...caseStudies.slice(4), ...caseStudies.slice(4)].map((study, index) => (
+            {[...caseStudies, ...caseStudies].map((study, index) => (
               <div 
-                key={`${study.id}-second-${index}`}
+                key={`${study.id}-${index}`}
                 className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
                 onClick={() => handleCaseStudyClick(study.id)}
               >
