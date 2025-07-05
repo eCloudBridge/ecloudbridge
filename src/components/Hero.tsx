@@ -12,23 +12,39 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-black pt-16 overflow-hidden">
-      {/* Animated Universe Background */}
+      {/* Moving Particle Universe Background */}
       <div className="absolute inset-0">
-        {/* Stars */}
-        <div className="absolute top-10 left-10 w-2 h-2 bg-white rounded-full animate-pulse"></div>
-        <div className="absolute top-20 right-20 w-1 h-1 bg-blue-300 rounded-full animate-pulse animation-delay-2000"></div>
-        <div className="absolute bottom-32 left-1/4 w-1 h-1 bg-orange-300 rounded-full animate-pulse animation-delay-4000"></div>
-        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-white rounded-full animate-pulse animation-delay-300"></div>
-        <div className="absolute top-1/3 left-1/5 w-1 h-1 bg-blue-200 rounded-full animate-pulse"></div>
-        <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-orange-200 rounded-full animate-pulse animation-delay-2000"></div>
+        {/* Moving particles */}
+        <div className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-slow opacity-60" style={{top: '10%', left: '10%'}}></div>
+        <div className="absolute w-2 h-2 bg-white rounded-full animate-float-medium opacity-80" style={{top: '15%', left: '80%'}}></div>
+        <div className="absolute w-1 h-1 bg-orange-400 rounded-full animate-float-fast opacity-70" style={{top: '20%', left: '30%'}}></div>
+        <div className="absolute w-1 h-1 bg-cyan-300 rounded-full animate-float-slow opacity-60" style={{top: '30%', left: '70%'}}></div>
+        <div className="absolute w-2 h-2 bg-purple-400 rounded-full animate-float-medium opacity-50" style={{top: '40%', left: '20%'}}></div>
+        <div className="absolute w-1 h-1 bg-blue-300 rounded-full animate-float-fast opacity-70" style={{top: '50%', left: '90%'}}></div>
+        <div className="absolute w-1 h-1 bg-orange-300 rounded-full animate-float-slow opacity-60" style={{top: '60%', left: '15%'}}></div>
+        <div className="absolute w-2 h-2 bg-white rounded-full animate-float-medium opacity-80" style={{top: '70%', left: '60%'}}></div>
+        <div className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-float-fast opacity-70" style={{top: '80%', left: '40%'}}></div>
+        <div className="absolute w-1 h-1 bg-purple-300 rounded-full animate-float-slow opacity-60" style={{top: '85%', left: '85%'}}></div>
         
-        {/* Floating orbs */}
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-full blur-xl animate-float animation-delay-2000"></div>
-        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-xl animate-float animation-delay-4000"></div>
+        {/* Floating constellation lines */}
+        <div className="absolute inset-0 opacity-20">
+          <svg className="w-full h-full">
+            <defs>
+              <linearGradient id="constellation" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{stopColor: '#60A5FA', stopOpacity: 0.5}} />
+                <stop offset="100%" style={{stopColor: '#F59E0B', stopOpacity: 0.5}} />
+              </linearGradient>
+            </defs>
+            <line x1="10%" y1="10%" x2="30%" y2="20%" stroke="url(#constellation)" strokeWidth="1" className="animate-pulse" />
+            <line x1="70%" y1="30%" x2="90%" y2="50%" stroke="url(#constellation)" strokeWidth="1" className="animate-pulse animation-delay-2000" />
+            <line x1="20%" y1="60%" x2="60%" y2="80%" stroke="url(#constellation)" strokeWidth="1" className="animate-pulse animation-delay-4000" />
+          </svg>
+        </div>
         
-        {/* Grid lines */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        {/* Floating geometric shapes */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-xl animate-float-orbit"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-orange-500/5 to-red-500/5 rounded-full blur-xl animate-float-orbit-reverse"></div>
+        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-full blur-xl animate-float-slow"></div>
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,15 +101,82 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Content - DevOps Visualization */}
+          {/* Right Content - DevOps Vector Illustration */}
           <div className="relative animate-fade-in animation-delay-300">
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="DevOps Infrastructure - Network Servers"
-                className="w-full h-[600px] object-cover rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-orange-900/40 rounded-2xl"></div>
+              {/* Vector DevOps Illustration */}
+              <div className="w-full h-[600px] bg-gradient-to-br from-blue-900/20 to-orange-900/20 rounded-2xl backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
+                <svg viewBox="0 0 400 400" className="w-full h-full p-8">
+                  {/* DevOps Infinity Loop */}
+                  <defs>
+                    <linearGradient id="devopsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#3B82F6" />
+                      <stop offset="50%" stopColor="#F59E0B" />
+                      <stop offset="100%" stopColor="#8B5CF6" />
+                    </linearGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                      <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  
+                  {/* Infinity Symbol for DevOps */}
+                  <path d="M100 200 Q150 100 200 200 T300 200 Q250 300 200 200 T100 200" 
+                        fill="none" 
+                        stroke="url(#devopsGradient)" 
+                        strokeWidth="4" 
+                        className="animate-pulse"
+                        filter="url(#glow)" />
+                  
+                  {/* Dev Side */}
+                  <circle cx="150" cy="200" r="60" fill="rgba(59, 130, 246, 0.1)" stroke="#3B82F6" strokeWidth="2" className="animate-pulse">
+                    <animate attributeName="r" values="60;65;60" dur="3s" repeatCount="indefinite" />
+                  </circle>
+                  <text x="150" y="185" textAnchor="middle" fill="#60A5FA" fontSize="14" fontWeight="bold">DEV</text>
+                  <text x="150" y="205" textAnchor="middle" fill="#93C5FD" fontSize="10">Code</text>
+                  <text x="150" y="220" textAnchor="middle" fill="#93C5FD" fontSize="10">Build</text>
+                  
+                  {/* Ops Side */}
+                  <circle cx="250" cy="200" r="60" fill="rgba(245, 158, 11, 0.1)" stroke="#F59E0B" strokeWidth="2" className="animate-pulse animation-delay-2000">
+                    <animate attributeName="r" values="60;65;60" dur="3s" repeatCount="indefinite" begin="1s" />
+                  </circle>
+                  <text x="250" y="185" textAnchor="middle" fill="#FBBF24" fontSize="14" fontWeight="bold">OPS</text>
+                  <text x="250" y="205" textAnchor="middle" fill="#FCD34D" fontSize="10">Deploy</text>
+                  <text x="250" y="220" textAnchor="middle" fill="#FCD34D" fontSize="10">Monitor</text>
+                  
+                  {/* Cloud Infrastructure */}
+                  <g transform="translate(160, 80)">
+                    <ellipse cx="40" cy="20" rx="30" ry="15" fill="rgba(139, 92, 246, 0.2)" stroke="#8B5CF6" strokeWidth="2" className="animate-float" />
+                    <ellipse cx="25" cy="30" rx="20" ry="10" fill="rgba(139, 92, 246, 0.2)" stroke="#8B5CF6" strokeWidth="2" className="animate-float animation-delay-300" />
+                    <ellipse cx="55" cy="30" rx="20" ry="10" fill="rgba(139, 92, 246, 0.2)" stroke="#8B5CF6" strokeWidth="2" className="animate-float animation-delay-600" />
+                    <text x="40" y="25" textAnchor="middle" fill="#A78BFA" fontSize="10" fontWeight="bold">CLOUD</text>
+                  </g>
+                  
+                  {/* Data Flow Arrows */}
+                  <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                      <polygon points="0 0, 10 3.5, 0 7" fill="url(#devopsGradient)" />
+                    </marker>
+                  </defs>
+                  
+                  <path d="M210 160 Q230 140 250 160" fill="none" stroke="url(#devopsGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" className="animate-pulse animation-delay-1000" />
+                  <path d="M190 240 Q170 260 150 240" fill="none" stroke="url(#devopsGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" className="animate-pulse animation-delay-3000" />
+                  
+                  {/* Floating Data Points */}
+                  <circle cx="120" cy="150" r="3" fill="#60A5FA" className="animate-bounce">
+                    <animate attributeName="cy" values="150;130;150" dur="2s" repeatCount="indefinite" />
+                  </circle>
+                  <circle cx="280" cy="250" r="3" fill="#FBBF24" className="animate-bounce animation-delay-1000">
+                    <animate attributeName="cy" values="250;230;250" dur="2s" repeatCount="indefinite" begin="1s" />
+                  </circle>
+                  <circle cx="200" cy="100" r="3" fill="#A78BFA" className="animate-bounce animation-delay-2000">
+                    <animate attributeName="cy" values="100;80;100" dur="2s" repeatCount="indefinite" begin="2s" />
+                  </circle>
+                </svg>
+              </div>
               
               {/* Floating tech badges */}
               <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-lg shadow-lg animate-float text-sm font-medium">
