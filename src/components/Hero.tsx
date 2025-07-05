@@ -1,4 +1,3 @@
-
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -26,21 +25,28 @@ const Hero = () => {
         <div className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-float-fast opacity-70" style={{top: '80%', left: '40%'}}></div>
         <div className="absolute w-1 h-1 bg-purple-300 rounded-full animate-float-slow opacity-60" style={{top: '85%', left: '85%'}}></div>
         
-        {/* Realistic Nebula Effects - Inspired by uploaded image */}
-        <div className="absolute top-1/6 left-1/4 w-80 h-80 bg-gradient-radial from-pink-500/20 via-purple-600/15 to-transparent rounded-full blur-3xl animate-nebula-pulse opacity-80"></div>
-        <div className="absolute top-1/3 left-1/5 w-60 h-60 bg-gradient-radial from-purple-400/25 via-pink-500/20 to-transparent rounded-full blur-2xl animate-nebula-pulse animation-delay-2000 opacity-70"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-radial from-purple-600/15 via-blue-500/10 to-transparent rounded-full blur-3xl animate-nebula-pulse animation-delay-4000 opacity-60"></div>
-        <div className="absolute top-1/2 right-1/6 w-48 h-48 bg-gradient-radial from-pink-400/30 via-purple-500/20 to-transparent rounded-full blur-xl animate-nebula-pulse animation-delay-6000 opacity-90"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-radial from-purple-500/20 via-pink-600/15 to-transparent rounded-full blur-2xl animate-nebula-pulse animation-delay-8000 opacity-75"></div>
+        {/* Clear Nebula Effects - Multiple layers for realistic appearance */}
+        <div className="absolute top-1/4 left-1/6 w-96 h-96 bg-gradient-radial from-pink-500/30 via-purple-600/20 via-blue-500/15 to-transparent rounded-full blur-3xl animate-nebula-pulse opacity-90"></div>
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-gradient-radial from-purple-400/35 via-pink-500/25 via-cyan-400/10 to-transparent rounded-full blur-2xl animate-nebula-pulse animation-delay-2000 opacity-85"></div>
+        <div className="absolute bottom-1/3 right-1/5 w-[500px] h-[500px] bg-gradient-radial from-purple-600/25 via-pink-400/20 via-blue-400/15 to-transparent rounded-full blur-3xl animate-nebula-pulse animation-delay-4000 opacity-80"></div>
+        <div className="absolute top-1/2 right-1/8 w-72 h-72 bg-gradient-radial from-cyan-400/40 via-purple-500/30 via-pink-300/15 to-transparent rounded-full blur-xl animate-nebula-pulse animation-delay-6000 opacity-95"></div>
+        <div className="absolute bottom-1/4 left-1/2 w-[400px] h-[400px] bg-gradient-radial from-purple-500/30 via-pink-600/25 via-orange-400/10 to-transparent rounded-full blur-2xl animate-nebula-pulse animation-delay-8000 opacity-90"></div>
         
-        {/* Additional Nebula layers for depth */}
-        <div className="absolute top-1/4 right-1/3 w-40 h-40 bg-gradient-radial from-white/10 via-pink-300/15 to-transparent rounded-full blur-xl animate-nebula-pulse animation-delay-3000 opacity-80"></div>
-        <div className="absolute bottom-1/2 left-1/6 w-56 h-56 bg-gradient-radial from-purple-300/20 via-pink-400/10 to-transparent rounded-full blur-2xl animate-nebula-pulse animation-delay-5000 opacity-65"></div>
+        {/* Additional nebula layers for more depth and clarity */}
+        <div className="absolute top-1/6 right-1/3 w-64 h-64 bg-gradient-radial from-white/20 via-pink-300/25 via-purple-400/15 to-transparent rounded-full blur-xl animate-nebula-pulse animation-delay-3000 opacity-88"></div>
+        <div className="absolute bottom-1/2 left-1/8 w-80 h-80 bg-gradient-radial from-purple-300/35 via-cyan-400/20 via-pink-400/15 to-transparent rounded-full blur-2xl animate-nebula-pulse animation-delay-5000 opacity-85"></div>
+        <div className="absolute top-3/4 right-1/2 w-56 h-56 bg-gradient-radial from-orange-400/30 via-pink-500/25 via-purple-300/10 to-transparent rounded-full blur-xl animate-nebula-pulse animation-delay-7000 opacity-80"></div>
         
-        {/* Shooting Stars - Fixed horizontal direction */}
-        <div className="absolute top-1/4 left-0 w-1 h-32 bg-gradient-to-r from-white to-transparent opacity-80 animate-shooting-star-horizontal"></div>
-        <div className="absolute top-3/4 left-0 w-1 h-24 bg-gradient-to-r from-blue-400 to-transparent opacity-70 animate-shooting-star-horizontal animation-delay-8000"></div>
-        <div className="absolute top-1/2 left-0 w-1 h-28 bg-gradient-to-r from-orange-400 to-transparent opacity-60 animate-shooting-star-horizontal animation-delay-12000"></div>
+        {/* Proper Shooting Stars - Diagonal streaks */}
+        <div className="absolute top-1/4 -left-20 w-2 h-2 bg-white rounded-full animate-shooting-star opacity-90">
+          <div className="absolute w-40 h-0.5 bg-gradient-to-r from-white via-blue-200 to-transparent -rotate-45 -translate-x-2 -translate-y-1"></div>
+        </div>
+        <div className="absolute top-3/5 -left-20 w-1.5 h-1.5 bg-cyan-300 rounded-full animate-shooting-star animation-delay-8000 opacity-80">
+          <div className="absolute w-32 h-0.5 bg-gradient-to-r from-cyan-300 via-blue-300 to-transparent -rotate-45 -translate-x-2 -translate-y-1"></div>
+        </div>
+        <div className="absolute top-4/5 -left-20 w-1 h-1 bg-orange-300 rounded-full animate-shooting-star animation-delay-12000 opacity-70">
+          <div className="absolute w-24 h-0.5 bg-gradient-to-r from-orange-300 via-yellow-300 to-transparent -rotate-45 -translate-x-2 -translate-y-1"></div>
+        </div>
         
         {/* Floating constellation lines */}
         <div className="absolute inset-0 opacity-20">
@@ -120,9 +126,9 @@ const Hero = () => {
           {/* Right Content - Enhanced DevOps Vector Illustration */}
           <div className="relative animate-fade-in animation-delay-300">
             <div className="relative">
-              {/* Vector DevOps Illustration - Larger Content Size */}
-              <div className="w-full h-[700px] bg-gradient-to-br from-blue-900/20 to-orange-900/20 rounded-2xl backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
-                <svg viewBox="0 0 500 500" className="w-full h-full p-4">
+              {/* Vector DevOps Illustration - Proper aspect ratio */}
+              <div className="w-full max-w-[600px] h-[600px] bg-gradient-to-br from-blue-900/20 to-orange-900/20 rounded-2xl backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden mx-auto">
+                <svg viewBox="0 0 600 600" className="w-full h-full p-8">
                   {/* DevOps Infinity Loop */}
                   <defs>
                     <linearGradient id="devopsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -131,7 +137,7 @@ const Hero = () => {
                       <stop offset="100%" stopColor="#8B5CF6" />
                     </linearGradient>
                     <filter id="glow">
-                      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                       <feMerge> 
                         <feMergeNode in="coloredBlur"/>
                         <feMergeNode in="SourceGraphic"/>
@@ -139,92 +145,96 @@ const Hero = () => {
                     </filter>
                   </defs>
                   
-                  {/* Infinity Symbol for DevOps - Larger */}
-                  <path d="M125 250 Q175 150 225 250 T325 250 Q275 350 225 250 T125 250" 
+                  {/* Infinity Symbol for DevOps - Better proportioned */}
+                  <path d="M150 300 Q210 180 270 300 T390 300 Q330 420 270 300 T150 300" 
                         fill="none" 
                         stroke="url(#devopsGradient)" 
-                        strokeWidth="8" 
+                        strokeWidth="10" 
                         className="animate-pulse"
                         filter="url(#glow)" />
                   
-                  {/* Dev Side - Larger */}
-                  <circle cx="175" cy="250" r="85" fill="rgba(59, 130, 246, 0.1)" stroke="#3B82F6" strokeWidth="4" className="animate-pulse">
-                    <animate attributeName="r" values="85;90;85" dur="3s" repeatCount="indefinite" />
+                  {/* Dev Side - Larger content */}
+                  <circle cx="210" cy="300" r="100" fill="rgba(59, 130, 246, 0.15)" stroke="#3B82F6" strokeWidth="5" className="animate-pulse">
+                    <animate attributeName="r" values="100;110;100" dur="3s" repeatCount="indefinite" />
                   </circle>
-                  <text x="175" y="235" textAnchor="middle" fill="#60A5FA" fontSize="20" fontWeight="bold">DEV</text>
-                  <text x="175" y="255" textAnchor="middle" fill="#93C5FD" fontSize="16">Code</text>
-                  <text x="175" y="275" textAnchor="middle" fill="#93C5FD" fontSize="16">Build</text>
+                  <text x="210" y="280" textAnchor="middle" fill="#60A5FA" fontSize="28" fontWeight="bold">DEV</text>
+                  <text x="210" y="310" textAnchor="middle" fill="#93C5FD" fontSize="20">Code</text>
+                  <text x="210" y="335" textAnchor="middle" fill="#93C5FD" fontSize="20">Build</text>
                   
-                  {/* Ops Side - Larger */}
-                  <circle cx="275" cy="250" r="85" fill="rgba(245, 158, 11, 0.1)" stroke="#F59E0B" strokeWidth="4" className="animate-pulse animation-delay-2000">
-                    <animate attributeName="r" values="85;90;85" dur="3s" repeatCount="indefinite" begin="1s" />
+                  {/* Ops Side - Larger content */}
+                  <circle cx="330" cy="300" r="100" fill="rgba(245, 158, 11, 0.15)" stroke="#F59E0B" strokeWidth="5" className="animate-pulse animation-delay-2000">
+                    <animate attributeName="r" values="100;110;100" dur="3s" repeatCount="indefinite" begin="1s" />
                   </circle>
-                  <text x="275" y="235" textAnchor="middle" fill="#FBBF24" fontSize="20" fontWeight="bold">OPS</text>
-                  <text x="275" y="255" textAnchor="middle" fill="#FCD34D" fontSize="16">Deploy</text>
-                  <text x="275" y="275" textAnchor="middle" fill="#FCD34D" fontSize="16">Monitor</text>
+                  <text x="330" y="280" textAnchor="middle" fill="#FBBF24" fontSize="28" fontWeight="bold">OPS</text>
+                  <text x="330" y="310" textAnchor="middle" fill="#FCD34D" fontSize="20">Deploy</text>
+                  <text x="330" y="335" textAnchor="middle" fill="#FCD34D" fontSize="20">Monitor</text>
                   
-                  {/* Enhanced Cloud Infrastructure - Proper Cloud Shapes - Larger */}
-                  <g transform="translate(150, 80)">
-                    {/* Main Cloud - Larger */}
-                    <ellipse cx="50" cy="30" rx="55" ry="25" fill="rgba(139, 92, 246, 0.2)" stroke="#8B5CF6" strokeWidth="3" className="animate-float" />
-                    {/* Cloud bumps - Larger */}
-                    <circle cx="20" cy="23" r="22" fill="rgba(139, 92, 246, 0.2)" stroke="#8B5CF6" strokeWidth="3" className="animate-float animation-delay-300" />
-                    <circle cx="50" cy="15" r="28" fill="rgba(139, 92, 246, 0.2)" stroke="#8B5CF6" strokeWidth="3" className="animate-float animation-delay-600" />
-                    <circle cx="80" cy="23" r="20" fill="rgba(139, 92, 246, 0.2)" stroke="#8B5CF6" strokeWidth="3" className="animate-float animation-delay-900" />
-                    <text x="50" y="35" textAnchor="middle" fill="#A78BFA" fontSize="16" fontWeight="bold">CLOUD</text>
+                  {/* Enhanced Cloud Infrastructure - Realistic Cloud Shapes */}
+                  <g transform="translate(180, 100)">
+                    {/* Main Cloud - Proper cloud shape */}
+                    <ellipse cx="90" cy="40" rx="70" ry="30" fill="rgba(139, 92, 246, 0.25)" stroke="#8B5CF6" strokeWidth="4" className="animate-float" />
+                    {/* Cloud bumps for realistic shape */}
+                    <circle cx="40" cy="30" r="28" fill="rgba(139, 92, 246, 0.25)" stroke="#8B5CF6" strokeWidth="4" className="animate-float animation-delay-300" />
+                    <circle cx="90" cy="20" r="35" fill="rgba(139, 92, 246, 0.25)" stroke="#8B5CF6" strokeWidth="4" className="animate-float animation-delay-600" />
+                    <circle cx="140" cy="30" r="25" fill="rgba(139, 92, 246, 0.25)" stroke="#8B5CF6" strokeWidth="4" className="animate-float animation-delay-900" />
+                    <circle cx="65" cy="35" r="20" fill="rgba(139, 92, 246, 0.25)" stroke="#8B5CF6" strokeWidth="4" className="animate-float animation-delay-1200" />
+                    <circle cx="115" cy="35" r="18" fill="rgba(139, 92, 246, 0.25)" stroke="#8B5CF6" strokeWidth="4" className="animate-float animation-delay-1500" />
+                    <text x="90" y="50" textAnchor="middle" fill="#A78BFA" fontSize="22" fontWeight="bold">CLOUD</text>
                   </g>
                   
-                  {/* Secondary Cloud - Larger */}
-                  <g transform="translate(300, 350)">
-                    <ellipse cx="40" cy="25" rx="45" ry="20" fill="rgba(59, 130, 246, 0.15)" stroke="#60A5FA" strokeWidth="3" className="animate-float animation-delay-1500" />
-                    <circle cx="15" cy="18" r="16" fill="rgba(59, 130, 246, 0.15)" stroke="#60A5FA" strokeWidth="3" className="animate-float animation-delay-1800" />
-                    <circle cx="40" cy="15" r="20" fill="rgba(59, 130, 246, 0.15)" stroke="#60A5FA" strokeWidth="3" className="animate-float animation-delay-2100" />
-                    <circle cx="65" cy="20" r="14" fill="rgba(59, 130, 246, 0.15)" stroke="#60A5FA" strokeWidth="3" className="animate-float animation-delay-2400" />
+                  {/* Secondary Cloud - Realistic shape */}
+                  <g transform="translate(350, 450)">
+                    <ellipse cx="60" cy="30" rx="55" ry="25" fill="rgba(59, 130, 246, 0.2)" stroke="#60A5FA" strokeWidth="4" className="animate-float animation-delay-1500" />
+                    <circle cx="25" cy="22" r="22" fill="rgba(59, 130, 246, 0.2)" stroke="#60A5FA" strokeWidth="4" className="animate-float animation-delay-1800" />
+                    <circle cx="60" cy="15" r="28" fill="rgba(59, 130, 246, 0.2)" stroke="#60A5FA" strokeWidth="4" className="animate-float animation-delay-2100" />
+                    <circle cx="95" cy="25" r="20" fill="rgba(59, 130, 246, 0.2)" stroke="#60A5FA" strokeWidth="4" className="animate-float animation-delay-2400" />
+                    <circle cx="45" cy="28" r="16" fill="rgba(59, 130, 246, 0.2)" stroke="#60A5FA" strokeWidth="4" className="animate-float animation-delay-2700" />
                   </g>
                   
-                  {/* Third Cloud - Larger */}
-                  <g transform="translate(60, 360)">
-                    <ellipse cx="30" cy="20" rx="35" ry="16" fill="rgba(245, 158, 11, 0.15)" stroke="#FBBF24" strokeWidth="3" className="animate-float animation-delay-2700" />
-                    <circle cx="10" cy="15" r="14" fill="rgba(245, 158, 11, 0.15)" stroke="#FBBF24" strokeWidth="3" className="animate-float animation-delay-3000" />
-                    <circle cx="30" cy="12" r="16" fill="rgba(245, 158, 11, 0.15)" stroke="#FBBF24" strokeWidth="3" className="animate-float animation-delay-3300" />
-                    <circle cx="50" cy="16" r="12" fill="rgba(245, 158, 11, 0.15)" stroke="#FBBF24" strokeWidth="3" className="animate-float animation-delay-3600" />
+                  {/* Third Cloud - Realistic shape */}
+                  <g transform="translate(80, 470)">
+                    <ellipse cx="45" cy="25" rx="45" ry="20" fill="rgba(245, 158, 11, 0.2)" stroke="#FBBF24" strokeWidth="4" className="animate-float animation-delay-2700" />
+                    <circle cx="18" cy="18" r="18" fill="rgba(245, 158, 11, 0.2)" stroke="#FBBF24" strokeWidth="4" className="animate-float animation-delay-3000" />
+                    <circle cx="45" cy="12" r="22" fill="rgba(245, 158, 11, 0.2)" stroke="#FBBF24" strokeWidth="4" className="animate-float animation-delay-3300" />
+                    <circle cx="72" cy="20" r="16" fill="rgba(245, 158, 11, 0.2)" stroke="#FBBF24" strokeWidth="4" className="animate-float animation-delay-3600" />
+                    <circle cx="35" cy="22" r="14" fill="rgba(245, 158, 11, 0.2)" stroke="#FBBF24" strokeWidth="4" className="animate-float animation-delay-3900" />
                   </g>
                   
-                  {/* Data Flow Arrows - Larger */}
+                  {/* Data Flow Arrows */}
                   <defs>
-                    <marker id="arrowhead" markerWidth="15" markerHeight="12" refX="12" refY="6" orient="auto">
-                      <polygon points="0 0, 15 6, 0 12" fill="url(#devopsGradient)" />
+                    <marker id="arrowhead" markerWidth="18" markerHeight="15" refX="15" refY="7.5" orient="auto">
+                      <polygon points="0 0, 18 7.5, 0 15" fill="url(#devopsGradient)" />
                     </marker>
                   </defs>
                   
-                  <path d="M245 200 Q265 180 285 200" fill="none" stroke="url(#devopsGradient)" strokeWidth="4" markerEnd="url(#arrowhead)" className="animate-pulse animation-delay-1000" />
-                  <path d="M205 300 Q185 320 165 300" fill="none" stroke="url(#devopsGradient)" strokeWidth="4" markerEnd="url(#arrowhead)" className="animate-pulse animation-delay-3000" />
+                  <path d="M290 240 Q320 210 350 240" fill="none" stroke="url(#devopsGradient)" strokeWidth="5" markerEnd="url(#arrowhead)" className="animate-pulse animation-delay-1000" />
+                  <path d="M250 360 Q220 390 190 360" fill="none" stroke="url(#devopsGradient)" strokeWidth="5" markerEnd="url(#arrowhead)" className="animate-pulse animation-delay-3000" />
                   
-                  {/* Floating Data Points - Larger */}
-                  <circle cx="120" cy="180" r="6" fill="#60A5FA" className="animate-bounce">
-                    <animate attributeName="cy" values="180;160;180" dur="2s" repeatCount="indefinite" />
+                  {/* Floating Data Points */}
+                  <circle cx="140" cy="220" r="8" fill="#60A5FA" className="animate-bounce">
+                    <animate attributeName="cy" values="220;190;220" dur="2s" repeatCount="indefinite" />
                   </circle>
-                  <circle cx="330" cy="320" r="6" fill="#FBBF24" className="animate-bounce animation-delay-1000">
-                    <animate attributeName="cy" values="320;300;320" dur="2s" repeatCount="indefinite" begin="1s" />
+                  <circle cx="400" cy="380" r="8" fill="#FBBF24" className="animate-bounce animation-delay-1000">
+                    <animate attributeName="cy" values="380;350;380" dur="2s" repeatCount="indefinite" begin="1s" />
                   </circle>
-                  <circle cx="225" cy="100" r="6" fill="#A78BFA" className="animate-bounce animation-delay-2000">
-                    <animate attributeName="cy" values="100;80;100" dur="2s" repeatCount="indefinite" begin="2s" />
+                  <circle cx="270" cy="120" r="8" fill="#A78BFA" className="animate-bounce animation-delay-2000">
+                    <animate attributeName="cy" values="120;90;120" dur="2s" repeatCount="indefinite" begin="2s" />
                   </circle>
                   
-                  {/* Additional DevOps Elements - Larger */}
-                  <g transform="translate(360, 190)">
-                    <rect x="0" y="0" width="50" height="35" rx="8" fill="rgba(34, 197, 94, 0.2)" stroke="#22C55E" strokeWidth="3" className="animate-pulse" />
-                    <text x="25" y="22" textAnchor="middle" fill="#4ADE80" fontSize="14" fontWeight="bold">CI/CD</text>
+                  {/* Additional DevOps Elements */}
+                  <g transform="translate(430, 230)">
+                    <rect x="0" y="0" width="60" height="42" rx="10" fill="rgba(34, 197, 94, 0.25)" stroke="#22C55E" strokeWidth="4" className="animate-pulse" />
+                    <text x="30" y="28" textAnchor="middle" fill="#4ADE80" fontSize="18" fontWeight="bold">CI/CD</text>
                   </g>
                   
-                  <g transform="translate(40, 110)">
-                    <rect x="0" y="0" width="45" height="28" rx="5" fill="rgba(239, 68, 68, 0.2)" stroke="#EF4444" strokeWidth="3" className="animate-pulse animation-delay-1500" />
-                    <text x="22.5" y="18" textAnchor="middle" fill="#F87171" fontSize="12" fontWeight="bold">API</text>
+                  <g transform="translate(50, 130)">
+                    <rect x="0" y="0" width="55" height="35" rx="8" fill="rgba(239, 68, 68, 0.25)" stroke="#EF4444" strokeWidth="4" className="animate-pulse animation-delay-1500" />
+                    <text x="27.5" y="23" textAnchor="middle" fill="#F87171" fontSize="16" fontWeight="bold">API</text>
                   </g>
                 </svg>
               </div>
               
-              {/* Floating tech badges - Same size */}
+              {/* Floating tech badges */}
               <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-lg shadow-lg animate-float text-sm font-medium">
                 Kubernetes
               </div>
