@@ -1,12 +1,10 @@
 import { pipeline, env } from '@huggingface/transformers';
 
-// Enable caching
 env.allowLocalModels = false;
 env.useBrowserCache = true;
 
-let cachedSegmenter: any = null;
+let cachedRemover: any = null;
 const MAX_IMAGE_DIMENSION = 1024;
-const TARGET_LABELS = ['person']; // <-- change this as per your content type
 
 function resizeImageIfNeeded(
   canvas: HTMLCanvasElement,
@@ -31,66 +29,51 @@ function resizeImageIfNeeded(
   ctx.drawImage(image, 0, 0, width, height);
 }
 
-async function getSegmenter() {
-  if (!cachedSegmenter) {
+async function getRemover() {
+  if (!cachedRemover) {
     const device = navigator?.gpu ? 'webgpu' : 'cpu';
-    cachedSegmenter = await pipeline(
-      'image-segmentation',
-      'Xenova/segformer-b0-finetuned-ade-512-512',
-      { device }
-    );
+    console.log(`Using device: ${device}`);
+    cachedRemover = await pipeline('image-segmentation', 'Xenova/u2net', { device });
   }
-  return cachedSegmenter;
+  return cachedRemover;
 }
 
 export const removeBackground = async (imageElement: HTMLImageElement): Promise<Blob> => {
   try {
-    const segmenter = await getSegmenter();
+    const remover = await getRemover();
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    if (!ctx) throw new Error('Could not get canvas context');
+    if (!ctx) throw new Error('Canvas context not available');
 
     resizeImageIfNeeded(canvas, ctx, imageElement);
 
-    // Run segmentation
-    const results = await segmenter(canvas);
+    const result = await remover(canvas);
 
-    if (!results || !Array.isArray(results) || results.length === 0) {
+    if (!result || !Array.isArray(result) || !result[0].mask || !result[0].mask.data) {
       throw new Error('Invalid segmentation result');
     }
 
-    // Create blank binary mask initialized to 0 (transparent)
+    const mask = result[0].mask.data;
     const width = canvas.width;
     const height = canvas.height;
-    const finalMask = new Uint8ClampedArray(width * height).fill(0);
 
-    // Merge masks of selected labels
-    for (const result of results) {
-      if (TARGET_LABELS.includes(result.label) && result.mask?.data) {
-        const maskData = result.mask.data;
-        for (let i = 0; i < maskData.length; i++) {
-          if (maskData[i] > 0.5) finalMask[i] = 255;
-        }
-      }
-    }
-
-    // Create final output canvas
     const outputCanvas = document.createElement('canvas');
+    const outputCtx = outputCanvas.getContext('2d');
     outputCanvas.width = width;
     outputCanvas.height = height;
-    const outputCtx = outputCanvas.getContext('2d');
-    if (!outputCtx) throw new Error('Could not get output canvas context');
 
-    outputCtx.drawImage(canvas, 0, 0);
-    const outputImageData = outputCtx.getImageData(0, 0, width, height);
-    const data = outputImageData.data;
+    outputCtx?.drawImage(canvas, 0, 0);
+    const imageData = outputCtx?.getImageData(0, 0, width, height);
+    const data = imageData?.data;
+    if (!data) throw new Error('Could not extract image data');
 
-    for (let i = 0; i < finalMask.length; i++) {
-      data[i * 4 + 3] = finalMask[i]; // Set alpha channel
+    for (let i = 0; i < mask.length; i++) {
+      const alpha = Math.round(mask[i] * 255); // already a foreground probability
+      data[i * 4 + 3] = alpha;
     }
 
-    outputCtx.putImageData(outputImageData, 0, 0);
+    outputCtx?.putImageData(imageData!, 0, 0);
 
     return await new Promise<Blob>((resolve, reject) => {
       outputCanvas.toBlob((blob) => {
