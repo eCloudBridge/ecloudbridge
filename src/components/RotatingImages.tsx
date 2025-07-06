@@ -86,7 +86,7 @@ const RotatingImages = () => {
   }
 
   return (
-    <div className="relative w-full h-96 overflow-hidden">
+    <div className="relative w-full h-full overflow-hidden">
       {processedImages.map((image, index) => (
         <div
           key={index}
