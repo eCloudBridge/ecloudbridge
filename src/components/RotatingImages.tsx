@@ -10,9 +10,9 @@ const RotatingImages = () => {
 
   // Using only the last 3 uploaded images (excluding the logo)
   const imageUrls = [
-    '/lovable-uploads/b5e5c5a5-4f4b-4a8b-9c3d-2e1f8a7b6c5d.jpg',
-    '/lovable-uploads/a3d2c1b0-9e8f-7d6c-5b4a-3928174650ab.jpg', 
-    '/lovable-uploads/f9e8d7c6-b5a4-9382-7165-504938271649.jpg'
+    '/b5e5c5a5-4f4b-4a8b-9c3d-2e1f8a7b6c5d.jpg',
+    '/a3d2c1b0-9e8f-7d6c-5b4a-3928174650ab.jpg', 
+    '/f9e8d7c6-b5a4-9382-7165-504938271649.jpg'
   ];
 
   useEffect(() => {
