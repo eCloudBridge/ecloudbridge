@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -248,6 +249,21 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes infinite-flow {
+  0% {
+    stroke-dasharray: 0 100;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 50 50;
+    stroke-dashoffset: -25;
+  }
+  100% {
+    stroke-dasharray: 0 100;
+    stroke-dashoffset: -100;
+  }
+}
+
 .animate-blob {
   animation: blob 7s infinite;
 }
@@ -298,6 +314,10 @@ All colors MUST be HSL.
 
 .animate-shooting-star-horizontal {
   animation: shooting-star-horizontal 12s linear infinite;
+}
+
+.animate-infinite-flow {
+  animation: infinite-flow 8s ease-in-out infinite;
 }
 
 .animation-delay-2000 {
@@ -387,41 +407,4 @@ html {
 /* Radial gradients for nebula effects */
 .bg-gradient-radial {
   background: radial-gradient(circle, var(--tw-gradient-stops));
-}
-
-/* Pipeline Flow Animation */
-@keyframes pipeline-flow {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes data-flow {
-  0% {
-    transform: translateX(-20px);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(100vw);
-    opacity: 0;
-  }
-}
-
-.animate-pipeline-flow {
-  animation: pipeline-flow 4s linear infinite;
-}
-
-.animate-data-flow {
-  animation: data-flow 8s linear infinite;
 }

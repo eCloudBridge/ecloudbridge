@@ -7,24 +7,32 @@ const RotatingImages = () => {
   const [processedImages, setProcessedImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Using only the last 3 uploaded images (excluding the logo)
   const imageUrls = [
-    '/lovable-uploads/dc2764ac-81de-4147-94c0-0c35f1327f51.png',
-    '/lovable-uploads/dc2764ac-81de-4147-94c0-0c35f1327f51.png', // You can replace with other uploaded images
-    '/lovable-uploads/dc2764ac-81de-4147-94c0-0c35f1327f51.png'  // You can replace with other uploaded images
+    '/lovable-uploads/b5e5c5a5-4f4b-4a8b-9c3d-2e1f8a7b6c5d.jpg',
+    '/lovable-uploads/a3d2c1b0-9e8f-7d6c-5b4a-3928174650ab.jpg', 
+    '/lovable-uploads/f9e8d7c6-b5a4-9382-7165-504938271649.jpg'
   ];
 
   useEffect(() => {
     const processImages = async () => {
+      setIsLoading(true);
       const processed: string[] = [];
       
       for (const url of imageUrls) {
         try {
+          console.log(`Processing image: ${url}`);
           // Fetch image as blob
           const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Failed to fetch image: ${response.status}`);
+          }
           const blob = await response.blob();
+          console.log(`Image blob size: ${blob.size} bytes`);
           
           // Load image
           const imageElement = await loadImage(blob);
+          console.log(`Image loaded: ${imageElement.width}x${imageElement.height}`);
           
           // Remove background
           const processedBlob = await removeBackground(imageElement);
@@ -32,6 +40,7 @@ const RotatingImages = () => {
           // Create URL for the processed image
           const processedUrl = URL.createObjectURL(processedBlob);
           processed.push(processedUrl);
+          console.log(`Successfully processed image ${processed.length}`);
         } catch (error) {
           console.error('Error processing image:', error);
           // Fallback to original image
@@ -41,6 +50,7 @@ const RotatingImages = () => {
       
       setProcessedImages(processed);
       setIsLoading(false);
+      console.log(`Total processed images: ${processed.length}`);
     };
 
     processImages();
@@ -60,6 +70,15 @@ const RotatingImages = () => {
     return (
       <div className="flex items-center justify-center w-full h-96">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-400"></div>
+        <span className="ml-4 text-white">Processing images...</span>
+      </div>
+    );
+  }
+
+  if (processedImages.length === 0) {
+    return (
+      <div className="flex items-center justify-center w-full h-96">
+        <div className="text-white">No images available</div>
       </div>
     );
   }
@@ -77,6 +96,8 @@ const RotatingImages = () => {
             src={image}
             alt={`DevOps illustration ${index + 1}`}
             className="w-full h-full object-contain"
+            onLoad={() => console.log(`Image ${index + 1} loaded successfully`)}
+            onError={() => console.error(`Failed to load image ${index + 1}`)}
           />
         </div>
       ))}

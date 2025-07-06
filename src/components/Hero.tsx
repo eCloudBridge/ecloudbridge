@@ -20,24 +20,39 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-black pt-16 overflow-hidden">
-      {/* Pipeline Background Animation */}
+      {/* Infinite Symbol Background Animation */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+        <svg 
+          width="800" 
+          height="400" 
+          viewBox="0 0 800 400" 
+          className="animate-infinite-flow"
+        >
+          <path
+            d="M200,200 C100,100 100,300 200,200 C300,100 300,300 200,200 C300,300 500,300 600,200 C700,100 700,300 600,200 C500,300 300,300 200,200"
+            fill="none"
+            stroke="url(#infiniteGradient)"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+          <defs>
+            <linearGradient id="infiniteGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="25%" stopColor="#8b5cf6" />
+              <stop offset="50%" stopColor="#f59e0b" />
+              <stop offset="75%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      {/* Floating Data Particles */}
       <div className="absolute inset-0">
-        {/* Animated Pipeline Lines */}
-        <div className="absolute top-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pipeline-flow opacity-60"></div>
-        <div className="absolute top-2/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-400 to-transparent animate-pipeline-flow animation-delay-2000 opacity-60"></div>
-        <div className="absolute top-3/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pipeline-flow animation-delay-4000 opacity-60"></div>
-        
-        {/* Pipeline Nodes */}
-        <div className="absolute top-1/4 left-1/6 w-4 h-4 bg-blue-400 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/4 left-2/6 w-4 h-4 bg-green-400 rounded-full animate-pulse animation-delay-1000"></div>
-        <div className="absolute top-1/4 left-3/6 w-4 h-4 bg-yellow-400 rounded-full animate-pulse animation-delay-2000"></div>
-        <div className="absolute top-1/4 left-4/6 w-4 h-4 bg-orange-400 rounded-full animate-pulse animation-delay-3000"></div>
-        <div className="absolute top-1/4 left-5/6 w-4 h-4 bg-red-400 rounded-full animate-pulse animation-delay-4000"></div>
-        
-        {/* Data Flow Particles */}
-        <div className="absolute top-1/4 left-0 w-2 h-2 bg-cyan-300 rounded-full animate-data-flow opacity-80"></div>
-        <div className="absolute top-2/4 left-0 w-2 h-2 bg-lime-300 rounded-full animate-data-flow animation-delay-3000 opacity-80"></div>
-        <div className="absolute top-3/4 left-0 w-2 h-2 bg-pink-300 rounded-full animate-data-flow animation-delay-6000 opacity-80"></div>
+        <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-blue-400 rounded-full animate-float-orbit opacity-60"></div>
+        <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-orange-400 rounded-full animate-float-orbit-reverse opacity-60"></div>
+        <div className="absolute top-1/2 left-1/6 w-2 h-2 bg-purple-400 rounded-full animate-pulse opacity-60"></div>
+        <div className="absolute top-1/3 right-1/6 w-3 h-3 bg-green-400 rounded-full animate-pulse animation-delay-2000 opacity-60"></div>
       </div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
