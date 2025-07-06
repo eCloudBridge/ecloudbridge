@@ -32,7 +32,6 @@ function resizeImageIfNeeded(
 async function getRemover() {
   if (!cachedRemover) {
     const device = navigator?.gpu ? 'webgpu' : 'cpu';
-    console.log(`Using device: ${device}`);
     cachedRemover = await pipeline('image-segmentation', 'Xenova/u2net', { device });
   }
   return cachedRemover;
@@ -55,25 +54,54 @@ export const removeBackground = async (imageElement: HTMLImageElement): Promise<
     }
 
     const mask = result[0].mask.data;
-    const width = canvas.width;
-    const height = canvas.height;
+    const maskWidth = result[0].mask.width;
+    const maskHeight = result[0].mask.height;
 
-    const outputCanvas = document.createElement('canvas');
-    const outputCtx = outputCanvas.getContext('2d');
-    outputCanvas.width = width;
-    outputCanvas.height = height;
+    const imageWidth = canvas.width;
+    const imageHeight = canvas.height;
 
-    outputCtx?.drawImage(canvas, 0, 0);
-    const imageData = outputCtx?.getImageData(0, 0, width, height);
-    const data = imageData?.data;
-    if (!data) throw new Error('Could not extract image data');
+    // Create offscreen canvas to scale mask to match image dimensions
+    const maskCanvas = document.createElement('canvas');
+    maskCanvas.width = maskWidth;
+    maskCanvas.height = maskHeight;
+    const maskCtx = maskCanvas.getContext('2d');
+    const maskImageData = maskCtx!.createImageData(maskWidth, maskHeight);
 
     for (let i = 0; i < mask.length; i++) {
-      const alpha = Math.round(mask[i] * 255); // already a foreground probability
-      data[i * 4 + 3] = alpha;
+      const val = Math.round(mask[i] * 255);
+      maskImageData.data[i * 4 + 0] = val;
+      maskImageData.data[i * 4 + 1] = val;
+      maskImageData.data[i * 4 + 2] = val;
+      maskImageData.data[i * 4 + 3] = 255;
     }
 
-    outputCtx?.putImageData(imageData!, 0, 0);
+    maskCtx!.putImageData(maskImageData, 0, 0);
+
+    // Scale mask to match image dimensions
+    const scaledMaskCanvas = document.createElement('canvas');
+    scaledMaskCanvas.width = imageWidth;
+    scaledMaskCanvas.height = imageHeight;
+    const scaledMaskCtx = scaledMaskCanvas.getContext('2d');
+    scaledMaskCtx!.drawImage(maskCanvas, 0, 0, imageWidth, imageHeight);
+    const scaledMaskImageData = scaledMaskCtx!.getImageData(0, 0, imageWidth, imageHeight).data;
+
+    // Now apply the mask alpha to the original image
+    const outputCanvas = document.createElement('canvas');
+    outputCanvas.width = imageWidth;
+    outputCanvas.height = imageHeight;
+    const outputCtx = outputCanvas.getContext('2d');
+    if (!outputCtx) throw new Error('Failed to get output canvas context');
+
+    outputCtx.drawImage(canvas, 0, 0);
+    const imageData = outputCtx.getImageData(0, 0, imageWidth, imageHeight);
+    const data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+      const alpha = scaledMaskImageData[i]; // Red channel (they're grayscale)
+      data[i + 3] = alpha;
+    }
+
+    outputCtx.putImageData(imageData, 0, 0);
 
     return await new Promise<Blob>((resolve, reject) => {
       outputCanvas.toBlob((blob) => {
