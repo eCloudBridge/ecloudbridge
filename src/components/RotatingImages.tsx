@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { Loader } from 'lucide-react';
 import { removeBackground, loadImage } from '@/utils/backgroundRemoval';
 
 const RotatingImages = () => {
@@ -25,7 +26,9 @@ const RotatingImages = () => {
           // Fetch image as blob
           const response = await fetch(url);
           if (!response.ok) {
-            throw new Error(`Failed to fetch image: ${response.status}`);
+            console.warn(`Failed to fetch image: ${response.status}, using fallback`);
+            processed.push(url);
+            continue;
           }
           const blob = await response.blob();
           console.log(`Image blob size: ${blob.size} bytes`);
@@ -69,8 +72,7 @@ const RotatingImages = () => {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center w-full h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-400"></div>
-        <span className="ml-4 text-white">Processing images...</span>
+        <Loader className="animate-spin h-12 w-12 text-orange-400" />
       </div>
     );
   }

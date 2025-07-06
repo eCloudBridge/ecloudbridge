@@ -21,18 +21,18 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-black pt-16 overflow-hidden">
       {/* Infinite Symbol Background Animation */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-10">
+      <div className="absolute inset-0 flex items-center justify-center opacity-20">
         <svg 
-          width="800" 
-          height="400" 
-          viewBox="0 0 800 400" 
+          width="1200" 
+          height="600" 
+          viewBox="0 0 1200 600" 
           className="animate-infinite-flow"
         >
           <path
-            d="M200,200 C100,100 100,300 200,200 C300,100 300,300 200,200 C300,300 500,300 600,200 C700,100 700,300 600,200 C500,300 300,300 200,200"
+            d="M300,300 C150,150 150,450 300,300 C450,150 450,450 300,300 C450,450 750,450 900,300 C1050,150 1050,450 900,300 C750,450 450,450 300,300"
             fill="none"
             stroke="url(#infiniteGradient)"
-            strokeWidth="3"
+            strokeWidth="4"
             strokeLinecap="round"
           />
           <defs>
