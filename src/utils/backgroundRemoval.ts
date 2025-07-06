@@ -32,7 +32,7 @@ function resizeImageIfNeeded(
 async function getRemover() {
   if (!cachedRemover) {
     const device = navigator?.gpu ? 'webgpu' : 'cpu';
-    cachedRemover = await pipeline('image-segmentation', 'Xenova/u2net', { device });
+    cachedRemover = await pipeline('image-segmentation', 'Xenova/rembg', { device });
   }
   return cachedRemover;
 }
