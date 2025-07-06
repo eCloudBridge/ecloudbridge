@@ -79,14 +79,14 @@ const RotatingImages = () => {
 
   if (processedImages.length === 0) {
     return (
-      <div className="flex items-center justify-center w-full h-full">
+      <div className="flex items-center justify-center w-full h-140">
         <div className="text-white">No images available</div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full h-140 overflow-hidden">
       {processedImages.map((image, index) => (
         <div
           key={index}
