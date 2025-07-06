@@ -1,12 +1,12 @@
 import { pipeline, env } from '@huggingface/transformers';
 
-// Only load once
-let cachedSegmenter: any = null;
-
+// Enable caching
 env.allowLocalModels = false;
 env.useBrowserCache = true;
 
+let cachedSegmenter: any = null;
 const MAX_IMAGE_DIMENSION = 1024;
+const TARGET_LABELS = ['person']; // <-- change this as per your content type
 
 function resizeImageIfNeeded(
   canvas: HTMLCanvasElement,
@@ -34,7 +34,6 @@ function resizeImageIfNeeded(
 async function getSegmenter() {
   if (!cachedSegmenter) {
     const device = navigator?.gpu ? 'webgpu' : 'cpu';
-    console.log(`Loading segmentation pipeline on ${device}`);
     cachedSegmenter = await pipeline(
       'image-segmentation',
       'Xenova/segformer-b0-finetuned-ade-512-512',
@@ -42,28 +41,6 @@ async function getSegmenter() {
     );
   }
   return cachedSegmenter;
-}
-
-function smoothMask(maskData: Uint8ClampedArray, width: number, height: number) {
-  const smoothed = new Uint8ClampedArray(maskData.length);
-  const kernelSize = 3;
-  const threshold = 0.5;
-
-  for (let y = 1; y < height - 1; y++) {
-    for (let x = 1; x < width - 1; x++) {
-      let sum = 0;
-      for (let ky = -1; ky <= 1; ky++) {
-        for (let kx = -1; kx <= 1; kx++) {
-          const idx = ((y + ky) * width) + (x + kx);
-          sum += maskData[idx];
-        }
-      }
-      const avg = sum / (kernelSize * kernelSize);
-      smoothed[y * width + x] = avg > threshold ? 1 : 0;
-    }
-  }
-
-  return smoothed;
 }
 
 export const removeBackground = async (imageElement: HTMLImageElement): Promise<Blob> => {
@@ -76,34 +53,44 @@ export const removeBackground = async (imageElement: HTMLImageElement): Promise<
 
     resizeImageIfNeeded(canvas, ctx, imageElement);
 
-    const result = await segmenter(canvas);
+    // Run segmentation
+    const results = await segmenter(canvas);
 
-    if (!result || !Array.isArray(result) || !result[0].mask) {
+    if (!results || !Array.isArray(results) || results.length === 0) {
       throw new Error('Invalid segmentation result');
     }
 
-    const { data: rawMask, width, height } = result[0].mask;
+    // Create blank binary mask initialized to 0 (transparent)
+    const width = canvas.width;
+    const height = canvas.height;
+    const finalMask = new Uint8ClampedArray(width * height).fill(0);
 
-    // Smooth and threshold the mask
-    const smoothedMask = smoothMask(rawMask, width, height);
-
-    const outputCanvas = document.createElement('canvas');
-    const outputCtx = outputCanvas.getContext('2d');
-    outputCanvas.width = canvas.width;
-    outputCanvas.height = canvas.height;
-
-    outputCtx?.drawImage(canvas, 0, 0);
-    const outputImageData = outputCtx?.getImageData(0, 0, width, height);
-    const outputData = outputImageData?.data;
-
-    if (!outputData) throw new Error('Failed to extract image data');
-
-    for (let i = 0; i < smoothedMask.length; i++) {
-      const alpha = smoothedMask[i] === 1 ? 255 : 0;
-      outputData[i * 4 + 3] = alpha;
+    // Merge masks of selected labels
+    for (const result of results) {
+      if (TARGET_LABELS.includes(result.label) && result.mask?.data) {
+        const maskData = result.mask.data;
+        for (let i = 0; i < maskData.length; i++) {
+          if (maskData[i] > 0.5) finalMask[i] = 255;
+        }
+      }
     }
 
-    outputCtx?.putImageData(outputImageData!, 0, 0);
+    // Create final output canvas
+    const outputCanvas = document.createElement('canvas');
+    outputCanvas.width = width;
+    outputCanvas.height = height;
+    const outputCtx = outputCanvas.getContext('2d');
+    if (!outputCtx) throw new Error('Could not get output canvas context');
+
+    outputCtx.drawImage(canvas, 0, 0);
+    const outputImageData = outputCtx.getImageData(0, 0, width, height);
+    const data = outputImageData.data;
+
+    for (let i = 0; i < finalMask.length; i++) {
+      data[i * 4 + 3] = finalMask[i]; // Set alpha channel
+    }
+
+    outputCtx.putImageData(outputImageData, 0, 0);
 
     return await new Promise<Blob>((resolve, reject) => {
       outputCanvas.toBlob((blob) => {
