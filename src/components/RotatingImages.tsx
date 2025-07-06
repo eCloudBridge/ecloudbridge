@@ -79,7 +79,7 @@ const RotatingImages = () => {
 
   if (processedImages.length === 0) {
     return (
-      <div className="flex items-center justify-center w-full h-96">
+      <div className="flex items-center justify-center w-full h-full">
         <div className="text-white">No images available</div>
       </div>
     );
