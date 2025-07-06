@@ -35,7 +35,7 @@ const Navigation = () => {
           {/* Logo - Made bigger */}
           <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
             <img 
-              src="/lovable-uploads/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
+              src="/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
               alt="eCloudBridge Logo" 
               className="h-12 w-auto"
             />
