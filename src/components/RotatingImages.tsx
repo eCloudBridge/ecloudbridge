@@ -56,7 +56,7 @@ const RotatingImages = () => {
       console.log(`Total processed images: ${processed.length}`);
     };
 
-    //processImages();
+    processImages();
   }, []);
 
   useEffect(() => {
