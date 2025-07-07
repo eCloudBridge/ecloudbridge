@@ -1,3 +1,4 @@
+
 import { pipeline, env } from '@huggingface/transformers';
 
 env.allowLocalModels = false;
@@ -31,7 +32,9 @@ function resizeImageIfNeeded(
 
 async function getRemover() {
   if (!cachedRemover) {
-    const device = navigator?.gpu ? 'webgpu' : 'cpu';
+    // Check for WebGPU support with proper type checking
+    const hasWebGPU = 'gpu' in navigator && (navigator as any).gpu;
+    const device = hasWebGPU ? 'webgpu' : 'cpu';
     cachedRemover = await pipeline('image-segmentation', 'Xenova/rembg', { device });
   }
   return cachedRemover;
