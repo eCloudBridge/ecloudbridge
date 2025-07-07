@@ -80,29 +80,16 @@ const Navigation = () => {
               Products
             </Link>
             
-            {isHomePage ? (
-              <button 
-                onClick={() => scrollToSection('about')}
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                About
-              </button>
-            ) : (
-              <Link 
-                to="/"
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                About
-              </Link>
-            )}
+            <Link 
+              to="/about"
+              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                  : 'text-white hover:text-orange-400 hover:bg-white/10'
+              }`}
+            >
+              About
+            </Link>
             
             <Link 
               to="/case-studies"
@@ -115,22 +102,13 @@ const Navigation = () => {
               Case Studies
             </Link>
             
-            {isHomePage ? (
+            <Link to="/contact">
               <Button 
-                onClick={() => scrollToSection('contact')}
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
               >
                 Contact
               </Button>
-            ) : (
-              <Link to="/">
-                <Button 
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
-                >
-                  Contact
-                </Button>
-              </Link>
-            )}
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -172,7 +150,7 @@ const Navigation = () => {
                 Products
               </Link>
               <Link 
-                to="/"
+                to="/about"
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -186,7 +164,7 @@ const Navigation = () => {
                 Case Studies
               </Link>
               <Link 
-                to="/"
+                to="/contact"
                 className="block w-full text-left px-3 py-2 text-orange-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
