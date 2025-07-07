@@ -6,7 +6,34 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white overflow-hidden">
-      {/* Moving Particle Universe Background - Similar to Hero */}
+      {/* Infinite Symbol Background Animation - Added to Footer */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-15">
+        <svg 
+          width="1400" 
+          height="700" 
+          viewBox="0 0 1400 700" 
+          className="animate-infinite-flow"
+        >
+          <path
+            d="M350,350 C175,175 175,525 350,350 C525,175 525,525 350,350 C525,525 875,525 1050,350 C1225,175 1225,525 1050,350 C875,525 525,525 350,350"
+            fill="none"
+            stroke="url(#footerInfiniteGradient)"
+            strokeWidth="4"
+            strokeLinecap="round"
+          />
+          <defs>
+            <linearGradient id="footerInfiniteGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="25%" stopColor="#8b5cf6" />
+              <stop offset="50%" stopColor="#f59e0b" />
+              <stop offset="75%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      {/* Moving Particle Universe Background */}
       <div className="absolute inset-0">
         {/* Moving particles */}
         <div className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-slow opacity-60" style={{top: '20%', left: '15%'}}></div>

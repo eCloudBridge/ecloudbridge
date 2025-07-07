@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,8 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  const isHomePage = location.pathname === '/';
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
       isScrolled 
@@ -33,72 +37,152 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo - Made bigger */}
-          <div className="flex items-center cursor-pointer" onClick={() => scrollToSection('home')}>
+          <Link to="/" className="flex items-center cursor-pointer">
             <img 
               src="/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
               alt="eCloudBridge Logo" 
               className="h-12 w-auto"
             />
-          </div>
+          </Link>
 
           {/* Desktop navigation menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                  : 'text-white hover:text-orange-400 hover:bg-white/10'
-              }`}
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                  : 'text-white hover:text-orange-400 hover:bg-white/10'
-              }`}
-            >
-              Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('products')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                  : 'text-white hover:text-orange-400 hover:bg-white/10'
-              }`}
-            >
-              Products
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                  : 'text-white hover:text-orange-400 hover:bg-white/10'
-              }`}
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('case-studies')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                isScrolled 
-                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                  : 'text-white hover:text-orange-400 hover:bg-white/10'
-              }`}
-            >
-              Case Studies
-            </button>
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
-            >
-              Contact
-            </Button>
+            {isHomePage ? (
+              <button 
+                onClick={() => scrollToSection('home')}
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Home
+              </button>
+            ) : (
+              <Link 
+                to="/"
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Home
+              </Link>
+            )}
+            
+            {isHomePage ? (
+              <button 
+                onClick={() => scrollToSection('services')}
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Services
+              </button>
+            ) : (
+              <Link 
+                to="/services"
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Services
+              </Link>
+            )}
+            
+            {isHomePage ? (
+              <button 
+                onClick={() => scrollToSection('products')}
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Products
+              </button>
+            ) : (
+              <Link 
+                to="/products"
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Products
+              </Link>
+            )}
+            
+            {isHomePage ? (
+              <button 
+                onClick={() => scrollToSection('about')}
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                About
+              </button>
+            ) : (
+              <Link 
+                to="/"
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                About
+              </Link>
+            )}
+            
+            {isHomePage ? (
+              <button 
+                onClick={() => scrollToSection('case-studies')}
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Case Studies
+              </button>
+            ) : (
+              <Link 
+                to="/case-studies"
+                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                  isScrolled 
+                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                    : 'text-white hover:text-orange-400 hover:bg-white/10'
+                }`}
+              >
+                Case Studies
+              </Link>
+            )}
+            
+            {isHomePage ? (
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
+              >
+                Contact
+              </Button>
+            ) : (
+              <Link to="/">
+                <Button 
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
+                >
+                  Contact
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -118,42 +202,48 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-              <button 
-                onClick={() => scrollToSection('home')}
+              <Link 
+                to="/"
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Home
-              </button>
-              <button 
-                onClick={() => scrollToSection('services')}
+              </Link>
+              <Link 
+                to="/services"
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Services
-              </button>
-              <button 
-                onClick={() => scrollToSection('products')}
+              </Link>
+              <Link 
+                to="/products"
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Products
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
+              </Link>
+              <Link 
+                to="/"
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
               >
                 About
-              </button>
-              <button 
-                onClick={() => scrollToSection('case-studies')}
+              </Link>
+              <Link 
+                to="/case-studies"
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-orange-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Case Studies
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
+              </Link>
+              <Link 
+                to="/"
                 className="block w-full text-left px-3 py-2 text-orange-600 font-medium"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Contact
-              </button>
+              </Link>
             </div>
           </div>
         )}
