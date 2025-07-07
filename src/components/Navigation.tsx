@@ -47,77 +47,38 @@ const Navigation = () => {
 
           {/* Desktop navigation menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {isHomePage ? (
-              <button 
-                onClick={() => scrollToSection('home')}
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Home
-              </button>
-            ) : (
-              <Link 
-                to="/"
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Home
-              </Link>
-            )}
+            <Link 
+              to="/"
+              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                  : 'text-white hover:text-orange-400 hover:bg-white/10'
+              }`}
+            >
+              Home
+            </Link>
             
-            {isHomePage ? (
-              <button 
-                onClick={() => scrollToSection('services')}
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Services
-              </button>
-            ) : (
-              <Link 
-                to="/services"
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Services
-              </Link>
-            )}
+            <Link 
+              to="/services"
+              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                  : 'text-white hover:text-orange-400 hover:bg-white/10'
+              }`}
+            >
+              Services
+            </Link>
             
-            {isHomePage ? (
-              <button 
-                onClick={() => scrollToSection('products')}
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Products
-              </button>
-            ) : (
-              <Link 
-                to="/products"
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Products
-              </Link>
-            )}
+            <Link 
+              to="/products"
+              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                  : 'text-white hover:text-orange-400 hover:bg-white/10'
+              }`}
+            >
+              Products
+            </Link>
             
             {isHomePage ? (
               <button 
@@ -143,29 +104,16 @@ const Navigation = () => {
               </Link>
             )}
             
-            {isHomePage ? (
-              <button 
-                onClick={() => scrollToSection('case-studies')}
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Case Studies
-              </button>
-            ) : (
-              <Link 
-                to="/case-studies"
-                className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
-                    : 'text-white hover:text-orange-400 hover:bg-white/10'
-                }`}
-              >
-                Case Studies
-              </Link>
-            )}
+            <Link 
+              to="/case-studies"
+              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                isScrolled 
+                  ? 'text-gray-700 hover:text-orange-600 hover:bg-white' 
+                  : 'text-white hover:text-orange-400 hover:bg-white/10'
+              }`}
+            >
+              Case Studies
+            </Link>
             
             {isHomePage ? (
               <Button 

@@ -1,8 +1,19 @@
 
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Newsletter subscription:', email);
+    setEmail('');
+    // Here you would typically handle the newsletter subscription
+  };
 
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white overflow-hidden">
@@ -45,7 +56,6 @@ const Footer = () => {
         <div className="absolute w-1 h-1 bg-orange-300 rounded-full animate-float-slow opacity-60" style={{top: '70%', left: '50%'}}></div>
         <div className="absolute w-2 h-2 bg-white rounded-full animate-float-medium opacity-80" style={{top: '10%', left: '60%'}}></div>
         
-        {/* Floating constellation lines */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full">
             <defs>
@@ -60,7 +70,6 @@ const Footer = () => {
           </svg>
         </div>
         
-        {/* Floating geometric shapes */}
         <div className="absolute top-1/4 left-1/6 w-24 h-24 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-xl animate-float-orbit"></div>
         <div className="absolute bottom-1/4 right-1/6 w-32 h-32 bg-gradient-to-r from-orange-500/5 to-red-500/5 rounded-full blur-xl animate-float-orbit-reverse"></div>
       </div>
@@ -82,11 +91,37 @@ const Footer = () => {
               cloud and DevOps solutions that drive digital transformation and business growth.
             </p>
             
+            {/* Newsletter Subscription */}
+            <div className="mb-6">
+              <h4 className="text-lg font-semibold mb-4 text-orange-400">Stay Updated</h4>
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white placeholder-gray-300 border border-gray-600 focus:border-orange-400 focus:outline-none flex-1"
+                  required
+                />
+                <Button 
+                  type="submit"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2"
+                >
+                  Subscribe
+                </Button>
+              </form>
+            </div>
+            
             {/* Social Links */}
             <div className="flex space-x-4 mb-8">
-              <div className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110">
-                <Github className="h-5 w-5" />
-              </div>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
               <div className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110">
                 <Linkedin className="h-5 w-5" />
               </div>
@@ -116,10 +151,10 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold mb-6 text-orange-400">Services</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Cloud Migration</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Security & Compliance</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">MLOps & Analytics</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">DevOps Services</a></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Cloud Migration</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Security & Compliance</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">MLOps & Analytics</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">DevOps Services</Link></li>
             </ul>
           </div>
 
@@ -127,10 +162,11 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold mb-6 text-orange-400">Company</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">About Us</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Products</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Case Studies</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Contact</a></li>
+              <li><Link to="/" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">About Us</Link></li>
+              <li><Link to="/products" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Products</Link></li>
+              <li><Link to="/case-studies" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Case Studies</Link></li>
+              <li><Link to="/" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Contact</Link></li>
+              <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Privacy Policy</Link></li>
             </ul>
           </div>
         </div>
