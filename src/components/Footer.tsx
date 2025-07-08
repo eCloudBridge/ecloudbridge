@@ -1,12 +1,13 @@
 
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,7 +18,14 @@ const Footer = () => {
 
   const handleServiceClick = (serviceName: string) => {
     const serviceId = serviceName.toLowerCase().replace(/\s+/g, '-').replace('&', 'and');
-    window.location.href = `/services#${serviceId}`;
+    navigate('/services');
+    // Use setTimeout to ensure the page has loaded before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(serviceId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (

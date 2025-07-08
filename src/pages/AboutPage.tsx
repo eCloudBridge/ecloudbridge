@@ -55,9 +55,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <div className="bg-gray-50">
-        <About />
-      </div>
+      <About />
       
       <Footer />
     </div>

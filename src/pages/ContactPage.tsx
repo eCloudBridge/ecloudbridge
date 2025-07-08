@@ -55,9 +55,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      <div className="bg-gray-50">
-        <Contact />
-      </div>
+      <Contact />
       
       <Footer />
     </div>

@@ -55,9 +55,7 @@ const CaseStudiesPage = () => {
         </div>
       </section>
 
-      <div className="bg-gray-50">
-        <CaseStudies />
-      </div>
+      <CaseStudies />
       
       <Footer />
     </div>
