@@ -1,3 +1,4 @@
+
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -194,10 +195,10 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold mb-6 text-orange-400">Company</h4>
             <ul className="space-y-3">
-              <li><Link to="/" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">About Us</Link></li>
+              <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">About Us</Link></li>
               <li><Link to="/products" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Products</Link></li>
               <li><Link to="/case-studies" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Case Studies</Link></li>
-              <li><Link to="/" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Contact</Link></li>
+              <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Contact</Link></li>
               <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Privacy Policy</Link></li>
             </ul>
           </div>

@@ -1,3 +1,4 @@
+
 import { ArrowLeft, Cloud, Shield, Users, Zap, GitBranch, Brain, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
@@ -126,9 +127,9 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
+      {/* Hero Section with Animation */}
       <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white pt-24 pb-16">
-        <div className="absolute inset-0 opacity-20 -z-10">
+        <div className="absolute inset-0 opacity-20">
           <svg 
             width="1800" 
             height="900" 
