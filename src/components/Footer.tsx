@@ -1,4 +1,3 @@
-
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -13,6 +12,11 @@ const Footer = () => {
     console.log('Newsletter subscription:', email);
     setEmail('');
     // Here you would typically handle the newsletter subscription
+  };
+
+  const handleServiceClick = (serviceName: string) => {
+    const serviceId = serviceName.toLowerCase().replace(/\s+/g, '-').replace('&', 'and');
+    window.location.href = `/services#${serviceId}`;
   };
 
   return (
@@ -151,10 +155,38 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold mb-6 text-orange-400">Services</h4>
             <ul className="space-y-3">
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Cloud Migration</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Security & Compliance</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">MLOps & Analytics</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">DevOps Services</Link></li>
+              <li>
+                <button 
+                  onClick={() => handleServiceClick('Cloud Migration')}
+                  className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
+                >
+                  Cloud Migration
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleServiceClick('Security & Compliance')}
+                  className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
+                >
+                  Security & Compliance
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleServiceClick('MLOps & Data Analytics')}
+                  className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
+                >
+                  MLOps & Analytics
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => handleServiceClick('DevOps Services')}
+                  className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
+                >
+                  DevOps Services
+                </button>
+              </li>
             </ul>
           </div>
 

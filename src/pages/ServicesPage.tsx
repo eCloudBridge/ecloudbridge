@@ -1,4 +1,3 @@
-
 import { ArrowLeft, Cloud, Shield, Users, Zap, GitBranch, Brain, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
@@ -13,7 +12,7 @@ const ServicesPage = () => {
       description: "Seamlessly migrate your infrastructure to the cloud with zero downtime and maximum efficiency. Our expert team ensures a smooth transition while maintaining data integrity and security.",
       features: [
         "AWS/Azure/GCP Migration",
-        "Zero Downtime Migration",
+        "Zero Downtime Migration", 
         "Data Integrity Assurance",
         "Performance Optimization",
         "Cost Analysis & Optimization",
@@ -22,7 +21,7 @@ const ServicesPage = () => {
       benefits: [
         "Reduced operational costs",
         "Improved scalability",
-        "Enhanced security",
+        "Enhanced security", 
         "Better disaster recovery"
       ]
     },
@@ -129,7 +128,7 @@ const ServicesPage = () => {
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white pt-24 pb-16">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-20 -z-10">
           <svg 
             width="1800" 
             height="900" 
@@ -177,7 +176,7 @@ const ServicesPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {services.map((service, index) => (
-              <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+              <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`} id={service.title.toLowerCase().replace(/\s+/g, '-').replace('&', 'and')}>
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                   <div className="flex items-center mb-6">
                     <div className="p-4 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl">

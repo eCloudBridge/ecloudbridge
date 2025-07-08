@@ -1,5 +1,6 @@
 
 import { Cloud, Shield, Users, Zap, GitBranch, Brain } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -55,9 +56,10 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div 
+            <Link
               key={index}
-              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100"
+              to="/services"
+              className="block bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 cursor-pointer"
             >
               <div className="flex items-center mb-6">
                 <div className="p-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg">
@@ -80,7 +82,7 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
