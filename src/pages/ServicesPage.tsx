@@ -127,21 +127,23 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section with Animation - MOVED HERE */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white pt-24 pb-16">
-        <div className="absolute inset-0 opacity-20">
+      {/* Hero Section with Animation - FIXED ANIMATION */}
+      <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white pt-24 pb-16 overflow-hidden">
+        <div className="absolute inset-0 opacity-40">
           <svg 
-            width="1800" 
-            height="900" 
+            width="100%" 
+            height="100%" 
             viewBox="0 0 1800 900" 
-            className="animate-infinite-flow"
+            className="animate-infinite-flow w-full h-full"
+            preserveAspectRatio="xMidYMid slice"
           >
             <path
               d="M450,450 C225,225 225,675 450,450 C675,225 675,675 450,450 C675,675 1125,675 1350,450 C1575,225 1575,675 1350,450 C1125,675 675,675 450,450"
               fill="none"
               stroke="url(#servicesInfiniteGradient)"
-              strokeWidth="6"
+              strokeWidth="8"
               strokeLinecap="round"
+              strokeDasharray="100 50"
             />
             <defs>
               <linearGradient id="servicesInfiniteGradient" x1="0%" y1="0%" x2="100%" y2="0%">
