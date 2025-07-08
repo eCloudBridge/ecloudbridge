@@ -127,7 +127,7 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section with Animation */}
+      {/* Hero Section with Animation - MOVED HERE */}
       <section className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white pt-24 pb-16">
         <div className="absolute inset-0 opacity-20">
           <svg 
@@ -172,7 +172,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - NO ANIMATION HERE */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
