@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
+import LanguageSelector from './LanguageSelector';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -102,6 +103,9 @@ const Navigation = () => {
               Case Studies
             </Link>
             
+            {/* Language Selector */}
+            <LanguageSelector />
+            
             <Link to="/contact">
               <Button 
                 className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
@@ -163,6 +167,9 @@ const Navigation = () => {
               >
                 Case Studies
               </Link>
+              <div className="px-3 py-2">
+                <LanguageSelector />
+              </div>
               <Link 
                 to="/contact"
                 className="block w-full text-left px-3 py-2 text-orange-600 font-medium"
