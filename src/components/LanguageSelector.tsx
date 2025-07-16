@@ -87,16 +87,13 @@ declare global {
 
 const LanguageSelector = () => {
   const [currentLanguage, setCurrentLanguage] = useState(() => {
-    // Get saved language from localStorage or default to English
     return localStorage.getItem('selectedLanguage') || 'en';
   });
   const [isTranslating, setIsTranslating] = useState(false);
-  const [googleTranslateLoaded, setGoogleTranslateLoaded] = useState(false);
 
   // Auto-detect language based on user's location (only on first visit)
   useEffect(() => {
     const detectLanguage = async () => {
-      // Only auto-detect if no language is saved
       if (localStorage.getItem('selectedLanguage')) return;
       
       try {
@@ -122,30 +119,30 @@ const LanguageSelector = () => {
   // Load Google Translate script
   useEffect(() => {
     const loadGoogleTranslate = () => {
-      // Check if already loaded
-      if (document.getElementById('google-translate-script')) {
-        setGoogleTranslateLoaded(true);
-        return;
-      }
+      if (document.getElementById('google-translate-script')) return;
 
-      // Create script element
       const script = document.createElement('script');
       script.id = 'google-translate-script';
       script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
       script.async = true;
 
-      // Define the callback function
       window.googleTranslateElementInit = () => {
         try {
           new window.google.translate.TranslateElement({
             pageLanguage: 'en',
             includedLanguages: languages.map(lang => lang.code).join(','),
             layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false,
-            multilanguagePage: true
+            autoDisplay: false
           }, 'google_translate_element');
-          setGoogleTranslateLoaded(true);
+          
           console.log('Google Translate loaded successfully');
+          
+          // Apply saved language after a delay
+          if (currentLanguage !== 'en') {
+            setTimeout(() => {
+              doGoogleTranslate(currentLanguage);
+            }, 1500);
+          }
         } catch (error) {
           console.error('Error initializing Google Translate:', error);
         }
@@ -159,104 +156,65 @@ const LanguageSelector = () => {
     };
 
     loadGoogleTranslate();
-  }, []);
+  }, [currentLanguage]);
 
-  // Apply saved language when Google Translate is loaded
-  useEffect(() => {
-    if (googleTranslateLoaded && currentLanguage !== 'en') {
-      console.log('Applying saved language:', currentLanguage);
-      setTimeout(() => {
-        triggerTranslation(currentLanguage);
-      }, 1000);
-    }
-  }, [googleTranslateLoaded, currentLanguage]);
-
-  const triggerTranslation = (langCode: string) => {
-    try {
-      console.log('Triggering translation to:', langCode);
-      
-      // Method 1: Try using the select element
-      const selectElement = document.querySelector('#google_translate_element select') as HTMLSelectElement;
-      if (selectElement) {
-        console.log('Found select element, setting value to:', langCode);
-        selectElement.value = langCode;
-        selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+  const doGoogleTranslate = (langCode: string) => {
+    console.log('Starting translation to:', langCode);
+    
+    if (langCode === 'en') {
+      // Reset to original English
+      const restoreButton = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (restoreButton) {
+        restoreButton.value = '';
+        restoreButton.dispatchEvent(new Event('change'));
         return;
       }
-
-      // Method 2: Try finding translation links in iframe
-      const frames = document.querySelectorAll('iframe');
-      for (let frame of frames) {
-        try {
-          if (frame.src && frame.src.includes('translate.google')) {
-            const frameDoc = frame.contentDocument || frame.contentWindow?.document;
-            if (frameDoc) {
-              const langLink = frameDoc.querySelector(`a[onclick*="${langCode}"]`) as HTMLAnchorElement;
-              if (langLink) {
-                console.log('Found translation link, clicking');
-                langLink.click();
-                return;
-              }
-            }
-          }
-        } catch (e) {
-          console.log('Cannot access frame content due to CORS');
-        }
+      
+      // If restore button not found, reload page
+      const currentUrl = window.location.href;
+      if (currentUrl.includes('#googtrans')) {
+        window.location.href = currentUrl.split('#googtrans')[0];
+      } else {
+        window.location.reload();
       }
+      return;
+    }
 
-      // Method 3: Try direct API call
-      if (window.google?.translate?.TranslateElement) {
-        console.log('Trying direct Google Translate API call');
-        const translateElement = new window.google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: languages.map(lang => lang.code).join(','),
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        });
-      }
+    // Method 1: Try using the combo box
+    const comboBox = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+    if (comboBox) {
+      console.log('Found combo box, setting value to:', langCode);
+      comboBox.value = langCode;
+      comboBox.dispatchEvent(new Event('change'));
+      return;
+    }
 
-    } catch (error) {
-      console.error('Error triggering translation:', error);
+    // Method 2: Try using URL hash method
+    console.log('Using URL hash method for translation');
+    const hash = `#googtrans(en|${langCode})`;
+    if (window.location.hash !== hash) {
+      window.location.hash = hash;
+      window.location.reload();
     }
   };
 
   const translatePage = async (langCode: string) => {
-    if (langCode === currentLanguage) return;
+    if (langCode === currentLanguage || isTranslating) return;
     
     console.log('Translate page called with:', langCode);
     setIsTranslating(true);
     setCurrentLanguage(langCode);
-    
-    // Save to localStorage
     localStorage.setItem('selectedLanguage', langCode);
 
-    if (!googleTranslateLoaded) {
-      console.log('Google Translate not loaded yet');
-      setIsTranslating(false);
-      return;
-    }
-
     try {
-      if (langCode === 'en') {
-        // Reset to original English
-        console.log('Resetting to English');
-        const restoreButton = document.querySelector('.goog-te-menu-value span:first-child') as HTMLElement;
-        if (restoreButton) {
-          restoreButton.click();
-        } else {
-          // Force page reload to original English
-          window.location.reload();
-        }
-      } else {
-        // Wait a bit for UI to update
-        setTimeout(() => {
-          triggerTranslation(langCode);
-        }, 300);
-      }
+      // Wait a bit for UI to update
+      setTimeout(() => {
+        doGoogleTranslate(langCode);
+        setIsTranslating(false);
+      }, 500);
     } catch (error) {
       console.error('Translation failed:', error);
-    } finally {
-      setTimeout(() => setIsTranslating(false), 2000);
+      setIsTranslating(false);
     }
   };
 
@@ -264,7 +222,6 @@ const LanguageSelector = () => {
 
   return (
     <>
-      {/* Hidden Google Translate Element */}
       <div id="google_translate_element" style={{ display: 'none' }}></div>
       
       <Select
