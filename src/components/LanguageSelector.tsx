@@ -2,12 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Globe } from 'lucide-react';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -78,9 +78,17 @@ const countryToLanguage: { [key: string]: string } = {
   'LT': 'lt',
 };
 
+declare global {
+  interface Window {
+    google?: any;
+    googleTranslateElementInit?: () => void;
+  }
+}
+
 const LanguageSelector = () => {
   const [currentLanguage, setCurrentLanguage] = useState('en');
   const [isTranslating, setIsTranslating] = useState(false);
+  const [googleTranslateLoaded, setGoogleTranslateLoaded] = useState(false);
 
   // Auto-detect language based on user's location
   useEffect(() => {
@@ -95,9 +103,6 @@ const LanguageSelector = () => {
         } else if (languages.find(lang => lang.code === browserLang)) {
           setCurrentLanguage(browserLang);
         }
-        
-        // Optionally, you can also use a geolocation API to detect country
-        // This would require an external service like ipapi.com
       } catch (error) {
         console.log('Language detection failed, using default');
       }
@@ -106,40 +111,71 @@ const LanguageSelector = () => {
     detectLanguage();
   }, []);
 
+  // Load Google Translate script
+  useEffect(() => {
+    const loadGoogleTranslate = () => {
+      if (window.google?.translate) {
+        setGoogleTranslateLoaded(true);
+        return;
+      }
+
+      // Create script element
+      const script = document.createElement('script');
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+
+      // Define the callback function
+      window.googleTranslateElementInit = () => {
+        if (window.google?.translate) {
+          new window.google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: languages.map(lang => lang.code).join(','),
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+            multilanguagePage: true
+          }, 'google_translate_element');
+          setGoogleTranslateLoaded(true);
+        }
+      };
+
+      document.head.appendChild(script);
+
+      // Cleanup function
+      return () => {
+        document.head.removeChild(script);
+        delete window.googleTranslateElementInit;
+      };
+    };
+
+    loadGoogleTranslate();
+  }, []);
+
   const translatePage = async (langCode: string) => {
-    if (langCode === currentLanguage) return;
+    if (langCode === currentLanguage || !googleTranslateLoaded) return;
     
     setIsTranslating(true);
     setCurrentLanguage(langCode);
 
     try {
-      // Using Google Translate Widget approach
-      if (!window.google?.translate) {
-        // Load Google Translate script if not already loaded
-        const script = document.createElement('script');
-        script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-        document.head.appendChild(script);
+      // Wait a bit for Google Translate to be ready
+      await new Promise(resolve => setTimeout(resolve, 500));
 
-        // Initialize Google Translate
-        (window as any).googleTranslateElementInit = () => {
-          new (window as any).google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: languages.map(lang => lang.code).join(','),
-            layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-          }, 'google_translate_element');
-        };
-      }
-
-      // Trigger translation
-      setTimeout(() => {
-        const selectElement = document.querySelector('#google_translate_element select') as HTMLSelectElement;
-        if (selectElement) {
-          selectElement.value = langCode;
-          selectElement.dispatchEvent(new Event('change'));
+      // Try to find and trigger the Google Translate dropdown
+      const selectElement = document.querySelector('#google_translate_element select') as HTMLSelectElement;
+      if (selectElement) {
+        // Set the value and trigger change
+        selectElement.value = langCode;
+        selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+      } else {
+        // Alternative method: try to find translate links
+        const translateFrame = document.querySelector('iframe.goog-te-menu-frame') as HTMLIFrameElement;
+        if (translateFrame && translateFrame.contentDocument) {
+          const langLink = translateFrame.contentDocument.querySelector(`a[href*="${langCode}"]`) as HTMLAnchorElement;
+          if (langLink) {
+            langLink.click();
+          }
         }
-      }, 1000);
-
+      }
     } catch (error) {
       console.error('Translation failed:', error);
     } finally {
@@ -154,41 +190,39 @@ const LanguageSelector = () => {
       {/* Hidden Google Translate Element */}
       <div id="google_translate_element" style={{ display: 'none' }}></div>
       
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="text-white hover:text-orange-400 hover:bg-white/10"
-            disabled={isTranslating}
-          >
-            <Globe className="h-4 w-4 mr-2" />
-            <span className="mr-1">{selectedLanguage.flag}</span>
+      <Select
+        value={currentLanguage}
+        onValueChange={translatePage}
+        disabled={isTranslating}
+      >
+        <SelectTrigger className="w-auto border-none bg-transparent text-white hover:text-orange-400 hover:bg-white/10 focus:ring-0 focus:ring-offset-0">
+          <div className="flex items-center space-x-2">
+            <Globe className="h-4 w-4" />
+            <span>{selectedLanguage.flag}</span>
             <span className="hidden sm:inline">{selectedLanguage.name}</span>
             <span className="sm:hidden">{selectedLanguage.code.toUpperCase()}</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent 
-          align="end" 
-          className="w-56 max-h-96 overflow-y-auto bg-white border border-gray-200 shadow-lg"
-        >
+          </div>
+        </SelectTrigger>
+        <SelectContent className="max-h-96 bg-white border border-gray-200 shadow-lg z-50">
           {languages.map((language) => (
-            <DropdownMenuItem
+            <SelectItem
               key={language.code}
-              onClick={() => translatePage(language.code)}
+              value={language.code}
               className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 ${
                 currentLanguage === language.code ? 'bg-orange-50 text-orange-600' : ''
               }`}
             >
-              <span className="text-lg">{language.flag}</span>
-              <span className="flex-1">{language.name}</span>
-              {currentLanguage === language.code && (
-                <span className="text-orange-600">✓</span>
-              )}
-            </DropdownMenuItem>
+              <div className="flex items-center space-x-3">
+                <span className="text-lg">{language.flag}</span>
+                <span>{language.name}</span>
+                {currentLanguage === language.code && (
+                  <span className="text-orange-600 ml-auto">✓</span>
+                )}
+              </div>
+            </SelectItem>
           ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </SelectContent>
+      </Select>
     </>
   );
 };
