@@ -43,41 +43,6 @@ const languages = [
   { code: 'lt', name: 'Lietuvių', flag: '🇱🇹' },
 ];
 
-// Country to language mapping for auto-detection
-const countryToLanguage: { [key: string]: string } = {
-  'US': 'en', 'GB': 'en', 'AU': 'en', 'CA': 'en', 'NZ': 'en',
-  'ES': 'es', 'MX': 'es', 'AR': 'es', 'CO': 'es', 'PE': 'es',
-  'FR': 'fr', 'BE': 'fr', 'CH': 'fr', 'LU': 'fr',
-  'DE': 'de', 'AT': 'de',
-  'IT': 'it',
-  'PT': 'pt', 'BR': 'pt',
-  'RU': 'ru', 'BY': 'ru', 'KZ': 'ru',
-  'CN': 'zh', 'TW': 'zh', 'HK': 'zh',
-  'JP': 'ja',
-  'KR': 'ko',
-  'SA': 'ar', 'AE': 'ar', 'EG': 'ar', 'MA': 'ar',
-  'IN': 'hi',
-  'TH': 'th',
-  'VN': 'vi',
-  'TR': 'tr',
-  'PL': 'pl',
-  'NL': 'nl',
-  'SE': 'sv',
-  'DK': 'da',
-  'NO': 'no',
-  'FI': 'fi',
-  'CZ': 'cs',
-  'HU': 'hu',
-  'RO': 'ro',
-  'BG': 'bg',
-  'HR': 'hr',
-  'SK': 'sk',
-  'SI': 'sl',
-  'EE': 'et',
-  'LV': 'lv',
-  'LT': 'lt',
-};
-
 declare global {
   interface Window {
     google?: any;
@@ -91,29 +56,74 @@ const LanguageSelector = () => {
   });
   const [isTranslating, setIsTranslating] = useState(false);
 
-  // Auto-detect language based on user's location (only on first visit)
+  // Auto-detect language based on user's location using IP geolocation
   useEffect(() => {
     const detectLanguage = async () => {
       if (localStorage.getItem('selectedLanguage')) return;
       
       try {
-        const browserLang = navigator.language.split('-')[0];
-        const browserCountry = navigator.language.split('-')[1];
+        // Use a geolocation API to detect country
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        console.log('Detected country:', data.country_code);
         
-        if (browserCountry && countryToLanguage[browserCountry]) {
-          const detectedLang = countryToLanguage[browserCountry];
-          setCurrentLanguage(detectedLang);
-          localStorage.setItem('selectedLanguage', detectedLang);
-        } else if (languages.find(lang => lang.code === browserLang)) {
+        // Default to English for India and most countries
+        if (data.country_code === 'IN') {
+          setCurrentLanguage('en');
+          localStorage.setItem('selectedLanguage', 'en');
+        } else {
+          // You can add more country-specific logic here
+          const browserLang = navigator.language.split('-')[0];
+          if (languages.find(lang => lang.code === browserLang)) {
+            setCurrentLanguage(browserLang);
+            localStorage.setItem('selectedLanguage', browserLang);
+          }
+        }
+      } catch (error) {
+        console.log('Geolocation detection failed, using browser language');
+        // Fallback to browser language
+        const browserLang = navigator.language.split('-')[0];
+        if (languages.find(lang => lang.code === browserLang)) {
           setCurrentLanguage(browserLang);
           localStorage.setItem('selectedLanguage', browserLang);
         }
-      } catch (error) {
-        console.log('Language detection failed, using default');
       }
     };
 
     detectLanguage();
+  }, []);
+
+  // Hide Google Translate toolbar
+  useEffect(() => {
+    const hideGoogleTranslateToolbar = () => {
+      const style = document.createElement('style');
+      style.textContent = `
+        .goog-te-banner-frame,
+        .goog-te-ftab,
+        .goog-te-balloon-frame,
+        .goog-te-menu-frame,
+        #google_translate_element,
+        .skiptranslate {
+          display: none !important;
+        }
+        body {
+          top: 0 !important;
+        }
+        .goog-tooltip {
+          display: none !important;
+        }
+        .goog-tooltip:hover {
+          display: none !important;
+        }
+        .goog-text-highlight {
+          background-color: transparent !important;
+          box-shadow: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+    };
+
+    hideGoogleTranslateToolbar();
   }, []);
 
   // Load Google Translate script
@@ -132,7 +142,8 @@ const LanguageSelector = () => {
             pageLanguage: 'en',
             includedLanguages: languages.map(lang => lang.code).join(','),
             layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
+            autoDisplay: false,
+            multilanguagePage: true
           }, 'google_translate_element');
           
           console.log('Google Translate loaded successfully');
@@ -163,14 +174,6 @@ const LanguageSelector = () => {
     
     if (langCode === 'en') {
       // Reset to original English
-      const restoreButton = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-      if (restoreButton) {
-        restoreButton.value = '';
-        restoreButton.dispatchEvent(new Event('change'));
-        return;
-      }
-      
-      // If restore button not found, reload page
       const currentUrl = window.location.href;
       if (currentUrl.includes('#googtrans')) {
         window.location.href = currentUrl.split('#googtrans')[0];
@@ -180,16 +183,7 @@ const LanguageSelector = () => {
       return;
     }
 
-    // Method 1: Try using the combo box
-    const comboBox = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (comboBox) {
-      console.log('Found combo box, setting value to:', langCode);
-      comboBox.value = langCode;
-      comboBox.dispatchEvent(new Event('change'));
-      return;
-    }
-
-    // Method 2: Try using URL hash method
+    // Use URL hash method for translation
     console.log('Using URL hash method for translation');
     const hash = `#googtrans(en|${langCode})`;
     if (window.location.hash !== hash) {
