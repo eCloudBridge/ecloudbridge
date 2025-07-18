@@ -25,22 +25,6 @@ const languages = [
   { code: 'th', name: 'ไทย', flag: '🇹🇭' },
   { code: 'vi', name: 'Tiếng Việt', flag: '🇻🇳' },
   { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-  { code: 'pl', name: 'Polski', flag: '🇵🇱' },
-  { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
-  { code: 'sv', name: 'Svenska', flag: '🇸🇪' },
-  { code: 'da', name: 'Dansk', flag: '🇩🇰' },
-  { code: 'no', name: 'Norsk', flag: '🇳🇴' },
-  { code: 'fi', name: 'Suomi', flag: '🇫🇮' },
-  { code: 'cs', name: 'Čeština', flag: '🇨🇿' },
-  { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
-  { code: 'ro', name: 'Română', flag: '🇷🇴' },
-  { code: 'bg', name: 'Български', flag: '🇧🇬' },
-  { code: 'hr', name: 'Hrvatski', flag: '🇭🇷' },
-  { code: 'sk', name: 'Slovenčina', flag: '🇸🇰' },
-  { code: 'sl', name: 'Slovenščina', flag: '🇸🇮' },
-  { code: 'et', name: 'Eesti', flag: '🇪🇪' },
-  { code: 'lv', name: 'Latviešu', flag: '🇱🇻' },
-  { code: 'lt', name: 'Lietuvių', flag: '🇱🇹' },
 ];
 
 declare global {
@@ -62,31 +46,14 @@ const LanguageSelector = () => {
       if (localStorage.getItem('selectedLanguage')) return;
       
       try {
-        // Use a geolocation API to detect country
-        const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-        console.log('Detected country:', data.country_code);
-        
-        // Default to English for India and most countries
-        if (data.country_code === 'IN') {
-          setCurrentLanguage('en');
-          localStorage.setItem('selectedLanguage', 'en');
-        } else {
-          // You can add more country-specific logic here
-          const browserLang = navigator.language.split('-')[0];
-          if (languages.find(lang => lang.code === browserLang)) {
-            setCurrentLanguage(browserLang);
-            localStorage.setItem('selectedLanguage', browserLang);
-          }
-        }
+        // Always default to English for initial load
+        setCurrentLanguage('en');
+        localStorage.setItem('selectedLanguage', 'en');
+        console.log('Default language set to English');
       } catch (error) {
-        console.log('Geolocation detection failed, using browser language');
-        // Fallback to browser language
-        const browserLang = navigator.language.split('-')[0];
-        if (languages.find(lang => lang.code === browserLang)) {
-          setCurrentLanguage(browserLang);
-          localStorage.setItem('selectedLanguage', browserLang);
-        }
+        console.log('Language detection failed, defaulting to English');
+        setCurrentLanguage('en');
+        localStorage.setItem('selectedLanguage', 'en');
       }
     };
 
@@ -102,6 +69,9 @@ const LanguageSelector = () => {
         .goog-te-ftab,
         .goog-te-balloon-frame,
         .goog-te-menu-frame,
+        .goog-te-menu-value,
+        .goog-te-gadget,
+        .goog-te-combo,
         #google_translate_element,
         .skiptranslate {
           display: none !important;
@@ -118,6 +88,9 @@ const LanguageSelector = () => {
         .goog-text-highlight {
           background-color: transparent !important;
           box-shadow: none !important;
+        }
+        .goog-te-spinner {
+          display: none !important;
         }
       `;
       document.head.appendChild(style);
@@ -173,12 +146,15 @@ const LanguageSelector = () => {
     console.log('Starting translation to:', langCode);
     
     if (langCode === 'en') {
-      // Reset to original English
+      // Reset to original English - remove hash and reload
       const currentUrl = window.location.href;
-      if (currentUrl.includes('#googtrans')) {
-        window.location.href = currentUrl.split('#googtrans')[0];
-      } else {
-        window.location.reload();
+      if (currentUrl.includes('#googtrans') || currentUrl.includes('?googtrans')) {
+        // Clear the translation hash/param
+        const cleanUrl = currentUrl.split('#googtrans')[0].split('?googtrans')[0];
+        window.history.replaceState({}, document.title, cleanUrl);
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
       }
       return;
     }
@@ -188,7 +164,9 @@ const LanguageSelector = () => {
     const hash = `#googtrans(en|${langCode})`;
     if (window.location.hash !== hash) {
       window.location.hash = hash;
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     }
   };
 
@@ -223,7 +201,7 @@ const LanguageSelector = () => {
         onValueChange={translatePage}
         disabled={isTranslating}
       >
-        <SelectTrigger className="w-auto border-none bg-transparent text-white hover:text-orange-400 hover:bg-white/10 focus:ring-0 focus:ring-offset-0">
+        <SelectTrigger className="w-auto border border-gray-200 bg-white/90 text-gray-800 hover:text-orange-600 hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-0 shadow-sm">
           <div className="flex items-center space-x-2">
             <Globe className="h-4 w-4" />
             <span>{selectedLanguage.flag}</span>
@@ -231,16 +209,16 @@ const LanguageSelector = () => {
             <span className="sm:hidden">{selectedLanguage.code.toUpperCase()}</span>
           </div>
         </SelectTrigger>
-        <SelectContent className="max-h-96 bg-white border border-gray-200 shadow-lg z-50">
+        <SelectContent className="max-h-96 bg-white border border-gray-200 shadow-xl z-[100] backdrop-blur-md">
           {languages.map((language) => (
             <SelectItem
               key={language.code}
               value={language.code}
-              className={`flex items-center space-x-3 cursor-pointer hover:bg-gray-100 ${
-                currentLanguage === language.code ? 'bg-orange-50 text-orange-600' : ''
+              className={`flex items-center space-x-3 cursor-pointer hover:bg-orange-50 focus:bg-orange-50 ${
+                currentLanguage === language.code ? 'bg-orange-100 text-orange-700' : 'text-gray-700'
               }`}
             >
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-3 w-full">
                 <span className="text-lg">{language.flag}</span>
                 <span>{language.name}</span>
                 {currentLanguage === language.code && (
