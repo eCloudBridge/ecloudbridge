@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/", // for GitHub Pages
+  base: "/ecloudbridge/", // required for GitHub Pages
   server: {
     host: "::",
     port: 8080,
