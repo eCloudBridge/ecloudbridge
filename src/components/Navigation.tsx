@@ -73,7 +73,7 @@ const Navigation = () => {
               className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
-                  : 'text-gray-800 hover:text-orange-600 hover:bg-orange-50'
+                  : 'text-white hover:text-orange-300 hover:bg-white/10'
               }`}
             >
               Home
@@ -85,7 +85,7 @@ const Navigation = () => {
               className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
-                  : 'text-gray-800 hover:text-orange-600 hover:bg-orange-50'
+                  : 'text-white hover:text-orange-300 hover:bg-white/10'
               }`}
             >
               Services
@@ -97,7 +97,7 @@ const Navigation = () => {
               className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
-                  : 'text-gray-800 hover:text-orange-600 hover:bg-orange-50'
+                  : 'text-white hover:text-orange-300 hover:bg-white/10'
               }`}
             >
               Products
@@ -109,7 +109,7 @@ const Navigation = () => {
               className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
-                  : 'text-gray-800 hover:text-orange-600 hover:bg-orange-50'
+                  : 'text-white hover:text-orange-300 hover:bg-white/10'
               }`}
             >
               About
@@ -121,7 +121,7 @@ const Navigation = () => {
               className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
-                  : 'text-gray-800 hover:text-orange-600 hover:bg-orange-50'
+                  : 'text-white hover:text-orange-300 hover:bg-white/10'
               }`}
             >
               Case Studies
@@ -145,7 +145,7 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-800 hover:bg-orange-50"
+              className={`${isScrolled ? 'text-gray-800 hover:bg-orange-50' : 'text-white hover:bg-white/10'}`}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
