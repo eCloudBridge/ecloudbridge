@@ -23,8 +23,10 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Clean install dependencies
+        run: |
+          rm -rf node_modules package-lock.json dist
+          npm install
 
       - name: Build the site
         run: npm run build
@@ -34,3 +36,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true  # ensures a clean gh-pages branch
+          full_commit_message: "Deploy from GitHub Actions: ${{ github.sha }}"
+
+      - name: Output Deploy URL
+        run: echo "✅ Site deployed to https://ecloudbridge.github.io/ecloudbridge/"
