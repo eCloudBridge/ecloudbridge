@@ -146,16 +146,22 @@ const LanguageSelector = () => {
     console.log('Starting translation to:', langCode);
     
     if (langCode === 'en') {
-      // Reset to original English - remove hash and reload
+      // Reset to original English - comprehensive cleanup
+      console.log('Resetting to English');
+      
+      // Clear Google Translate cookie
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname;
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + window.location.hostname;
+      
+      // Clear URL hash and params
       const currentUrl = window.location.href;
-      if (currentUrl.includes('#googtrans') || currentUrl.includes('?googtrans')) {
-        // Clear the translation hash/param
-        const cleanUrl = currentUrl.split('#googtrans')[0].split('?googtrans')[0];
-        window.history.replaceState({}, document.title, cleanUrl);
-        setTimeout(() => {
-          window.location.reload();
-        }, 100);
-      }
+      const cleanUrl = currentUrl.split('#googtrans')[0].split('?googtrans')[0];
+      window.history.replaceState({}, document.title, cleanUrl);
+      
+      // Force reload to clear translation
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
       return;
     }
 
