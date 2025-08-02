@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Globe } from 'lucide-react';
 import {
@@ -149,6 +148,9 @@ const LanguageSelector = () => {
       // Reset to original English - comprehensive cleanup
       console.log('Resetting to English');
       
+      // Clear localStorage first
+      localStorage.removeItem('selectedLanguage');
+      
       // Clear Google Translate cookie
       document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname;
       document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + window.location.hostname;
@@ -182,7 +184,13 @@ const LanguageSelector = () => {
     console.log('Translate page called with:', langCode);
     setIsTranslating(true);
     setCurrentLanguage(langCode);
-    localStorage.setItem('selectedLanguage', langCode);
+    
+    // Only save to localStorage if not English
+    if (langCode !== 'en') {
+      localStorage.setItem('selectedLanguage', langCode);
+    } else {
+      localStorage.removeItem('selectedLanguage');
+    }
 
     try {
       // Wait a bit for UI to update

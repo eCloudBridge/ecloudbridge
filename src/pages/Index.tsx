@@ -8,6 +8,7 @@ import CaseStudies from '@/components/CaseStudies';
 import Contact from '@/components/Contact';  
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ChatWidget from '@/components/ChatWidget';
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
       <CaseStudies />
       <Contact />
       <Footer />
+      <ChatWidget />
     </div>
   );
 };
