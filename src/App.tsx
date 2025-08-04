@@ -1,4 +1,3 @@
-
 import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -21,7 +20,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
-      gcTime: 10 * 60 * 1000, // 10 minutes
+      gcTime: 10 * 60 * 1000,   // 10 minutes
     },
   },
 });
@@ -42,7 +41,8 @@ const App = () => (
       <Analytics />
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {/* Add basename here to handle GitHub Pages subpath */}
+      <BrowserRouter basename="/ecloudbridge">
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Index />} />
