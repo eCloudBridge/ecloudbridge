@@ -6,9 +6,9 @@ const RotatingImages = () => {
 
   // Using the uploaded PNG images with transparent backgrounds
   const imageUrls = [
-    '/Banner1.png',
-    '/Banner2.png', 
-    '/Banner3.png'
+    './Banner1.png',
+    './Banner2.png', 
+    './Banner3.png'
   ];
 
   useEffect(() => {
