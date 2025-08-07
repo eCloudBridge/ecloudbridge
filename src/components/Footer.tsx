@@ -94,7 +94,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-6">
               <img 
-                src="/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
+                src="./dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
                 alt="eCloudBridge Logo" 
                 className="h-12 w-auto mr-3"
               />
