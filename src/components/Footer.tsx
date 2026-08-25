@@ -125,7 +125,7 @@ const Footer = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-6">
@@ -165,19 +165,31 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex space-x-4 mb-8">
               <a 
-                href="https://instagram.com" 
+                href="https://instagram.com/ecloudbridge" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110"
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <div className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110">
+              <a 
+                href="https://linkedin.com/company/ecloudbridge" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110"
+              >
                 <Linkedin className="h-5 w-5" />
-              </div>
-              <div className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110">
-                <Twitter className="h-5 w-5" />
-              </div>
+              </a>
+              <a 
+                href="https://x.com/ecloudbridge" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110 flex items-center justify-center"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
             </div>
 
             {/* Contact Info */}
@@ -232,6 +244,23 @@ const Footer = () => {
                 >
                   DevOps Services
                 </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h4 className="text-xl font-semibold mb-6 text-orange-400">Products</h4>
+            <ul className="space-y-3">
+              <li>
+                <a 
+                  href="https://netpin.io" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block"
+                >
+                  Netpin.io
+                </a>
               </li>
             </ul>
           </div>
