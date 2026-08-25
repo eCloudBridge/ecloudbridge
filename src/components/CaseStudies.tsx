@@ -163,7 +163,11 @@ const CaseStudies = () => {
 
   return (
     <>
-      <section id="case-studies" className="py-20 bg-gradient-to-br from-gray-50 to-orange-50 overflow-hidden">
+      <section id="case-studies" className="py-20 bg-gradient-to-br from-gray-50 to-orange-50 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-fixed opacity-5" 
+          style={{ backgroundImage: `url(${getImageUrl('/lovable-uploads/team-bg.jpg')})` }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

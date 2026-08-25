@@ -1,4 +1,4 @@
-
+import { getImageUrl } from '@/utils/assets.ts';
 import { Award, Globe, Users, TrendingUp, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -19,6 +19,10 @@ const highlights = [
 const About = () => {
   return (
     <section id="about" className="py-24 bg-gray-50 relative overflow-hidden">
+      <div 
+        className="absolute inset-0 bg-cover bg-fixed opacity-5 pointer-events-none" 
+        style={{ backgroundImage: `url(${getImageUrl('/lovable-uploads/team-bg.jpg')})` }}
+      />
       {/* Decorative blob */}
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-orange-100 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 pointer-events-none"></div>

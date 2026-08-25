@@ -1,4 +1,4 @@
-
+import { getImageUrl } from '@/utils/assets.ts';
 import { Cloud, Shield, Users, Zap, GitBranch, Brain, ArrowRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -62,8 +62,10 @@ const services = [
 const Services = () => {
   return (
     <section id="services" className="py-24 bg-white relative overflow-hidden">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, #1e293b 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+      <div 
+        className="absolute inset-0 bg-cover bg-fixed opacity-5" 
+        style={{ backgroundImage: `url(${getImageUrl('/lovable-uploads/team-bg.jpg')})` }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">

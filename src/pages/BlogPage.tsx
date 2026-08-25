@@ -91,8 +91,12 @@ const BlogPage = () => {
       </section>
 
       {/* Blog Content */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-fixed opacity-5 pointer-events-none" 
+          style={{ backgroundImage: `url(${getImageUrl('/lovable-uploads/team-bg.jpg')})` }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           
           {/* Categories */}
           <div className="flex flex-wrap justify-center gap-3 mb-16">

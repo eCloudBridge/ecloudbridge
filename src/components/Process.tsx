@@ -1,3 +1,4 @@
+import { getImageUrl } from '@/utils/assets.ts';
 import {
   Search,
   PenTool,
@@ -63,7 +64,10 @@ const processSteps = [
 const Process = () => {
   return (
     <section id="process" className="py-20 bg-gray-50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&auto=format&fit=crop&q=80')] bg-cover bg-fixed opacity-5" />
+      <div 
+        className="absolute inset-0 bg-cover bg-fixed opacity-5" 
+        style={{ backgroundImage: `url(${getImageUrl('/lovable-uploads/team-bg.jpg')})` }}
+      />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
