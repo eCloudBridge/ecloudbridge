@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const ContactPage = () => {
   return (
+      <>
       <SEO 
         title="Contact Us – Get in Touch"
         description="Contact the eCloudBridge team to discuss cloud migration, DevOps transformation, or any cloud infrastructure needs. Based in Bengaluru, India, serving clients globally."
@@ -68,6 +69,7 @@ const ContactPage = () => {
       
       <Footer />
     </div>
+      </>
   );
 };
 

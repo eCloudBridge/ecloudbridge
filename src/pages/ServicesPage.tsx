@@ -125,6 +125,7 @@ const ServicesPage = () => {
   ];
 
   return (
+      <>
       <SEO 
         title="Our Services – Cloud Migration, DevOps & Security"
         description="eCloudBridge offers comprehensive cloud migration, DevOps automation, Kubernetes management, SRE, DevSecOps, and FinOps services for enterprises worldwide."
@@ -261,6 +262,7 @@ const ServicesPage = () => {
 
       <Footer />
     </div>
+      </>
   );
 };
 

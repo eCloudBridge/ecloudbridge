@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
   return (
+      <>
       <SEO 
         title="About Us – DevOps Experts Since 2022"
         description="Learn about eCloudBridge Technologies – a Bengaluru-based DevOps and cloud solutions company helping enterprises modernize infrastructure across AWS, Azure, and GCP."
@@ -68,6 +69,7 @@ const AboutPage = () => {
       
       <Footer />
     </div>
+      </>
   );
 };
 

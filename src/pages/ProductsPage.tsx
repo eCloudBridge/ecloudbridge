@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const ProductsPage = () => {
   return (
+      <>
       <SEO 
         title="Products – Netpin & Astra"
         description="Discover eCloudBridge products including Netpin, the Infrastructure Debt Index platform, and Astra, our advanced cloud observability solution."
@@ -68,6 +69,7 @@ const ProductsPage = () => {
       
       <Footer />
     </div>
+      </>
   );
 };
 

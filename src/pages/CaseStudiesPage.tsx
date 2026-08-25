@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const CaseStudiesPage = () => {
   return (
+      <>
       <SEO 
         title="Case Studies – Success Stories"
         description="Explore how eCloudBridge has helped enterprises achieve 99.9% uptime, reduce cloud costs by 45%, and accelerate DevOps transformation. Real-world success stories."
@@ -68,6 +69,7 @@ const CaseStudiesPage = () => {
       
       <Footer />
     </div>
+      </>
   );
 };
 
