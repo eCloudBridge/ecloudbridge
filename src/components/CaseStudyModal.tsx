@@ -39,7 +39,7 @@ const CaseStudyModal = ({ caseStudy, isOpen, onClose }: CaseStudyModalProps) => 
           {/* Header with logo and basic info */}
           <div className="flex items-start space-x-6">
             <img 
-              src={caseStudy.logo} 
+              src={getImageUrl(caseStudy.logo)} 
               alt={`${caseStudy.company} logo`}
               className="w-24 h-24 object-cover rounded-lg"
             />

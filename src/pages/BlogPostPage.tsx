@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import { blogPosts } from '@/data/blogs';
+import { getImageUrl } from '@/utils/assets';
 import { ArrowLeft, Calendar, Clock, ChevronRight, Share2, BookOpen, Tag, ArrowRight } from 'lucide-react';
 
 const BlogPostPage = () => {
@@ -34,7 +35,7 @@ const BlogPostPage = () => {
       <SEO 
         title={post.title}
         description={post.excerpt}
-        image={post.coverImage}
+        image={getImageUrl(post.coverImage)}
         type="article"
         publishedAt={post.publishedAt}
         author="eCloudBridge Technology Team"
@@ -47,7 +48,7 @@ const BlogPostPage = () => {
       {/* ── HERO BANNER ── */}
       <div className="relative w-full h-[55vh] min-h-[400px] overflow-hidden bg-gray-900">
         <img
-          src={post.coverImage}
+          src={getImageUrl(post.coverImage)}
           alt={post.title}
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
@@ -78,7 +79,7 @@ const BlogPostPage = () => {
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300">
             <div className="flex items-center gap-3">
               <img
-                src={post.author.avatar}
+                src={getImageUrl(post.author.avatar)}
                 alt={post.author.name}
                 className="w-10 h-10 rounded-full border-2 border-orange-400 object-cover"
               />
@@ -111,7 +112,7 @@ const BlogPostPage = () => {
 
       {/* ── TWO-COLUMN LAYOUT ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-12">
 
           {/* ── MAIN CONTENT ── */}
           <article>
@@ -122,17 +123,17 @@ const BlogPostPage = () => {
 
             {/* Body content */}
             <div 
-              className="prose prose-lg max-w-none
+              className="prose prose-lg max-w-none break-words overflow-hidden
                 prose-headings:font-extrabold prose-headings:text-gray-900 prose-headings:tracking-tight
-                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:pb-3 prose-h2:border-b prose-h2:border-gray-200
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-orange-700
+                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:p-3 prose-h2:bg-gray-100 prose-h2:border-l-8 prose-h2:border-orange-500 prose-h2:rounded-r-lg prose-h2:text-gray-800
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:p-2 prose-h3:bg-orange-50 prose-h3:border-l-4 prose-h3:border-orange-400 prose-h3:rounded-r-lg prose-h3:text-orange-800
                 prose-p:text-gray-700 prose-p:leading-[1.9] prose-p:mb-5
                 prose-a:text-orange-600 prose-a:font-medium hover:prose-a:text-orange-500 prose-a:no-underline hover:prose-a:underline
                 prose-ul:my-4 prose-li:text-gray-700 prose-li:leading-relaxed
                 prose-ol:my-4
                 prose-strong:text-gray-900 prose-strong:font-bold
-                prose-code:bg-gray-100 prose-code:text-orange-700 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono
-                prose-pre:bg-gray-900 prose-pre:text-green-400 prose-pre:rounded-xl prose-pre:p-5 prose-pre:overflow-x-auto
+                prose-code:bg-gray-100 prose-code:text-orange-700 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-pre:prose-code:bg-transparent prose-pre:prose-code:text-inherit prose-pre:prose-code:p-0 prose-pre:prose-code:text-sm
+                prose-pre:bg-gray-900 prose-pre:text-[#a6e22e] prose-pre:rounded-xl prose-pre:p-5 prose-pre:overflow-x-auto prose-pre:shadow-lg prose-pre:border prose-pre:border-gray-800 prose-pre:max-w-full
                 prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:bg-orange-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:my-8
                 prose-blockquote:text-gray-700 prose-blockquote:font-medium
                 prose-img:rounded-2xl prose-img:shadow-xl prose-img:my-8"
@@ -150,7 +151,7 @@ const BlogPostPage = () => {
             {/* Author card */}
             <div className="mt-10 p-8 bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl text-white flex flex-col sm:flex-row items-center sm:items-start gap-6">
               <img
-                src={post.author.avatar}
+                src={getImageUrl(post.author.avatar)}
                 alt={post.author.name}
                 className="w-20 h-20 rounded-full border-4 border-orange-400 object-cover flex-shrink-0"
               />
@@ -216,7 +217,7 @@ const BlogPostPage = () => {
                       className="flex gap-3 group"
                     >
                       <img
-                        src={p.coverImage}
+                        src={getImageUrl(p.coverImage)}
                         alt={p.title}
                         className="w-20 h-16 object-cover rounded-lg flex-shrink-0 group-hover:opacity-80 transition-opacity"
                       />

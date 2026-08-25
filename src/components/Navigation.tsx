@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { getImageUrl } from '@/utils/assets';
 import LanguageSelector from './LanguageSelector';
 
 const Navigation = () => {
@@ -57,7 +57,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer" onClick={() => handleNavClick('/')}>
             <img 
-              src="/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
+              src={getImageUrl("/dc2764ac-81de-4147-94c0-0c35f1327f51.png")} 
               alt="eCloudBridge Logo" 
               className="h-12 w-auto"
               loading="eager"

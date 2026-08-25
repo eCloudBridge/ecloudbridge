@@ -1,4 +1,6 @@
 
+import { getImageUrl } from '@/utils/assets';
+
 const clients = [
   {
     name: "Cyware",
@@ -77,7 +79,7 @@ const Clients = () => {
                 onClick={() => document.getElementById('case-studies')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <img
-                  src={client.logo}
+                  src={getImageUrl(client.logo)}
                   alt={`${client.name} logo`}
                   className="max-w-full max-h-full object-contain p-4"
                 />

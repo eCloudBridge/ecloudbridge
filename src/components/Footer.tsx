@@ -1,7 +1,7 @@
-
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { getImageUrl } from '@/utils/assets';
 import { Button } from '@/components/ui/button';
 
 const Footer = () => {
@@ -94,7 +94,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-6">
               <img 
-                src="/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
+                src={getImageUrl("/dc2764ac-81de-4147-94c0-0c35f1327f51.png")} 
                 alt="eCloudBridge Logo" 
                 className="h-12 w-auto mr-3"
               />

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { ArrowRight, TrendingUp, Users, Clock, Star, Award, Target, Zap, ShieldCheck } from 'lucide-react';
 import CaseStudyModal from './CaseStudyModal';
+import { getImageUrl } from '@/utils/assets';
 
 const caseStudies = [
   {
@@ -184,7 +185,7 @@ const CaseStudies = () => {
                 >
                   <div className="h-48 overflow-hidden">
                     <img 
-                      src={study.logo} 
+                      src={getImageUrl(study.logo)} 
                       alt={`${study.company} case study`}
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                     />
