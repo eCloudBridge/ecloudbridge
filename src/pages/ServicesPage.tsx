@@ -1,4 +1,5 @@
 
+import { getImageUrl } from '@/utils/assets.ts';
 import { ArrowLeft, Cloud, Shield, Users, Zap, GitBranch, Brain, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
@@ -183,9 +184,13 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Section - NO ANIMATION HERE */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20">
+      <section className="py-20 bg-gray-50 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-fixed opacity-5 pointer-events-none" 
+          style={{ backgroundImage: `url(${getImageUrl('/lovable-uploads/team-bg.jpg')})` }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="space-y-20 relative z-10">
             {services.map((service, index) => (
               <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`} id={service.title.toLowerCase().replace(/\s+/g, '-').replace('&', 'and')}>
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
