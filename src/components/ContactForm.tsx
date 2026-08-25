@@ -6,7 +6,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
 interface ContactData {
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: string;
   company: string;
@@ -17,7 +18,8 @@ const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ContactData>({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     company: '',
@@ -30,6 +32,13 @@ const ContactForm = () => {
     if (cachedData) {
       try {
         const parsed = JSON.parse(cachedData);
+        // Handle migration from old 'name' field if it exists
+        if (parsed.name && !parsed.firstName) {
+          const parts = parsed.name.split(' ');
+          parsed.firstName = parts[0] || '';
+          parsed.lastName = parts.slice(1).join(' ') || '';
+          delete parsed.name;
+        }
         setFormData(parsed);
       } catch (error) {
         console.error('Error loading cached form data:', error);
@@ -39,7 +48,7 @@ const ContactForm = () => {
 
   // Cache form data whenever it changes
   useEffect(() => {
-    if (formData.name || formData.email || formData.phone) {
+    if (formData.firstName || formData.email || formData.phone) {
       localStorage.setItem('contactFormCache', JSON.stringify(formData));
     }
   }, [formData]);
@@ -59,12 +68,20 @@ const ContactForm = () => {
       const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGbdtLwANZhZzy7q2ib2eUU0VqPxvL5rASEPG2Gf51qZcIhe7N115cFt1Y3DojQ8hu7g/exec';
       
       const submitData = new FormData();
-      submitData.append('name', formData.name);
+      submitData.append('firstName', formData.firstName);
+      submitData.append('lastName', formData.lastName);
+      submitData.append('firstname', formData.firstName); // fallback
+      submitData.append('lastname', formData.lastName); // fallback
+      submitData.append('name', `${formData.firstName} ${formData.lastName}`.trim()); // fallback
       submitData.append('email', formData.email);
       submitData.append('phone', formData.phone);
       submitData.append('company', formData.company);
       submitData.append('message', formData.message);
+      
+      // Send references so the backend script knows the source
       submitData.append('website', 'eCloudBridge');
+      submitData.append('reference', 'eCloudBridge');
+      submitData.append('source', 'eCloudBridge website');
 
       await fetch(SCRIPT_URL, {
         method: 'POST',
@@ -77,7 +94,8 @@ const ContactForm = () => {
       
       // Reset form
       setFormData({
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         phone: '',
         company: '',
@@ -105,19 +123,36 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Name *
+          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
+            First Name *
           </label>
           <Input
-            id="name"
+            id="firstName"
             type="text"
             required
-            value={formData.name}
-            onChange={(e) => handleInputChange('name', e.target.value)}
+            value={formData.firstName}
+            onChange={(e) => handleInputChange('firstName', e.target.value)}
             className="w-full"
-            placeholder="Your full name"
+            placeholder="John"
           />
         </div>
+        <div>
+          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
+            Last Name *
+          </label>
+          <Input
+            id="lastName"
+            type="text"
+            required
+            value={formData.lastName}
+            onChange={(e) => handleInputChange('lastName', e.target.value)}
+            className="w-full"
+            placeholder="Doe"
+          />
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
             Email *
