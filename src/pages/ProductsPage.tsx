@@ -3,11 +3,18 @@ import { ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Products from '@/components/Products';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 
 const ProductsPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+      <SEO 
+        title="Products – Netpin & Astra"
+        description="Discover eCloudBridge products including Netpin, the Infrastructure Debt Index platform, and Astra, our advanced cloud observability solution."
+        keywords="Netpin, Astra, Infrastructure Debt Index, DevOps products, cloud observability, eCloudBridge products"
+        canonical="https://ecloudbridge.com/products"
+      />
+      <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section with Animation - FIXED ANIMATION */}

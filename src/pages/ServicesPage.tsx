@@ -3,6 +3,7 @@ import { ArrowLeft, Cloud, Shield, Users, Zap, GitBranch, Brain, CheckCircle } f
 import { Button } from '@/components/ui/button';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 
 const ServicesPage = () => {
@@ -124,7 +125,13 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+      <SEO 
+        title="Our Services – Cloud Migration, DevOps & Security"
+        description="eCloudBridge offers comprehensive cloud migration, DevOps automation, Kubernetes management, SRE, DevSecOps, and FinOps services for enterprises worldwide."
+        keywords="cloud migration services, DevOps services, Kubernetes managed services, SRE consulting, DevSecOps, FinOps, cloud security services India"
+        canonical="https://ecloudbridge.com/services"
+      />
+      <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section with Animation - FIXED ANIMATION */}

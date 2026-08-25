@@ -61,8 +61,11 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       <SEO 
-        title="Blog - Insights & Resources | eCloudBridge"
-        description="Explore the latest insights, tutorials, and deep-dives into DevOps, Cloud Architecture, and Security from the engineering team at eCloudBridge."
+        title="Engineering Insights – DevOps & Cloud Blog"
+        description="Explore deep-dive articles, tutorials, and expert perspectives on DevOps, Cloud Architecture, Kubernetes, SRE, FinOps, and Security from the eCloudBridge engineering team."
+        keywords="DevOps blog, Cloud engineering, Kubernetes tutorials, SRE practices, FinOps, DevSecOps, CI/CD, Infrastructure as Code, cloud security blog"
+        canonical="https://ecloudbridge.com/blog"
+        url="https://ecloudbridge.com/blog"
       />
       <Navigation />
       

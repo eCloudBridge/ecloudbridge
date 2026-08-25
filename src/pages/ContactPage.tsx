@@ -3,11 +3,18 @@ import { ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+      <SEO 
+        title="Contact Us – Get in Touch"
+        description="Contact the eCloudBridge team to discuss cloud migration, DevOps transformation, or any cloud infrastructure needs. Based in Bengaluru, India, serving clients globally."
+        keywords="contact eCloudBridge, cloud consulting contact, DevOps inquiry, cloud services Bangalore"
+        canonical="https://ecloudbridge.com/contact"
+      />
+      <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section with Animation - FIXED ANIMATION */}

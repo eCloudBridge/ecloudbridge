@@ -3,11 +3,18 @@ import { ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+      <SEO 
+        title="About Us – DevOps Experts Since 2022"
+        description="Learn about eCloudBridge Technologies – a Bengaluru-based DevOps and cloud solutions company helping enterprises modernize infrastructure across AWS, Azure, and GCP."
+        keywords="eCloudBridge team, about eCloudBridge, DevOps company Bangalore, cloud consulting India"
+        canonical="https://ecloudbridge.com/about"
+      />
+      <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section with Animation - FIXED ANIMATION */}

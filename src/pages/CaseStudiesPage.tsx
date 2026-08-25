@@ -3,11 +3,18 @@ import { ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import CaseStudies from '@/components/CaseStudies';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 
 const CaseStudiesPage = () => {
   return (
-    <div className="min-h-screen bg-background">
+      <SEO 
+        title="Case Studies – Success Stories"
+        description="Explore how eCloudBridge has helped enterprises achieve 99.9% uptime, reduce cloud costs by 45%, and accelerate DevOps transformation. Real-world success stories."
+        keywords="DevOps case studies, cloud migration success stories, Kubernetes case study, SRE implementation, cloud cost reduction"
+        canonical="https://ecloudbridge.com/case-studies"
+      />
+      <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section with Animation - FIXED ANIMATION */}

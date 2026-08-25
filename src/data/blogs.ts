@@ -16,7 +16,7 @@ export interface BlogPost {
 
 const defaultAuthor = {
   name: "eCloudBridge Technology Team",
-  avatar: "https://ecloudbridge.com/wp-content/uploads/2022/10/ecb.png"
+  avatar: "/images/ecb-team-avatar.jpg"
 };
 
 export const blogPosts: BlogPost[] = [

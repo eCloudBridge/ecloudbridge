@@ -22,9 +22,15 @@ const BlogPostPage = () => {
   return (
     <div className="min-h-screen bg-white font-sans">
       <SEO 
-        title={`${post.title} | eCloudBridge Blog`}
+        title={post.title}
         description={post.excerpt}
         image={post.coverImage}
+        type="article"
+        publishedAt={post.publishedAt}
+        author="eCloudBridge Technology Team"
+        keywords={`${post.category}, DevOps, Cloud, eCloudBridge, ${post.title}`}
+        canonical={`https://ecloudbridge.com/blog/${post.slug}`}
+        url={`https://ecloudbridge.com/blog/${post.slug}`}
       />
       <Navigation />
       
