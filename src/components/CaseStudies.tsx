@@ -175,19 +175,19 @@ const CaseStudies = () => {
           </div>
 
           {/* Single Marquee Line */}
-          <div className="relative">
-            <div className="flex animate-marquee space-x-8">
-              {[...caseStudies, ...caseStudies].map((study, index) => (
+          <div className="relative overflow-hidden w-full">
+            <div className="flex animate-marquee space-x-8 w-max">
+              {[...caseStudies, ...caseStudies, ...caseStudies, ...caseStudies].map((study, index) => (
                 <div 
                   key={`${study.id}-${index}`}
-                  className="flex-shrink-0 w-80 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer hover:scale-105"
+                  className="flex-shrink-0 w-80 md:w-96 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer"
                   onClick={() => handleCaseStudyClick(study)}
                 >
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-48 overflow-hidden bg-gray-50 flex items-center justify-center p-6">
                     <img 
                       src={getImageUrl(study.logo)} 
-                      alt={`${study.company} case study`}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      alt={study.company}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                   

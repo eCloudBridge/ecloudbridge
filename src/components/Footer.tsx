@@ -9,11 +9,36 @@ const Footer = () => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Newsletter subscription:', email);
-    setEmail('');
-    // Here you would typically handle the newsletter subscription
+    if (!email) return;
+    
+    setIsSubmitting(true);
+    try {
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGbdtLwANZhZzy7q2ib2eUU0VqPxvL5rASEPG2Gf51qZcIhe7N115cFt1Y3DojQ8hu7g/exec';
+      
+      const submitData = new FormData();
+      submitData.append('email', email);
+      submitData.append('name', 'Newsletter Subscriber');
+      submitData.append('message', 'Subscribed to newsletter');
+      submitData.append('type', 'Newsletter'); // Can be used by App Script to route to "Newsletter" sheet
+      submitData.append('sheetName', 'Newsletter'); // Alternative parameter name commonly used
+      
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: submitData
+      });
+      
+      console.log('Newsletter subscription successful');
+      setEmail('');
+    } catch (error) {
+      console.error('Error submitting newsletter:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleServiceClick = (serviceName: string) => {
@@ -118,9 +143,10 @@ const Footer = () => {
                 />
                 <Button 
                   type="submit"
+                  disabled={isSubmitting}
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2"
                 >
-                  Subscribe
+                  {isSubmitting ? 'Subscribing...' : 'Subscribe'}
                 </Button>
               </form>
             </div>

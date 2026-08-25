@@ -71,8 +71,8 @@ const Clients = () => {
 
         {/* Marquee Animation */}
         <div className="relative">
-          <div className="flex animate-marquee space-x-12">
-            {[...clients, ...clients].map((client, index) => (
+          <div className="flex animate-marquee space-x-12 w-max">
+            {[...clients, ...clients, ...clients, ...clients, ...clients, ...clients, ...clients, ...clients, ...clients, ...clients].map((client, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-48 h-24 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
@@ -81,7 +81,7 @@ const Clients = () => {
                 <img
                   src={getImageUrl(client.logo)}
                   alt={`${client.name} logo`}
-                  className="max-w-full max-h-full object-contain p-4"
+                  className="w-full h-full object-contain p-4"
                 />
               </div>
             ))}
