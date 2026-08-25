@@ -56,25 +56,21 @@ const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Send to email endpoint (you can replace this with your Zoho webhook)
-      const emailData = {
-        to: 'leads@ecloudbridge.com', // Replace with your email
-        subject: `New Lead from ${formData.name}`,
-        body: `
-          Name: ${formData.name}
-          Email: ${formData.email}
-          Phone: ${formData.phone}
-          Company: ${formData.company}
-          Message: ${formData.message}
-          
-          Submitted at: ${new Date().toISOString()}
-          From: ${window.location.origin}
-        `
-      };
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGbdtLwANZhZzy7q2ib2eUU0VqPxvL5rASEPG2Gf51qZcIhe7N115cFt1Y3DojQ8hu7g/exec';
+      
+      const submitData = new FormData();
+      submitData.append('name', formData.name);
+      submitData.append('email', formData.email);
+      submitData.append('phone', formData.phone);
+      submitData.append('company', formData.company);
+      submitData.append('message', formData.message);
+      submitData.append('website', 'eCloudBridge');
 
-      // For now, we'll log the data and show success
-      // You can integrate with Zoho CRM API or email service here
-      console.log('Lead data:', emailData);
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: submitData
+      });
       
       // Clear the cache after successful submission
       localStorage.removeItem('contactFormCache');

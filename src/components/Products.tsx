@@ -3,18 +3,22 @@ import { Zap, Bot } from 'lucide-react';
 
 const products = [
   {
-    icon: Zap,
-    title: "SimpleOne",
-    description: "Streamlined cloud management platform that simplifies your infrastructure operations with intuitive automation and monitoring capabilities.",
-    features: ["One-Click Deployment", "Real-time Monitoring", "Cost Analytics", "Auto-scaling"],
-    image: "photo-1551288049-bebda4e38f71"
+    icon: Bot,
+    title: "Astra",
+    description: "Self-hosted trading software running entirely in your own environment with real-time multi-exchange data, AI-assisted signals, and full risk controls.",
+    features: ["Local Deployment", "Trade-only API Keys", "Risk Controls", "AI Signals"],
+    image: "",
+    iframeUrl: "https://astra.ecloudbridge.com/",
+    websiteUrl: "https://astra.ecloudbridge.com/"
   },
   {
-    icon: Bot,
-    title: "Snippy.bot",
-    description: "Intelligent automation bot that accelerates your development workflow with smart code snippets and DevOps automation.",
-    features: ["Smart Code Generation", "Workflow Automation", "Integration Hub", "AI-Powered Insights"],
-    image: "photo-1485827404703-89b55fcc595e"
+    icon: Zap,
+    title: "Netpin",
+    description: "Netpin helps DevOps teams measure and reduce Infrastructure Debt (IDI). Monitor Kubernetes, optimize costs, and improve system reliability in real-time.",
+    features: ["Infrastructure Debt Index", "Kubernetes Monitoring", "Cost Optimization", "Deployment Gating"],
+    image: "",
+    iframeUrl: "https://netpin.io/",
+    websiteUrl: "https://netpin.io/"
   }
 ];
 
@@ -46,16 +50,27 @@ const Products = () => {
               style={{ animationDelay: `${index * 200}ms` }}
             >
               {/* Product Image */}
-              <div className="relative h-64 overflow-hidden flex-shrink-0">
-                <img 
-                  src={`https://images.unsplash.com/${product.image}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
-                  alt={product.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="relative h-64 overflow-hidden flex-shrink-0 bg-gray-100">
+                {product.iframeUrl ? (
+                  <div className="absolute inset-0 pointer-events-none">
+                    <iframe 
+                      src={product.iframeUrl}
+                      className="w-[142%] h-[142%] border-0 transform scale-[0.70] origin-top-left"
+                      scrolling="no"
+                      title={product.title}
+                    />
+                  </div>
+                ) : (
+                  <img 
+                    src={`https://images.unsplash.com/${product.image}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
                 
                 {/* Icon overlay */}
-                <div className="absolute top-6 left-6 p-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
+                <div className="absolute top-6 left-6 p-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg z-20">
                   <product.icon className="h-8 w-8 text-orange-600" />
                 </div>
               </div>
@@ -84,9 +99,14 @@ const Products = () => {
                 </div>
 
                 {/* CTA Button */}
-                <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl mt-auto">
+                <a 
+                  href={product.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full text-center block bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl mt-auto z-10 relative"
+                >
                   Learn More
-                </button>
+                </a>
               </div>
 
               {/* Gradient overlay */}

@@ -19,7 +19,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-black pt-16 overflow-hidden">
+    <section id="home" className="relative min-h-[100vh] lg:min-h-[85vh] 2xl:min-h-[75vh] flex items-center justify-center bg-gradient-to-br from-gray-900 via-blue-900 to-black pt-24 lg:pt-32 pb-16 overflow-hidden">
       {/* Infinite Symbol Background Animation - Made Bigger */}
       <div className="absolute inset-0 flex items-center justify-center opacity-30">
         <svg 

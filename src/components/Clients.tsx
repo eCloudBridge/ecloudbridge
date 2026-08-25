@@ -1,36 +1,56 @@
 
 const clients = [
   {
-    name: "TechCorp",
-    logo: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&h=100&fit=crop&q=80",
+    name: "Cyware",
+    logo: "https://logo.clearbit.com/cyware.com",
   },
   {
-    name: "DataFlow",
-    logo: "https://images.unsplash.com/photo-1549924231-f129b911e442?w=200&h=100&fit=crop&q=80",
+    name: "AutoMint",
+    logo: "https://logo.clearbit.com/automint.com",
   },
   {
-    name: "CloudTech",
-    logo: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=200&h=100&fit=crop&q=80",
+    name: "SleepCountry",
+    logo: "https://logo.clearbit.com/sleepcountry.ca",
   },
   {
-    name: "InnovateLab",
-    logo: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=100&fit=crop&q=80",
+    name: "Trivelta",
+    logo: "https://logo.clearbit.com/trivelta.com",
   },
   {
-    name: "SecureNet",
-    logo: "https://images.unsplash.com/photo-1553484771-cc0d9b8c2b33?w=200&h=100&fit=crop&q=80",
+    name: "ReBet",
+    logo: "https://logo.clearbit.com/rebet.app",
   },
   {
-    name: "DevOps Pro",
-    logo: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=200&h=100&fit=crop&q=80",
+    name: "Loan Singh",
+    logo: "https://logo.clearbit.com/loansingh.in",
   },
   {
-    name: "CloudScale",
-    logo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=200&h=100&fit=crop&q=80",
+    name: "Salesken",
+    logo: "https://logo.clearbit.com/salesken.ai",
   },
   {
-    name: "TechSolutions",
-    logo: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&h=100&fit=crop&q=80",
+    name: "Dojima",
+    logo: "https://logo.clearbit.com/dojima.network",
+  },
+  {
+    name: "Secprism",
+    logo: "https://logo.clearbit.com/secprism.com",
+  },
+  {
+    name: "Arcana",
+    logo: "https://logo.clearbit.com/arcana.network",
+  },
+  {
+    name: "ByteLearn",
+    logo: "https://logo.clearbit.com/bytelearn.com",
+  },
+  {
+    name: "Netmeds Wholesale",
+    logo: "https://logo.clearbit.com/netmeds.com",
+  },
+  {
+    name: "TopGrep",
+    logo: "https://logo.clearbit.com/topgrep.com",
   }
 ];
 

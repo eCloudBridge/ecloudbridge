@@ -151,17 +151,26 @@ const LanguageSelector = () => {
       // Clear localStorage first
       localStorage.removeItem('selectedLanguage');
       
-      // Clear Google Translate cookie
-      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname;
-      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + window.location.hostname;
+      // Clear Google Translate cookie properly across possible domains and paths
+      const hostname = window.location.hostname;
+      const domains = hostname.split('.');
       
-      // Clear URL hash and params
+      while (domains.length > 0) {
+        const domain = domains.join('.');
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${domain}`;
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${domain}`;
+        domains.shift();
+      }
+      
+      // Clear URL hash and params safely
       const currentUrl = window.location.href;
-      const cleanUrl = currentUrl.split('#googtrans')[0].split('?googtrans')[0];
+      const cleanUrl = currentUrl.split('#')[0].split('?')[0];
       window.history.replaceState({}, document.title, cleanUrl);
       
       // Force reload to clear translation
       setTimeout(() => {
+        window.location.assign(cleanUrl);
         window.location.reload();
       }, 100);
       return;

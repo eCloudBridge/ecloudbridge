@@ -75,7 +75,10 @@ const CaseStudyModal = ({ caseStudy, isOpen, onClose }: CaseStudyModalProps) => 
             <h4 className="text-lg font-semibold text-blue-800 mb-3">Solution</h4>
             <p className="text-blue-700">{caseStudy.solution}</p>
             {caseStudy.detailedDescription && (
-              <p className="text-blue-700 mt-3">{caseStudy.detailedDescription}</p>
+              <div 
+                className="text-blue-700 mt-3 prose prose-sm max-w-none" 
+                dangerouslySetInnerHTML={{ __html: caseStudy.detailedDescription }} 
+              />
             )}
           </div>
 

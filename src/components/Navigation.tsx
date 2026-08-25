@@ -92,6 +92,18 @@ const Navigation = () => {
             </Link>
             
             <Link 
+              to="/process"
+              onClick={() => handleNavClick('/process', 'process')}
+              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
+                  : 'text-white hover:text-orange-300 hover:bg-white/10'
+              }`}
+            >
+              Process
+            </Link>
+            
+            <Link 
               to="/products"
               onClick={() => handleNavClick('/products', 'products')}
               className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
@@ -125,6 +137,18 @@ const Navigation = () => {
               }`}
             >
               Case Studies
+            </Link>
+            
+            <Link 
+              to="/blog"
+              onClick={() => handleNavClick('/blog')}
+              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+                isScrolled 
+                  ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
+                  : 'text-white hover:text-orange-300 hover:bg-white/10'
+              }`}
+            >
+              Blog
             </Link>
             
             {/* Language Selector */}
@@ -171,6 +195,13 @@ const Navigation = () => {
                 Services
               </Link>
               <Link 
+                to="/process"
+                className="block w-full text-left px-3 py-2 text-gray-800 hover:text-orange-600 hover:bg-orange-50 font-medium rounded-md"
+                onClick={() => handleNavClick('/process', 'process')}
+              >
+                Process
+              </Link>
+              <Link 
                 to="/products"
                 className="block w-full text-left px-3 py-2 text-gray-800 hover:text-orange-600 hover:bg-orange-50 font-medium rounded-md"
                 onClick={() => handleNavClick('/products', 'products')}
@@ -190,6 +221,13 @@ const Navigation = () => {
                 onClick={() => handleNavClick('/case-studies', 'case-studies')}
               >
                 Case Studies
+              </Link>
+              <Link 
+                to="/blog"
+                className="block w-full text-left px-3 py-2 text-gray-800 hover:text-orange-600 hover:bg-orange-50 font-medium rounded-md"
+                onClick={() => handleNavClick('/blog')}
+              >
+                Blog
               </Link>
               <div className="px-3 py-2">
                 <LanguageSelector />
