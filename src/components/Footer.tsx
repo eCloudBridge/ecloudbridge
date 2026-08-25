@@ -16,29 +16,29 @@ const Footer = () => {
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    
+
     setIsSubmitting(true);
     try {
       const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxGbdtLwANZhZzy7q2ib2eUU0VqPxvL5rASEPG2Gf51qZcIhe7N115cFt1Y3DojQ8hu7g/exec';
-      
+
       const submitData = new FormData();
       submitData.append('email', email);
       submitData.append('name', 'Newsletter Subscriber');
       submitData.append('message', 'Subscribed to newsletter');
       submitData.append('type', 'Newsletter'); // Can be used by App Script to route to "Newsletter" sheet
       submitData.append('sheetName', 'Newsletter'); // Alternative parameter name commonly used
-      
+
       await fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: submitData
       });
-      
+
       toast({
         title: "Subscribed Successfully!",
         description: "Thank you for subscribing to our newsletter.",
       });
-      
+
       setEmail('');
     } catch (error) {
       console.error('Error submitting newsletter:', error);
@@ -68,10 +68,10 @@ const Footer = () => {
     <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-black text-white overflow-hidden">
       {/* Infinite Symbol Background Animation - Added to Footer */}
       <div className="absolute inset-0 flex items-center justify-center opacity-15">
-        <svg 
-          width="1400" 
-          height="700" 
-          viewBox="0 0 1400 700" 
+        <svg
+          width="1400"
+          height="700"
+          viewBox="0 0 1400 700"
           className="animate-infinite-flow"
         >
           <path
@@ -96,21 +96,21 @@ const Footer = () => {
       {/* Moving Particle Universe Background */}
       <div className="absolute inset-0">
         {/* Moving particles */}
-        <div className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-slow opacity-60" style={{top: '20%', left: '15%'}}></div>
-        <div className="absolute w-2 h-2 bg-white rounded-full animate-float-medium opacity-80" style={{top: '25%', left: '85%'}}></div>
-        <div className="absolute w-1 h-1 bg-orange-400 rounded-full animate-float-fast opacity-70" style={{top: '40%', left: '25%'}}></div>
-        <div className="absolute w-1 h-1 bg-cyan-300 rounded-full animate-float-slow opacity-60" style={{top: '60%', left: '75%'}}></div>
-        <div className="absolute w-2 h-2 bg-purple-400 rounded-full animate-float-medium opacity-50" style={{top: '80%', left: '10%'}}></div>
-        <div className="absolute w-1 h-1 bg-blue-300 rounded-full animate-float-fast opacity-70" style={{top: '30%', left: '95%'}}></div>
-        <div className="absolute w-1 h-1 bg-orange-300 rounded-full animate-float-slow opacity-60" style={{top: '70%', left: '50%'}}></div>
-        <div className="absolute w-2 h-2 bg-white rounded-full animate-float-medium opacity-80" style={{top: '10%', left: '60%'}}></div>
-        
+        <div className="absolute w-1 h-1 bg-blue-400 rounded-full animate-float-slow opacity-60" style={{ top: '20%', left: '15%' }}></div>
+        <div className="absolute w-2 h-2 bg-white rounded-full animate-float-medium opacity-80" style={{ top: '25%', left: '85%' }}></div>
+        <div className="absolute w-1 h-1 bg-orange-400 rounded-full animate-float-fast opacity-70" style={{ top: '40%', left: '25%' }}></div>
+        <div className="absolute w-1 h-1 bg-cyan-300 rounded-full animate-float-slow opacity-60" style={{ top: '60%', left: '75%' }}></div>
+        <div className="absolute w-2 h-2 bg-purple-400 rounded-full animate-float-medium opacity-50" style={{ top: '80%', left: '10%' }}></div>
+        <div className="absolute w-1 h-1 bg-blue-300 rounded-full animate-float-fast opacity-70" style={{ top: '30%', left: '95%' }}></div>
+        <div className="absolute w-1 h-1 bg-orange-300 rounded-full animate-float-slow opacity-60" style={{ top: '70%', left: '50%' }}></div>
+        <div className="absolute w-2 h-2 bg-white rounded-full animate-float-medium opacity-80" style={{ top: '10%', left: '60%' }}></div>
+
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full">
             <defs>
               <linearGradient id="footerConstellation" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{stopColor: '#60A5FA', stopOpacity: 0.3}} />
-                <stop offset="100%" style={{stopColor: '#F59E0B', stopOpacity: 0.3}} />
+                <stop offset="0%" style={{ stopColor: '#60A5FA', stopOpacity: 0.3 }} />
+                <stop offset="100%" style={{ stopColor: '#F59E0B', stopOpacity: 0.3 }} />
               </linearGradient>
             </defs>
             <line x1="15%" y1="20%" x2="25%" y2="40%" stroke="url(#footerConstellation)" strokeWidth="1" className="animate-pulse" />
@@ -118,7 +118,7 @@ const Footer = () => {
             <line x1="50%" y1="10%" x2="60%" y2="30%" stroke="url(#footerConstellation)" strokeWidth="1" className="animate-pulse animation-delay-4000" />
           </svg>
         </div>
-        
+
         <div className="absolute top-1/4 left-1/6 w-24 h-24 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-full blur-xl animate-float-orbit"></div>
         <div className="absolute bottom-1/4 right-1/6 w-32 h-32 bg-gradient-to-r from-orange-500/5 to-red-500/5 rounded-full blur-xl animate-float-orbit-reverse"></div>
       </div>
@@ -129,17 +129,17 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-6">
-              <img 
-                src={getImageUrl("/dc2764ac-81de-4147-94c0-0c35f1327f51.png")} 
-                alt="eCloudBridge Logo" 
+              <img
+                src={getImageUrl("/dc2764ac-81de-4147-94c0-0c35f1327f51.png")}
+                alt="eCloudBridge Logo"
                 className="h-12 w-auto mr-3"
               />
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Bridging the gap between your business and the cloud. We provide comprehensive 
+              Bridging the gap between your business and the cloud. We provide comprehensive
               cloud and DevOps solutions that drive digital transformation and business growth.
             </p>
-            
+
             {/* Newsletter Subscription */}
             <div className="mb-6">
               <h4 className="text-lg font-semibold mb-4 text-orange-400">Stay Updated</h4>
@@ -152,7 +152,7 @@ const Footer = () => {
                   className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg text-white placeholder-gray-300 border border-gray-600 focus:border-orange-400 focus:outline-none flex-1"
                   required
                 />
-                <Button 
+                <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2"
@@ -161,28 +161,28 @@ const Footer = () => {
                 </Button>
               </form>
             </div>
-            
+
             {/* Social Links */}
             <div className="flex space-x-4 mb-8">
-              <a 
-                href="https://instagram.com/ecloudbridge" 
-                target="_blank" 
+              <a
+                href="https://instagram.com/ecloudbridge"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110"
               >
                 <Instagram className="h-5 w-5" />
               </a>
-              <a 
-                href="https://linkedin.com/company/ecloudbridge" 
-                target="_blank" 
+              <a
+                href="https://linkedin.com/company/ecloudbridge"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a 
-                href="https://x.com/ecloudbridge" 
-                target="_blank" 
+              <a
+                href="https://x.com/ecloudbridge"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110 flex items-center justify-center"
               >
@@ -214,7 +214,7 @@ const Footer = () => {
             <h4 className="text-xl font-semibold mb-6 text-orange-400">Services</h4>
             <ul className="space-y-3">
               <li>
-                <button 
+                <button
                   onClick={() => handleServiceClick('Cloud Migration')}
                   className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
                 >
@@ -222,7 +222,7 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => handleServiceClick('Security & Compliance')}
                   className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
                 >
@@ -230,7 +230,7 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => handleServiceClick('MLOps & Data Analytics')}
                   className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
                 >
@@ -238,7 +238,7 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => handleServiceClick('DevOps Services')}
                   className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block text-left"
                 >
@@ -253,9 +253,9 @@ const Footer = () => {
             <h4 className="text-xl font-semibold mb-6 text-orange-400">Products</h4>
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="https://netpin.io" 
-                  target="_blank" 
+                <a
+                  href="https://netpin.io"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block"
                 >
@@ -263,9 +263,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a 
-                  href="#" 
-                  target="_blank" 
+                <a
+                  href="https://astra.ecloudbridge.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block"
                 >
