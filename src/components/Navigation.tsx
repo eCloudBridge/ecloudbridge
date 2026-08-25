@@ -57,7 +57,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer" onClick={() => handleNavClick('/')}>
             <img 
-              src="https://ecloudbridge.com/wp-content/uploads/2022/10/ecb.png" 
+              src="/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
               alt="eCloudBridge Logo" 
               className="h-12 w-auto"
               loading="eager"

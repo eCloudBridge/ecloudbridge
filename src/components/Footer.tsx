@@ -94,7 +94,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-6">
               <img 
-                src="./dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
+                src="/dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
                 alt="eCloudBridge Logo" 
                 className="h-12 w-auto mr-3"
               />
@@ -206,6 +206,7 @@ const Footer = () => {
               <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">About Us</Link></li>
               <li><Link to="/products" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Products</Link></li>
               <li><Link to="/case-studies" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Case Studies</Link></li>
+              <li><Link to="/blog" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Blog</Link></li>
               <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Contact</Link></li>
               <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block">Privacy Policy</Link></li>
             </ul>
