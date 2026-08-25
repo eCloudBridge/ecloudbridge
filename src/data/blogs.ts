@@ -649,7 +649,7 @@ spec:
           steps {
             container('maven') {
               withSonarQubeEnv('SonarQube') {
-                sh 'mvn sonar:sonar -Dsonar.login=${SONAR_TOKEN}'
+                sh 'mvn sonar:sonar -Dsonar.login=\${SONAR_TOKEN}'
               }
               timeout(time: 5, unit: 'MINUTES') {
                 waitForQualityGate abortPipeline: true
@@ -667,8 +667,8 @@ spec:
             /kaniko/executor \\
               --context=dir://. \\
               --dockerfile=./Dockerfile \\
-              --destination=${IMAGE_REGISTRY}/${IMAGE_NAME}:${GIT_COMMIT_SHORT} \\
-              --destination=${IMAGE_REGISTRY}/${IMAGE_NAME}:latest \\
+              --destination=\${IMAGE_REGISTRY}/\${IMAGE_NAME}:\${GIT_COMMIT_SHORT} \\
+              --destination=\${IMAGE_REGISTRY}/\${IMAGE_NAME}:latest \\
               --cache=true
           """
         }
@@ -677,7 +677,7 @@ spec:
 
     stage('Deploy to Staging') {
       steps {
-        sh "helm upgrade --install myapp ./helm/myapp --set image.tag=${GIT_COMMIT_SHORT} -n staging"
+        sh "helm upgrade --install myapp ./helm/myapp --set image.tag=\${GIT_COMMIT_SHORT} -n staging"
       }
     }
 
@@ -694,10 +694,10 @@ spec:
       archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
     }
     failure {
-      slackSend(color: 'danger', message: "FAILED: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]")
+      slackSend(color: 'danger', message: "FAILED: Job \${env.JOB_NAME} [\${env.BUILD_NUMBER}]")
     }
     success {
-      slackSend(color: 'good', message: "SUCCESS: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]")
+      slackSend(color: 'good', message: "SUCCESS: Job \${env.JOB_NAME} [\${env.BUILD_NUMBER}]")
     }
   }
 }</code></pre>
@@ -725,7 +725,7 @@ spec:
     sh """
       /kaniko/executor \\
         --context=dir://. \\
-        --destination=${registry}/${image}:${tag} \\
+        --destination=\${registry}/\${image}:\${tag} \\
         --cache=true
     """
   }
@@ -878,7 +878,7 @@ spec:
     spec:
       containers:
       - name: migrate
-        image: myapp:${IMAGE_TAG}
+        image: myapp:\${IMAGE_TAG}
         command: ["./migrate", "--direction=up"]
       restartPolicy: Never</code></pre>
       <p>With <code>argocd.argoproj.io/hook: PreSync</code>, this Job runs and completes successfully before ArgoCD deploys the new application version. If the migration fails, the sync is aborted—protecting your application from running against an incompatible database schema.</p>
@@ -979,15 +979,15 @@ jobs:
       with:
         registry: registry.example.com
         username: cicd-bot
-        password: ${{ secrets.registry-password }}
+        password: \${{ secrets.registry-password }}
 
     - name: Build and Push
       uses: docker/build-push-action@v6
       with:
         context: .
-        file: ${{ inputs.dockerfile-path }}
-        push: ${{ inputs.push }}
-        tags: registry.example.com/${{ inputs.image-name }}:${{ github.sha }}
+        file: \${{ inputs.dockerfile-path }}
+        push: \${{ inputs.push }}
+        tags: registry.example.com/\${{ inputs.image-name }}:\${{ github.sha }}
         cache-from: type=gha
         cache-to: type=gha,mode=max</code></pre>
 
@@ -999,7 +999,7 @@ jobs:
     with:
       image-name: myapp
     secrets:
-      registry-password: ${{ secrets.REGISTRY_PASSWORD }}</code></pre>
+      registry-password: \${{ secrets.REGISTRY_PASSWORD }}</code></pre>
       <p>Now when you need to change the build process (e.g., upgrade Docker Buildx), you change it in one place and every repository that uses the reusable workflow inherits the change on their next run. This is DRY applied to CI/CD at organizational scale.</p>
 
       <h2>OIDC Authentication: No More Long-Lived Cloud Credentials</h2>
@@ -1084,11 +1084,11 @@ spec:
         - os: ubuntu-latest
           java: '21'
           publish: true    # Only publish artifacts from this combination
-    runs-on: ${{ matrix.os }}
+    runs-on: \${{ matrix.os }}
     steps:
     - uses: actions/setup-java@v4
       with:
-        java-version: ${{ matrix.java }}
+        java-version: \${{ matrix.java }}
     - run: mvn test</code></pre>
 
       <h2>Deployment Protection Rules and Environments</h2>
@@ -1366,7 +1366,7 @@ prometheus:
         replacement: blackbox-exporter:9115
 
 grafana:
-  adminPassword: "${GRAFANA_ADMIN_PASSWORD}"
+  adminPassword: "\${GRAFANA_ADMIN_PASSWORD}"
   persistence:
     enabled: true
     size: 10Gi
@@ -1380,8 +1380,8 @@ grafana:
     auth.generic_oauth:
       enabled: true
       name: Okta
-      client_id: "${OKTA_CLIENT_ID}"
-      client_secret: "${OKTA_CLIENT_SECRET}"
+      client_id: "\${OKTA_CLIENT_ID}"
+      client_secret: "\${OKTA_CLIENT_SECRET}"
       scopes: openid email profile
 
 alertmanager:
@@ -1402,10 +1402,10 @@ alertmanager:
     receivers:
     - name: pagerduty-critical
       pagerduty_configs:
-      - service_key: "${PAGERDUTY_KEY}"
+      - service_key: "\${PAGERDUTY_KEY}"
     - name: slack-critical
       slack_configs:
-      - api_url: "${SLACK_WEBHOOK}"
+      - api_url: "\${SLACK_WEBHOOK}"
         channel: '#alerts-critical'
         text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}'
 EOF
@@ -1764,8 +1764,8 @@ remote_state {
   backend = "s3"
   config = {
     encrypt        = true
-    bucket         = "terraform-state-${local.account_id}"
-    key            = "${path_relative_to_include()}/terraform.tfstate"
+    bucket         = "terraform-state-\${local.account_id}"
+    key            = "\${path_relative_to_include()}/terraform.tfstate"
     region         = local.aws_region
     dynamodb_table = "terraform-state-lock"
   }
@@ -1780,14 +1780,14 @@ generate "provider" {
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
 provider "aws" {
-  region = "${local.aws_region}"
+  region = "\${local.aws_region}"
   assume_role {
-    role_arn = "arn:aws:iam::${local.account_id}:role/TerraformExecutionRole"
+    role_arn = "arn:aws:iam::\${local.account_id}:role/TerraformExecutionRole"
   }
   default_tags {
     tags = {
       ManagedBy   = "Terraform"
-      Environment = "${local.account_vars.locals.environment}"
+      Environment = "\${local.account_vars.locals.environment}"
     }
   }
 }
@@ -1800,7 +1800,7 @@ EOF
 }
 
 include "envcommon" {
-  path   = "${dirname(find_in_parent_folders())}/_envcommon/eks-cluster.hcl"
+  path   = "\${dirname(find_in_parent_folders())}/_envcommon/eks-cluster.hcl"
   expose = true
 }
 
@@ -2387,6 +2387,110 @@ subjects:
   name: payment-team-reconciler
   namespace: flux-system</code></pre>
       <p>Now the payment team's Kustomizations use <code>serviceAccountName: payment-team-reconciler</code>, and even if the payment team commits Cluster-level resources to Git, Flux's reconciliation will fail due to insufficient permissions—without affecting any other team's deployments.</p>
+    `
+  },
+
+  {
+    id: "21",
+    slug: "jenkins-2026-terraform-gitops",
+    title: "Jenkins in 2026: Infrastructure as Code & Modern Deployment Workflows",
+    excerpt: "How to use Jenkins today to execute Terraform safely, integrate with GitOps patterns, and manage modern infrastructure deployments without the headaches of legacy pipelines.",
+    coverImage: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=1200&q=80",
+    author: { name: "eCloudBridge Technology Team", avatar: "/images/ecb-team-avatar.jpg" },
+    publishedAt: "2026-08-25",
+    readTime: "14 min read",
+    category: "Tools",
+    content: `
+      <h2>Reinventing Jenkins for Infrastructure as Code</h2>
+      <p>Jenkins was originally built for compiling Java code, not provisioning AWS infrastructure. However, with the right architecture, Jenkins in 2026 is a powerhouse for Infrastructure as Code (IaC) execution. The "trending way" to use Jenkins involves stripping away all local tooling dependencies, embracing ephemeral containerized agents, and treating Jenkins purely as an orchestration engine rather than a script execution host.</p>
+      <p>When running Terraform in Jenkins, the biggest risks are state file corruption, credential leakage, and untracked changes. Modern Jenkins pipelines solve this by combining Terraform Workspaces, OpenID Connect (OIDC), and Atlantis-style pull request automation.</p>
+
+      <h2>The Modern Terraform Pipeline Architecture</h2>
+      <p>A 2026-era Jenkins pipeline for Terraform never uses static credentials. It uses short-lived tokens and runs entirely inside specialized containers. Here is the blueprint for a production-grade Terraform pipeline:</p>
+
+      <h3>1. OIDC Authentication to Cloud Providers</h3>
+      <p>We no longer store AWS Access Keys in Jenkins credentials. Instead, Jenkins assumes an IAM role using its own JWT token (OIDC). This ensures credentials exist only for the duration of the pipeline.</p>
+      
+      <h3>2. The Ephemeral Agent Pod</h3>
+      <pre><code>pipeline {
+  agent {
+    kubernetes {
+      yaml """
+        apiVersion: v1
+        kind: Pod
+        spec:
+          serviceAccountName: jenkins-terraform-executor
+          containers:
+          - name: terraform
+            image: hashicorp/terraform:1.9.0
+            command: ['cat']
+            tty: true
+          - name: infracost
+            image: infracost/infracost:latest
+            command: ['cat']
+            tty: true
+          - name: tfsec
+            image: aquasec/tfsec:latest
+            command: ['cat']
+            tty: true
+      """
+    }
+  }
+  // ...
+}</code></pre>
+
+      <h2>Pull Request Automation (The "Atlantis" Pattern)</h2>
+      <p>The most modern way to use Jenkins for IaC is to trigger plans on Pull Requests and apply only on merge. This brings the GitOps philosophy to Jenkins.</p>
+      
+      <h3>Step 1: Security Scanning and Cost Estimation</h3>
+      <p>Before applying anything, the pipeline runs <code>tfsec</code> (or Trivy) to catch security misconfigurations, and <code>infracost</code> to estimate the AWS bill impact of the PR.</p>
+      <pre><code>stage('Static Analysis & Cost') {
+  parallel {
+    stage('Security Scan') {
+      steps {
+        container('tfsec') {
+          sh 'tfsec . --format junit --out results.xml'
+        }
+      }
+    }
+    stage('Cost Estimate') {
+      steps {
+        container('infracost') {
+          withCredentials([string(credentialsId: 'infracost-api', variable: 'INFRACOST_API_KEY')]) {
+            sh 'infracost breakdown --path . --format json --out-file infracost.json'
+            // Comment on the GitHub PR with the cost delta
+            sh 'infracost comment github --repo \$GITHUB_REPOSITORY --pull-request \$PR_NUMBER --path infracost.json --behavior update'
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+
+      <h3>Step 2: Terraform Plan as a PR Comment</h3>
+      <p>When a developer opens a PR, Jenkins runs <code>terraform plan</code> and uses the GitHub API to post the plan output directly into the PR comments. The reviewer sees exactly what resources will be created, modified, or destroyed.</p>
+
+      <h3>Step 3: Approval and Apply</h3>
+      <p>Once the PR is merged into the <code>main</code> branch, a separate Jenkins job is triggered. It runs <code>terraform plan</code>, compares it to the expected state, and then runs <code>terraform apply -auto-approve</code>.</p>
+      
+      <h2>State Management and Lock Handling</h2>
+      <p>A major pain point with Jenkins and Terraform is concurrent jobs causing state locks. In a modern setup, we prevent this by:</p>
+      <ul>
+        <li>Configuring Jenkins jobs to <strong>disable concurrent builds</strong> (<code>disableConcurrentBuilds()</code> in the options block).</li>
+        <li>Using Terraform Workspaces tied to the branch name for feature testing, keeping isolated states.</li>
+        <li>Implementing a strict timeout on the pipeline to ensure a hanging job doesn't lock the state indefinitely.</li>
+      </ul>
+
+      <h2>Combining Code Deployment with Infrastructure</h2>
+      <p>The true power of this setup is unified pipelines. If a feature requires a new SQS queue, a new DynamoDB table, and new application code, the Jenkins pipeline handles it all atomically.</p>
+      <ol>
+        <li><strong>Infrastructure Stage:</strong> Run Terraform to provision the SQS queue and DynamoDB table.</li>
+        <li><strong>Output Extraction:</strong> Extract the new queue URL and table name from <code>terraform output -json</code>.</li>
+        <li><strong>Application Build:</strong> Build the Docker image.</li>
+        <li><strong>Deployment:</strong> Deploy the Helm chart or update the ArgoCD repository, passing the Terraform outputs as Helm values or ConfigMap environment variables.</li>
+      </ol>
+      
+      <p>By treating Jenkins as the orchestrator of these disparate tools (Terraform, Infracost, GitHub API, and Kubernetes deployment tools), you achieve a 2026-ready, fully automated infrastructure and application lifecycle.</p>
     `
   }
 ];
