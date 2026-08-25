@@ -132,7 +132,7 @@ const BlogPostPage = () => {
                 prose-ul:my-4 prose-li:text-gray-700 prose-li:leading-relaxed
                 prose-ol:my-4
                 prose-strong:text-gray-900 prose-strong:font-bold
-                prose-code:bg-gray-100 prose-code:text-orange-700 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-pre:prose-code:bg-transparent prose-pre:prose-code:text-inherit prose-pre:prose-code:p-0 prose-pre:prose-code:text-sm
+                prose-code:bg-gray-100 prose-code:text-orange-700 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono [&>pre>code]:bg-transparent [&>pre>code]:text-inherit [&>pre>code]:p-0 [&>pre>code]:text-sm [&>pre>code]:font-normal
                 prose-pre:bg-gray-900 prose-pre:text-[#a6e22e] prose-pre:rounded-xl prose-pre:p-5 prose-pre:overflow-x-auto prose-pre:shadow-lg prose-pre:border prose-pre:border-gray-800 prose-pre:max-w-full
                 prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:bg-orange-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:my-8
                 prose-blockquote:text-gray-700 prose-blockquote:font-medium
