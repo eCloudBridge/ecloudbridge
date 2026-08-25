@@ -22,7 +22,7 @@ const BlogPostPage = () => {
   return (
     <div className="min-h-screen bg-white font-sans">
       <SEO 
-        title={\`\${post.title} | eCloudBridge Blog\`}
+        title={`${post.title} | eCloudBridge Blog`}
         description={post.excerpt}
         image={post.coverImage}
       />

@@ -96,11 +96,11 @@ const BlogPage = () => {
               <button
                 key={category}
                 onClick={() => setFilter(category)}
-                className={\`px-6 py-2 rounded-full font-medium transition-all duration-300 \${
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   filter === category 
                     ? 'bg-orange-500 text-white shadow-md transform scale-105' 
                     : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900 border border-gray-200'
-                }\`}
+                }`}
               >
                 {category}
               </button>
