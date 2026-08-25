@@ -38,29 +38,9 @@ const Analytics = () => {
       console.log('Google Analytics loaded');
     };
 
-    // Load Zoho PageSense
-    const loadZohoPageSense = () => {
-      const PAGESENSE_ID = 'XXXXXXXX'; // Replace with your PageSense ID
-      
-      const psScript = document.createElement('script');
-      psScript.type = 'text/javascript';
-      psScript.innerHTML = `
-        var ps = document.createElement('script');
-        ps.type = 'text/javascript';
-        ps.async = true;
-        ps.src = 'https://cdn.pagesense.io/js/${PAGESENSE_ID}.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ps, s);
-      `;
-      document.head.appendChild(psScript);
-
-      console.log('Zoho PageSense loaded');
-    };
-
     // Load analytics only in production or when explicitly enabled
     if (process.env.NODE_ENV === 'production' || localStorage.getItem('enableAnalytics') === 'true') {
       loadGoogleAnalytics();
-      loadZohoPageSense();
     }
 
     // Track page views
