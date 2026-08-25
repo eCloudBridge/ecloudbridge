@@ -33,7 +33,7 @@ declare global {
   }
 }
 
-const LanguageSelector = () => {
+const LanguageSelector = ({ className }: { className?: string }) => {
   const [currentLanguage, setCurrentLanguage] = useState(() => {
     return localStorage.getItem('selectedLanguage') || 'en';
   });
@@ -224,12 +224,9 @@ const LanguageSelector = () => {
         onValueChange={translatePage}
         disabled={isTranslating}
       >
-        <SelectTrigger className="w-auto border border-gray-200 bg-white/90 text-gray-800 hover:text-orange-600 hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-0 shadow-sm">
-          <div className="flex items-center space-x-2">
-            <Globe className="h-4 w-4" />
-            <span>{selectedLanguage.flag}</span>
-            <span className="hidden sm:inline">{selectedLanguage.name}</span>
-            <span className="sm:hidden">{selectedLanguage.code.toUpperCase()}</span>
+        <SelectTrigger className={`w-10 h-10 p-0 rounded-full bg-transparent border-0 shadow-none hover:bg-white/10 focus:ring-0 [&>svg]:hidden [&>span]:hidden flex items-center justify-center transition-colors ${className}`}>
+          <div className="flex items-center justify-center w-full h-full">
+            <Globe className="h-6 w-6" />
           </div>
         </SelectTrigger>
         <SelectContent className="max-h-96 bg-white border border-gray-200 shadow-xl z-[100] backdrop-blur-md">

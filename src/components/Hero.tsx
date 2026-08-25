@@ -23,10 +23,8 @@ const Hero = () => {
       {/* Infinite Symbol Background Animation - Made Bigger */}
       <div className="absolute inset-0 flex items-center justify-center opacity-30">
         <svg 
-          width="1800" 
-          height="900" 
           viewBox="0 0 1800 900" 
-          className="animate-infinite-flow"
+          className="animate-infinite-flow w-full h-full"
         >
           <path
             d="M450,450 C225,225 225,675 450,450 C675,225 675,675 450,450 C675,675 1125,675 1350,450 C1575,225 1575,675 1350,450 C1125,675 675,675 450,450"

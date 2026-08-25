@@ -2,55 +2,55 @@
 const clients = [
   {
     name: "Cyware",
-    logo: "https://logo.clearbit.com/cyware.com",
+    logo: "/images/media_1787656777597.png",
   },
   {
     name: "AutoMint",
-    logo: "https://logo.clearbit.com/automint.com",
+    logo: "/images/media_1787656777603.png",
   },
   {
     name: "SleepCountry",
-    logo: "https://logo.clearbit.com/sleepcountry.ca",
+    logo: "/images/media_1787656777622.png",
   },
   {
     name: "Trivelta",
-    logo: "https://logo.clearbit.com/trivelta.com",
+    logo: "/images/media_1787656777626.png",
   },
   {
     name: "ReBet",
-    logo: "https://logo.clearbit.com/rebet.app",
+    logo: "/images/media_1787656777629.png",
   },
   {
     name: "Loan Singh",
-    logo: "https://logo.clearbit.com/loansingh.in",
+    logo: "/images/media_1787656945647.png",
   },
   {
     name: "Salesken",
-    logo: "https://logo.clearbit.com/salesken.ai",
+    logo: "/images/media_1787656945665.png",
   },
   {
     name: "Dojima",
-    logo: "https://logo.clearbit.com/dojima.network",
+    logo: "/images/media_1787656945668.png",
   },
   {
     name: "Secprism",
-    logo: "https://logo.clearbit.com/secprism.com",
+    logo: "/images/media_1787656945671.png",
   },
   {
     name: "Arcana",
-    logo: "https://logo.clearbit.com/arcana.network",
+    logo: "/images/media_1787656945673.png",
   },
   {
     name: "ByteLearn",
-    logo: "https://logo.clearbit.com/bytelearn.com",
+    logo: "/images/media_1787656999237.png",
   },
   {
     name: "Netmeds Wholesale",
-    logo: "https://logo.clearbit.com/netmeds.com",
+    logo: "/images/media_1787656999247.png",
   },
   {
     name: "TopGrep",
-    logo: "https://logo.clearbit.com/topgrep.com",
+    logo: "/images/media_1787656999251.png",
   }
 ];
 

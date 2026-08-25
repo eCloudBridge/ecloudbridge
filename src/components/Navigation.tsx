@@ -57,7 +57,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer" onClick={() => handleNavClick('/')}>
             <img 
-              src="./dc2764ac-81de-4147-94c0-0c35f1327f51.png" 
+              src="https://ecloudbridge.com/wp-content/uploads/2022/10/ecb.png" 
               alt="eCloudBridge Logo" 
               className="h-12 w-auto"
               loading="eager"
@@ -70,7 +70,7 @@ const Navigation = () => {
             <Link 
               to="/"
               onClick={() => handleNavClick('/')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+              className={`font-medium whitespace-nowrap transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
                   : 'text-white hover:text-orange-300 hover:bg-white/10'
@@ -82,7 +82,7 @@ const Navigation = () => {
             <Link 
               to="/services"
               onClick={() => handleNavClick('/services', 'services')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+              className={`font-medium whitespace-nowrap transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
                   : 'text-white hover:text-orange-300 hover:bg-white/10'
@@ -94,7 +94,7 @@ const Navigation = () => {
             <Link 
               to="/process"
               onClick={() => handleNavClick('/process', 'process')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+              className={`font-medium whitespace-nowrap transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
                   : 'text-white hover:text-orange-300 hover:bg-white/10'
@@ -106,7 +106,7 @@ const Navigation = () => {
             <Link 
               to="/products"
               onClick={() => handleNavClick('/products', 'products')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+              className={`font-medium whitespace-nowrap transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
                   : 'text-white hover:text-orange-300 hover:bg-white/10'
@@ -118,7 +118,7 @@ const Navigation = () => {
             <Link 
               to="/about"
               onClick={() => handleNavClick('/about', 'about')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+              className={`font-medium whitespace-nowrap transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
                   : 'text-white hover:text-orange-300 hover:bg-white/10'
@@ -130,7 +130,7 @@ const Navigation = () => {
             <Link 
               to="/case-studies"
               onClick={() => handleNavClick('/case-studies', 'case-studies')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+              className={`font-medium whitespace-nowrap transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
                   : 'text-white hover:text-orange-300 hover:bg-white/10'
@@ -142,7 +142,7 @@ const Navigation = () => {
             <Link 
               to="/blog"
               onClick={() => handleNavClick('/blog')}
-              className={`font-medium transition-all duration-200 px-3 py-2 rounded-md ${
+              className={`font-medium whitespace-nowrap transition-all duration-200 px-3 py-2 rounded-md ${
                 isScrolled 
                   ? 'text-gray-800 hover:text-orange-600 hover:bg-orange-50' 
                   : 'text-white hover:text-orange-300 hover:bg-white/10'
@@ -152,7 +152,7 @@ const Navigation = () => {
             </Link>
             
             {/* Language Selector */}
-            <LanguageSelector />
+            <LanguageSelector className={isScrolled ? 'text-gray-800 hover:bg-orange-50' : 'text-white hover:bg-white/10'} />
             
             <Link to="/contact" onClick={() => handleNavClick('/contact')}>
               <Button 
@@ -230,7 +230,7 @@ const Navigation = () => {
                 Blog
               </Link>
               <div className="px-3 py-2">
-                <LanguageSelector />
+                <LanguageSelector className="text-gray-800 hover:bg-orange-50" />
               </div>
               <Link 
                 to="/contact"

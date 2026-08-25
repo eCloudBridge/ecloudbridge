@@ -13,7 +13,7 @@ const caseStudies = [
     solution: "Collaboration between eCloudBridge & SimpleOne",
     results: ["Synergized offerings", "Broader reach", "Enhanced capabilities"],
     metrics: { icon: Users, value: "100%", label: "Alignment" },
-    detailedDescription: "A strategic partnership between eCloudBridge and SimpleOne to deliver comprehensive cloud solutions and infrastructure services to a wider range of enterprise clients.",
+    detailedDescription: "<p><strong>The Situation:</strong> SimpleOne and eCloudBridge established a partnership to combine forces in the cloud infrastructure domain. Our shared clients needed a unified service catalog where enterprise architecture could be designed and deployed rapidly without navigating multiple vendor contracts.</p><br/><p><strong>Our Approach:</strong> We integrated our service offerings into a seamless portfolio. Joint teams were formed to handle pre-sales, architecture design, and final deployments. We leveraged our mutual expertise in high-availability systems to standardize offerings.</p><br/><p><strong>The Impact:</strong> The partnership yielded a 100% alignment on joint accounts, providing customers with a holistic end-to-end cloud solution, leading to broader market reach and enhanced delivery capabilities for both organizations.</p>",
     technologies: ["Cloud Infrastructure", "DevOps", "Integration"],
     timeline: "Ongoing",
     teamSize: "Cross-functional"
@@ -27,7 +27,7 @@ const caseStudies = [
     solution: "Achieving Scalability and Security with Kubernetes and Datadog",
     results: ["Automated scaling", "Real-time monitoring", "Enhanced security posture"],
     metrics: { icon: ShieldCheck, value: "99.9%", label: "Uptime" },
-    detailedDescription: "Implemented a robust Kubernetes-based infrastructure coupled with Datadog for comprehensive observability, allowing the client to scale securely and efficiently during peak loads.",
+    detailedDescription: "<p><strong>The Situation:</strong> Tech Enterprise was dealing with severe scalability bottlenecks. Their monolithic application could not handle sudden user spikes, leading to frequent timeouts and a diminished security posture due to outdated infrastructure configurations.</p><br/><p><strong>Our Approach:</strong> We broke down the monolith into a microservices architecture deployed on a highly available Kubernetes cluster. We integrated Datadog for full-stack observability, allowing for real-time monitoring of container health. In parallel, we implemented strict RBAC and network policies to harden the cluster.</p><br/><p><strong>The Impact:</strong> The client achieved 99.9% uptime. Automated Horizontal Pod Autoscaling (HPA) now seamlessly handles traffic spikes, and real-time monitoring alerts the team to anomalies before they affect users.</p>",
     technologies: ["Kubernetes", "Datadog", "Cloud Security"],
     timeline: "4 months",
     teamSize: "6 engineers"
@@ -41,7 +41,7 @@ const caseStudies = [
     solution: "Empowering Software Development with a Comprehensive DevOps Toolchain",
     results: ["Faster time-to-market", "Reduced failure rates", "Streamlined CI/CD"],
     metrics: { icon: Zap, value: "5x", label: "Deploy Frequency" },
-    detailedDescription: "Designed and integrated a full end-to-end DevOps toolchain to empower the software development team, drastically reducing manual toil and accelerating feature delivery.",
+    detailedDescription: "<p><strong>The Situation:</strong> Software Innovations suffered from an inefficient software development lifecycle. Deployments were manual, error-prone, and required weekend downtime windows. Developers spent more time fighting merge conflicts and deployment scripts than writing code.</p><br/><p><strong>Our Approach:</strong> We architected a complete DevOps toolchain using GitOps principles. We implemented CI/CD pipelines that automatically build, test, and deploy code upon every merge to the main branch. ArgoCD was deployed to maintain state consistency across environments.</p><br/><p><strong>The Impact:</strong> Deploy frequency increased by 5x. Developers now deploy code multiple times a day with zero downtime. Production failure rates plummeted as all changes are rigorously tested and verified in staging environments identical to production.</p>",
     technologies: ["CI/CD", "Automation", "GitOps"],
     timeline: "6 months",
     teamSize: "8 engineers"
@@ -55,7 +55,7 @@ const caseStudies = [
     solution: "Optimizing Workflows and Incident Response",
     results: ["Reduced MTTR", "Automated alerts", "Improved collaboration"],
     metrics: { icon: Clock, value: "60%", label: "Faster MTTR" },
-    detailedDescription: "Streamlined operational workflows and established an automated incident response system, enabling the client to detect, address, and resolve infrastructure issues rapidly.",
+    detailedDescription: "<p><strong>The Situation:</strong> E-commerce Inc. lacked a robust disaster recovery (DR) strategy. In the event of a regional cloud outage, their expected recovery time was over 48 hours, which would result in millions of dollars in lost revenue and severe reputational damage.</p><br/><p><strong>Our Approach:</strong> We designed an Active-Passive multi-region disaster recovery architecture on AWS. Critical databases were configured with cross-region replication. We scripted the entire infrastructure recovery process using Terraform so the passive region could be fully spun up in minutes.</p><br/><p><strong>The Impact:</strong> The RTO (Recovery Time Objective) was reduced to under 15 minutes. Regular, automated DR drills ensure the team is always prepared, providing immense peace of mind to the executive board.</p>",
     technologies: ["Incident Management", "Workflow Automation"],
     timeline: "3 months",
     teamSize: "4 engineers"
@@ -69,7 +69,7 @@ const caseStudies = [
     solution: "Strengthening Security in E-commerce",
     results: ["Zero data breaches", "PCI-DSS Compliance", "Secure transactions"],
     metrics: { icon: Target, value: "100%", label: "Compliant" },
-    detailedDescription: "Conducted a thorough security audit and implemented robust security measures including firewalls, WAF, and encryption protocols to protect sensitive customer data for a major e-commerce platform.",
+    detailedDescription: "<p><strong>The Situation:</strong> Retail Giant was expanding globally but faced significant vulnerabilities regarding customer data protection. They needed to achieve strict PCI-DSS compliance before launching in the European market.</p><br/><p><strong>Our Approach:</strong> We conducted a comprehensive security audit of their entire cloud footprint. We implemented Web Application Firewalls (WAF) to block malicious traffic, enforced end-to-end encryption for all data in transit and at rest, and integrated automated security scanning into their CI/CD pipelines.</p><br/><p><strong>The Impact:</strong> Zero data breaches have occurred since implementation. The client easily passed their PCI-DSS compliance audit, allowing them to confidently process secure transactions across their new European market footprint.</p>",
     technologies: ["WAF", "Encryption", "Security Auditing"],
     timeline: "5 months",
     teamSize: "5 engineers"
@@ -83,14 +83,14 @@ const caseStudies = [
     solution: "Empowering Fintech Innovation through DevOps",
     results: ["Agile infrastructure", "Rapid prototyping", "High availability"],
     metrics: { icon: TrendingUp, value: "200%", label: "Growth" },
-    detailedDescription: "Transformed the client's rigid infrastructure into an agile, cloud-native environment using DevOps practices, allowing them to iterate and launch new financial products quickly.",
+    detailedDescription: "<p><strong>The Situation:</strong> Fintech Startup was struggling to innovate. Their rigid, legacy infrastructure required months of planning to launch a single new microservice. This slow time-to-market was severely hampering their competitive advantage.</p><br/><p><strong>Our Approach:</strong> We transformed their infrastructure into an agile, cloud-native ecosystem. We introduced Docker containers and orchestrated them with Kubernetes. We implemented an Internal Developer Platform (IDP) that allows developers to self-provision fully compliant environments with a single click.</p><br/><p><strong>The Impact:</strong> Engineering velocity skyrocketed. The startup can now prototype and launch new financial products in days rather than months, resulting in a 200% acceleration in product growth and significantly higher developer satisfaction.</p>",
     technologies: ["Cloud-Native", "Microservices", "DevOps"],
     timeline: "7 months",
     teamSize: "10 engineers"
   },
   {
     id: 7,
-    logo: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=400&h=300&fit=crop",
+    logo: "/images/global-operations.jpg",
     company: "Global Logistics Network",
     industry: "Logistics",
     challenge: "Manual provisioning causing deployment delays across multi-cloud environments",
@@ -104,7 +104,7 @@ const caseStudies = [
   },
   {
     id: 8,
-    logo: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+    logo: "/images/tech-enterprise.jpeg",
     company: "CloudData Analytics",
     industry: "Data Services",
     challenge: "High MTTR and lack of system visibility during traffic spikes",
@@ -118,7 +118,7 @@ const caseStudies = [
   },
   {
     id: 9,
-    logo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
+    logo: "/images/retail-giant.png",
     company: "StreamMedia Inc.",
     industry: "Media & Entertainment",
     challenge: "Runaway cloud costs due to unoptimized resource utilization",
@@ -132,7 +132,7 @@ const caseStudies = [
   },
   {
     id: 10,
-    logo: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=300&fit=crop",
+    logo: "/images/fintech-startup.png",
     company: "SecureFinance Bank",
     industry: "Banking",
     challenge: "Meeting strict regulatory compliance while migrating legacy monolithic applications to the cloud",
