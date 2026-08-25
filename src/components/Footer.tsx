@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getImageUrl } from '@/utils/assets.ts';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -32,10 +34,19 @@ const Footer = () => {
         body: submitData
       });
       
-      console.log('Newsletter subscription successful');
+      toast({
+        title: "Subscribed Successfully!",
+        description: "Thank you for subscribing to our newsletter.",
+      });
+      
       setEmail('');
     } catch (error) {
       console.error('Error submitting newsletter:', error);
+      toast({
+        title: "Subscription failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
