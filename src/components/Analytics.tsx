@@ -11,8 +11,8 @@ declare global {
 
 const Analytics = () => {
   useEffect(() => {
-    // Google Analytics 4
-    const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your GA4 measurement ID
+    // We only want to initialize this once
+    const GA_MEASUREMENT_ID = 'G-X4JLFLNW0J'; // eCloudBridge GA4 measurement ID
     
     // Load Google Analytics
     const loadGoogleAnalytics = () => {
