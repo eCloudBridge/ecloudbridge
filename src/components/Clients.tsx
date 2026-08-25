@@ -1,5 +1,5 @@
 
-import { getImageUrl } from '@/utils/assets';
+import { getImageUrl } from '@/utils/assets.ts';
 
 const clients = [
   {

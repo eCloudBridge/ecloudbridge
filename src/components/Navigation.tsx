@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { getImageUrl } from '@/utils/assets';
+import { getImageUrl } from '@/utils/assets.ts';
 import LanguageSelector from './LanguageSelector';
 
 const Navigation = () => {

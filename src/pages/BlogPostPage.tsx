@@ -4,7 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import { blogPosts } from '@/data/blogs';
-import { getImageUrl } from '@/utils/assets';
+import { getImageUrl } from '@/utils/assets.ts';
 import { ArrowLeft, Calendar, Clock, ChevronRight, Share2, BookOpen, Tag, ArrowRight } from 'lucide-react';
 
 const BlogPostPage = () => {

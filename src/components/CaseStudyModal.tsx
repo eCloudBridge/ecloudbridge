@@ -1,5 +1,6 @@
 
 import { X, TrendingUp, Users, Clock, Star, Award, Target, Zap } from 'lucide-react';
+import { getImageUrl } from '@/utils/assets.ts';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 interface CaseStudy {

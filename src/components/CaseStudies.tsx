@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { ArrowRight, TrendingUp, Users, Clock, Star, Award, Target, Zap, ShieldCheck } from 'lucide-react';
 import CaseStudyModal from './CaseStudyModal';
-import { getImageUrl } from '@/utils/assets';
+import { getImageUrl } from '@/utils/assets.ts';
 
 const caseStudies = [
   {

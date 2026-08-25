@@ -1,7 +1,7 @@
 import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getImageUrl } from '@/utils/assets';
+import { getImageUrl } from '@/utils/assets.ts';
 import { Button } from '@/components/ui/button';
 
 const Footer = () => {

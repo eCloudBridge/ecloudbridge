@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import { blogPosts, BlogPost } from '@/data/blogs';
 import { Calendar, Clock, User } from 'lucide-react';
+import { getImageUrl } from '@/utils/assets.ts';
 
 const BlogCard = ({ post }: { post: BlogPost }) => (
   <article className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full border border-gray-100">
