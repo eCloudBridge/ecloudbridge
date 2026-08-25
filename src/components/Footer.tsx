@@ -262,6 +262,16 @@ const Footer = () => {
                   Netpin.io
                 </a>
               </li>
+              <li>
+                <a 
+                  href="#" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-white transition-colors hover:translate-x-2 transform duration-200 block"
+                >
+                  Astra
+                </a>
+              </li>
             </ul>
           </div>
 
