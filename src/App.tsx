@@ -44,8 +44,7 @@ const App = () => (
       <Analytics />
       <Toaster />
       <Sonner />
-      {/* Add basename here to handle GitHub Pages subpath */}
-      <BrowserRouter basename="/ecloudbridge">
+      <BrowserRouter basename="/">
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Index />} />
