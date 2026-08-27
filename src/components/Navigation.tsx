@@ -168,6 +168,7 @@ const Navigation = () => {
             <Button
               variant="ghost"
               size="icon"
+              aria-label="Toggle mobile menu"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`${isScrolled ? 'text-gray-800 hover:bg-orange-50' : 'text-white hover:bg-white/10'}`}
             >
