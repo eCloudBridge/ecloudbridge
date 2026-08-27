@@ -24,10 +24,11 @@ const Analytics = () => {
 
       // Initialize gtag
       window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
-        window.dataLayer?.push(args);
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer?.push(arguments);
       }
-      window.gtag = gtag;
+      window.gtag = gtag as any;
       
       gtag('js', new Date());
       gtag('config', GA_MEASUREMENT_ID, {
@@ -39,7 +40,7 @@ const Analytics = () => {
     };
 
     // Load analytics only in production or when explicitly enabled
-    if (process.env.NODE_ENV === 'production' || localStorage.getItem('enableAnalytics') === 'true') {
+    if (import.meta.env.PROD || localStorage.getItem('enableAnalytics') === 'true') {
       loadGoogleAnalytics();
     }
 
