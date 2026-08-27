@@ -8,7 +8,7 @@ We specialize in cloud migration (AWS, Azure, GCP), Kubernetes management, Site 
 - Contact: hello@ecloudbridge.com
 - Phone: +91-6366477677
 - Location: No.112, AKR Tech Park, "A" Block, 7th Mile Hosur Rd, Krishna Reddy Industrial Area, Bengaluru, Karnataka, India – 560068
-- Year Founded: 2022
+- Year Founded: 2021
 
 ## Services Provided
 - Cloud Migration
@@ -19,7 +19,7 @@ We specialize in cloud migration (AWS, Azure, GCP), Kubernetes management, Site 
 - FinOps (Cloud Cost Optimization)
 
 ## Products
-- Netpin: Infrastructure Debt Index (IDI) platform for tracking technical debt.
+- Netpin.io (https://netpin.io): Infrastructure Debt Index (IDI) platform for tracking technical debt.
 - Astra: Intelligent cloud observability and monitoring platform.
 
 ## Contacting Us
