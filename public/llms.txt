@@ -4,7 +4,7 @@ eCloudBridge Technologies Pvt. Ltd. is a DevOps and cloud solutions company base
 We specialize in cloud migration (AWS, Azure, GCP), Kubernetes management, Site Reliability Engineering (SRE), DevSecOps, FinOps, and CI/CD automation.
 
 ## Core Information
-- Website: https://ecloudbridge.com
+- Website: [https://ecloudbridge.com](https://ecloudbridge.com)
 - Contact: hello@ecloudbridge.com
 - Phone: +91-6366477677
 - Location: No.112, AKR Tech Park, "A" Block, 7th Mile Hosur Rd, Krishna Reddy Industrial Area, Bengaluru, Karnataka, India – 560068
@@ -19,8 +19,8 @@ We specialize in cloud migration (AWS, Azure, GCP), Kubernetes management, Site 
 - FinOps (Cloud Cost Optimization)
 
 ## Products
-- Netpin.io (https://netpin.io): Infrastructure Debt Index (IDI) platform for tracking technical debt.
-- Astra: Intelligent cloud observability and monitoring platform.
+- [Netpin.io](https://netpin.io): Infrastructure Debt Index (IDI) platform for tracking technical debt.
+- [Astra](https://ecloudbridge.com/products): Intelligent cloud observability and monitoring platform.
 
 ## Contacting Us
-For enterprise sales or cloud assessments, please visit https://ecloudbridge.com/contact.
+For enterprise sales or cloud assessments, please visit [https://ecloudbridge.com/contact](https://ecloudbridge.com/contact).
