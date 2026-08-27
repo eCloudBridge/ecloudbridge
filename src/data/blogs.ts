@@ -21,6 +21,40 @@ const defaultAuthor = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "99",
+    slug: "introducing-netpin-infrastructure-intelligence",
+    title: "Introducing Netpin: The Infrastructure Intelligence Platform",
+    excerpt: "Discover how Netpin provides the decision layer above your observability stack. Measure infrastructure health with the IDI score and govern deployments automatically.",
+    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    author: defaultAuthor,
+    publishedAt: "2026-08-27",
+    readTime: "7 min read",
+    category: "DevOps",
+    content: `
+      <h2>The Missing Decision Layer</h2>
+      <p>Modern DevOps and SRE teams have more observability data than ever before, but data isn't intelligence. You might have dashboards showing CPU spikes and logs capturing errors, but when an engineer asks, <em>"Is this cluster healthy enough to deploy into?"</em>, the answer is rarely obvious.</p>
+      <p>Enter <strong>Netpin</strong>, the Infrastructure Intelligence Platform. Netpin isn't another metrics dashboard; it is the decision layer sitting above your observability stack, translating raw signals into actionable, governable intelligence.</p>
+
+      <h2>The Infrastructure Debt Index (IDI)</h2>
+      <p>Technical debt in code is easily measured. Infrastructure debt is often invisible until it causes an outage. Netpin introduces the <strong>Infrastructure Debt Index (IDI)</strong>—a single, quantifiable score from 0 to 100 that measures the health of your connected cloud environments.</p>
+      <p>Through <em>Deep Discovery</em>, Netpin analyzes your AWS, GCP, Azure, and DigitalOcean accounts alongside your Kubernetes clusters to calculate your IDI based on five dimensions: Reliability, Security, Cost, Performance, and Compliance.</p>
+      <ul>
+        <li><strong>Score < 50:</strong> Critical debt. High risk of outages.</li>
+        <li><strong>Score 50-79:</strong> Warning. Manual intervention frequently required.</li>
+        <li><strong>Score 80+:</strong> Healthy. Highly automated and resilient.</li>
+      </ul>
+
+      <h2>Govern with Deploy Gate</h2>
+      <p>Knowing your score is step one. Step two is preventing bad deployments from making the score worse. Netpin's <strong>Deploy Gate</strong> integrates directly into your CI/CD pipelines (GitHub Actions, GitLab CI, ArgoCD).</p>
+      <p>Before any production rollout, Deploy Gate evaluates the target environment's IDI score and checks for active critical alerts using the NIE Copilot. If the infrastructure is degraded, the gate halts the deployment automatically, preventing compounding failures and enforcing blast radius isolation.</p>
+
+      <h2>Compliance and Cost Automation</h2>
+      <p>Netpin continuously maps your infrastructure against frameworks like CIS, SOC 2, and PCI DSS. Instead of scrambling before an audit, you track your compliance posture in real-time.</p>
+      <p>Additionally, Netpin's cost engine identifies zombie resources, idle load balancers, and unattached volumes. By connecting your cloud providers (via least-privilege IAM policies), Netpin not only identifies waste but provides click-to-fix <em>Explain & Fix</em> remediation packets.</p>
+    `
+  },
+
+  {
     id: "1",
     slug: "evolution-of-devops-in-enterprise",
     title: "The Evolution of DevOps in Enterprise Architecture",
