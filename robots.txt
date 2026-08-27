@@ -1,0 +1,9 @@
+# eCloudBridge – robots.txt
+User-agent: *
+Allow: /
+
+# Disallow non-indexable pages
+Disallow: /privacy-policy
+
+# Sitemap
+Sitemap: https://ecloudbridge.com/sitemap.xml
