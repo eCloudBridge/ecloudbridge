@@ -20,7 +20,7 @@ We specialize in cloud migration (AWS, Azure, GCP), Kubernetes management, Site 
 
 ## Products
 - [Netpin.io](https://netpin.io): Infrastructure Debt Index (IDI) platform for tracking technical debt.
-- [Astra](https://ecloudbridge.com/products): Intelligent cloud observability and monitoring platform.
+- [Astra](https://astra.ecloudbridge.com): Intelligent cloud observability and monitoring platform.
 
 ## Contacting Us
 For enterprise sales or cloud assessments, please visit [https://ecloudbridge.com/contact](https://ecloudbridge.com/contact).
