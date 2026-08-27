@@ -10,9 +10,9 @@ const CaseStudiesPage = () => {
   return (
       <>
       <SEO 
-        title="DevOps & Cloud Migration Case Studies – Real Client Results"
-        description="See how eCloudBridge achieved 99.9% uptime, 45% cloud cost reduction, and 10x faster deployments for enterprise clients. Real-world DevOps and Kubernetes transformation success stories."
-        keywords="DevOps case studies India, cloud migration success stories, Kubernetes case study, SRE implementation results, cloud cost reduction 45%, DevOps transformation enterprise, AWS migration case study, eCloudBridge client stories"
+        title="Cloud & DevOps Case Studies – Real Client Results"
+        description="See how eCloudBridge helps enterprises with cloud migration, Kubernetes, and DevOps. Read real case studies and success stories."
+        keywords="DevOps case studies, cloud migration success stories, Kubernetes implementations, AWS case study, Azure migration examples, eCloudBridge clients"
         canonical="https://ecloudbridge.com/case-studies"
       />
       <div className="min-h-screen bg-background">

@@ -9,9 +9,9 @@ const ProcessPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Our DevOps Process – How We Deliver Cloud Infrastructure Projects"
-        description="Discover eCloudBridge's proven 8-step DevOps delivery process: from discovery and solution design to deployment, security implementation, and ongoing support. Delivering cloud infrastructure projects with zero downtime."
-        keywords="DevOps delivery process, cloud project methodology, infrastructure deployment process, Kubernetes deployment workflow, cloud migration process, DevOps consulting process, SRE implementation"
+        title="Our Cloud Delivery Process – 8-Step Methodology"
+        description="Discover eCloudBridge's proven 8-step DevOps delivery process: from discovery and solution design to security, deployment, and continuous improvement."
+        keywords="DevOps delivery process, cloud project methodology, infrastructure deployment, Kubernetes workflow, cloud migration process"
         canonical="https://ecloudbridge.com/process"
       />
       <Navigation />

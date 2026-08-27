@@ -10,9 +10,9 @@ const ProductsPage = () => {
   return (
       <>
       <SEO 
-        title="Netpin & Astra – DevOps Productivity Tools by eCloudBridge"
-        description="Discover eCloudBridge's developer products: Netpin, the Infrastructure Debt Index (IDI) platform for measuring DevOps health, and Astra, our intelligent cloud observability and monitoring solution."
-        keywords="Netpin Infrastructure Debt Index, Astra cloud observability, DevOps productivity tools, infrastructure health monitoring, cloud monitoring software, DevOps metrics platform, eCloudBridge products, IDI platform"
+        title="Netpin & Astra – DevOps Tools | eCloudBridge"
+        description="Discover Netpin for Infrastructure Debt Index (IDI) and Astra for AI-powered DevSecOps. Built by eCloudBridge to accelerate enterprise DevOps."
+        keywords="Netpin IDI, infrastructure debt index, Astra DevSecOps, AI DevOps tools, cloud productivity software, enterprise DevOps platform"
         canonical="https://ecloudbridge.com/products"
       />
       <div className="min-h-screen bg-background">

@@ -10,9 +10,9 @@ const AboutPage = () => {
   return (
       <>
       <SEO 
-        title="About eCloudBridge – DevOps & Cloud Experts in Bangalore, India"
-        description="eCloudBridge Technologies is a Bengaluru-based DevOps and cloud solutions company. We help enterprises across India and globally modernize infrastructure with AWS, Azure, GCP, Kubernetes, and SRE best practices. 500+ clients served."
-        keywords="eCloudBridge Technologies, about eCloudBridge, DevOps company Bangalore, cloud consulting India, AWS partner India, Kubernetes experts Bangalore, SRE company India, cloud infrastructure team"
+        title="About eCloudBridge – DevOps & Cloud Experts, Bangalore"
+        description="eCloudBridge is a Bengaluru DevOps and cloud company helping enterprises modernize infrastructure with AWS, Azure, GCP, Kubernetes, and SRE. 500+ clients served."
+        keywords="eCloudBridge Technologies, about eCloudBridge, DevOps company Bangalore, cloud consulting India, AWS partner India, Kubernetes experts"
         canonical="https://ecloudbridge.com/about"
       />
       <div className="min-h-screen bg-background">
