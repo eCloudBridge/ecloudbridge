@@ -1,6 +1,7 @@
 
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import RotatingImages from '@/components/RotatingImages';
 
 const Hero = () => {
@@ -58,53 +59,74 @@ const Hero = () => {
           {/* Left Content */}
           <div className="text-center lg:text-left animate-fade-in">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-              Bridge Your Business to the
+              Enterprise
               <span className="block bg-gradient-to-r from-orange-400 to-blue-400 bg-clip-text text-transparent">
-                Cloud Future
+                DevOps &amp; Cloud Solutions
               </span>
+              for Seamless Integration
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
-              Transform your digital infrastructure with our cutting-edge cloud and DevOps solutions. 
-              Secure, scalable, and seamless services for your business growth.
+            <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+              eCloudBridge delivers enterprise-grade <strong className="text-white">cloud migration</strong>, <strong className="text-white">Kubernetes</strong>, <strong className="text-white">SRE</strong>, and <strong className="text-white">DevSecOps</strong> services.
+              Transform your infrastructure with our expert team in Bangalore, India.
+            </p>
+            <p className="text-base text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+              Trusted by 500+ clients across <strong className="text-gray-300">AWS</strong>, <strong className="text-gray-300">Azure</strong>, and <strong className="text-gray-300">GCP</strong>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <Button 
-                onClick={scrollToContact}
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg hover:scale-105 transition-all duration-200 shadow-xl"
-              >
-                Start Your Journey
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link to="/contact">
+                <Button 
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 text-lg hover:scale-105 transition-all duration-200 shadow-xl w-full sm:w-auto"
+                >
+                  Get a Free Consultation
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
               
-              <Button 
-                variant="outline" 
-                size="lg"
-                onClick={scrollToServices}
-                className="border-2 border-orange-400 text-orange-400 hover:bg-orange-400/10 px-8 py-3 text-lg hover:scale-105 transition-all duration-200 group bg-transparent"
-              >
-                <Play className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                Our Services
-              </Button>
+              <Link to="/services">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  className="border-2 border-orange-400 text-orange-400 hover:bg-orange-400/10 px-8 py-3 text-lg hover:scale-105 transition-all duration-200 group bg-transparent w-full sm:w-auto"
+                >
+                  <Play className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                  Explore Our Services
+                </Button>
+              </Link>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 text-center">
-              <div className="p-4">
+              <Link to="/case-studies" className="p-4 hover:opacity-80 transition-opacity">
                 <div className="text-3xl font-bold text-orange-400 mb-2">99.9%</div>
-                <div className="text-gray-400 text-sm">Uptime</div>
-              </div>
-              <div className="p-4">
+                <div className="text-gray-400 text-sm">Uptime SLA</div>
+              </Link>
+              <Link to="/case-studies" className="p-4 hover:opacity-80 transition-opacity">
                 <div className="text-3xl font-bold text-blue-400 mb-2">500+</div>
-                <div className="text-gray-400 text-sm">Projects</div>
-              </div>
-              <div className="p-4">
+                <div className="text-gray-400 text-sm">Projects Done</div>
+              </Link>
+              <Link to="/contact" className="p-4 hover:opacity-80 transition-opacity">
                 <div className="text-3xl font-bold text-orange-400 mb-2">24/7</div>
                 <div className="text-gray-400 text-sm">Support</div>
-              </div>
+              </Link>
             </div>
+
+            {/* Quick nav links for SEO internal linking */}
+            <nav aria-label="Quick links" className="flex flex-wrap gap-x-4 gap-y-2 mt-6 text-sm text-gray-400 justify-center lg:justify-start">
+              <Link to="/services" className="hover:text-orange-400 transition-colors underline-offset-2 hover:underline">Cloud Migration</Link>
+              <span className="text-gray-600">·</span>
+              <Link to="/services" className="hover:text-orange-400 transition-colors underline-offset-2 hover:underline">Kubernetes</Link>
+              <span className="text-gray-600">·</span>
+              <Link to="/services" className="hover:text-orange-400 transition-colors underline-offset-2 hover:underline">DevSecOps</Link>
+              <span className="text-gray-600">·</span>
+              <Link to="/services" className="hover:text-orange-400 transition-colors underline-offset-2 hover:underline">SRE</Link>
+              <span className="text-gray-600">·</span>
+              <Link to="/process" className="hover:text-orange-400 transition-colors underline-offset-2 hover:underline">Our Process</Link>
+              <span className="text-gray-600">·</span>
+              <Link to="/blog" className="hover:text-orange-400 transition-colors underline-offset-2 hover:underline">Blog</Link>
+            </nav>
           </div>
 
           {/* Right Content - Rotating Images */}

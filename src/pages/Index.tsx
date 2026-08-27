@@ -15,8 +15,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="DevOps & Cloud Solutions for Seamless Digital Integration"
-        description="eCloudBridge delivers enterprise-grade DevOps, cloud migration, Kubernetes, SRE, and security services. Trusted by 500+ clients across AWS, Azure & GCP. Based in Bengaluru, India."
+        title="Enterprise DevOps & Cloud Solutions for Seamless Integration"
+        description="eCloudBridge delivers enterprise-grade cloud migration, Kubernetes management, SRE, and DevSecOps services. Trusted by 500+ clients across AWS, Azure & GCP. Based in Bengaluru, India. Get a free consultation today."
         keywords="DevOps company India, cloud migration services, Kubernetes managed services, AWS consulting Bangalore, Azure DevOps, GCP migration, SRE services, CI/CD automation, Infrastructure as Code, DevSecOps, cloud solutions India, eCloudBridge"
         canonical="https://ecloudbridge.com/"
         url="https://ecloudbridge.com/"
