@@ -10,6 +10,7 @@ interface SEOProps {
   author?: string;
   keywords?: string;
   canonical?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
 const SITE_NAME = 'eCloudBridge';
@@ -30,6 +31,7 @@ const SEO = ({
   author = 'eCloudBridge Technology Team',
   keywords = DEFAULT_KEYWORDS,
   canonical,
+  jsonLd,
 }: SEOProps) => {
   useEffect(() => {
     const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
@@ -92,11 +94,25 @@ const SEO = ({
     setMeta('name', 'twitter:description', description);
     setMeta('name', 'twitter:image', image);
 
+    // Per-page JSON-LD injection
+    let jsonLdScript: HTMLScriptElement | null = null;
+    if (jsonLd) {
+      jsonLdScript = document.createElement('script');
+      jsonLdScript.type = 'application/ld+json';
+      jsonLdScript.id = 'page-jsonld';
+      // Remove existing one first
+      const existing = document.getElementById('page-jsonld');
+      if (existing) existing.remove();
+      jsonLdScript.textContent = JSON.stringify(Array.isArray(jsonLd) ? { '@context': 'https://schema.org', '@graph': jsonLd } : jsonLd);
+      document.head.appendChild(jsonLdScript);
+    }
+
     // Reset on unmount when navigating away
     return () => {
       document.title = DEFAULT_TITLE;
+      if (jsonLdScript) jsonLdScript.remove();
     };
-  }, [title, description, image, url, type, publishedAt, author, keywords, canonical]);
+  }, [title, description, image, url, type, publishedAt, author, keywords, canonical, jsonLd]);
 
   return null;
 };

@@ -128,9 +128,9 @@ const ServicesPage = () => {
   return (
       <>
       <SEO 
-        title="Our Services – Cloud Migration, DevOps & Security"
-        description="eCloudBridge offers comprehensive cloud migration, DevOps automation, Kubernetes management, SRE, DevSecOps, and FinOps services for enterprises worldwide."
-        keywords="cloud migration services, DevOps services, Kubernetes managed services, SRE consulting, DevSecOps, FinOps, cloud security services India"
+        title="Cloud Migration & DevOps Services – AWS, Azure, GCP"
+        description="eCloudBridge provides expert cloud migration, DevOps automation, Kubernetes management, SRE, FinOps, and DevSecOps services. Trusted by enterprises across AWS, Azure, and GCP. Get a free consultation today."
+        keywords="cloud migration services India, DevOps services Bangalore, Kubernetes managed services, SRE consulting, DevSecOps company, FinOps services, CI/CD automation India, Infrastructure as Code, cloud security services, AWS consulting India"
         canonical="https://ecloudbridge.com/services"
       />
       <div className="min-h-screen bg-background">

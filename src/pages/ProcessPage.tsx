@@ -2,11 +2,18 @@ import { ArrowLeft } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Process from '@/components/Process';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { Link } from 'react-router-dom';
 
 const ProcessPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Our DevOps Process – How We Deliver Cloud Infrastructure Projects"
+        description="Discover eCloudBridge's proven 8-step DevOps delivery process: from discovery and solution design to deployment, security implementation, and ongoing support. Delivering cloud infrastructure projects with zero downtime."
+        keywords="DevOps delivery process, cloud project methodology, infrastructure deployment process, Kubernetes deployment workflow, cloud migration process, DevOps consulting process, SRE implementation"
+        canonical="https://ecloudbridge.com/process"
+      />
       <Navigation />
       
       {/* Hero Section with Animation */}
@@ -47,10 +54,10 @@ const ProcessPage = () => {
           
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Our Process
+              Our Cloud Delivery Process
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
-              Delivering Efficient Cloud Infrastructure Services with our proven methodology
+              A proven 8-step methodology for delivering efficient, secure, and scalable cloud infrastructure — from discovery to continuous improvement.
             </p>
           </div>
         </div>

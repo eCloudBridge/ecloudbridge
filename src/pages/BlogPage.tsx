@@ -62,9 +62,9 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       <SEO 
-        title="Engineering Insights – DevOps & Cloud Blog"
-        description="Explore deep-dive articles, tutorials, and expert perspectives on DevOps, Cloud Architecture, Kubernetes, SRE, FinOps, and Security from the eCloudBridge engineering team."
-        keywords="DevOps blog, Cloud engineering, Kubernetes tutorials, SRE practices, FinOps, DevSecOps, CI/CD, Infrastructure as Code, cloud security blog"
+        title="DevOps & Cloud Engineering Blog – Tutorials & Insights"
+        description="Deep-dive technical articles, step-by-step tutorials, and expert insights on DevOps, Kubernetes, SRE, FinOps, and cloud security from the eCloudBridge engineering team. Stay ahead in cloud-native development."
+        keywords="DevOps blog India, Kubernetes tutorials, SRE best practices, FinOps guide, DevSecOps articles, CI/CD pipeline tutorials, Infrastructure as Code, cloud security blog, cloud-native development, eCloudBridge blog"
         canonical="https://ecloudbridge.com/blog"
         url="https://ecloudbridge.com/blog"
       />
@@ -83,9 +83,9 @@ const BlogPage = () => {
             </svg>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Engineering Insights</h1>
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">DevOps & Cloud Engineering Insights</h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light">
-            Deep technical dives, industry trends, and best practices from the experts at eCloudBridge.
+            Technical deep-dives, tutorials, and best practices on Kubernetes, SRE, FinOps, DevSecOps, and cloud-native development — from the eCloudBridge team.
           </p>
         </div>
       </section>

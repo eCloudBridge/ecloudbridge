@@ -42,6 +42,34 @@ const BlogPostPage = () => {
         keywords={`${post.category}, DevOps, Cloud, eCloudBridge, ${post.title}`}
         canonical={`https://ecloudbridge.com/blog/${post.slug}`}
         url={`https://ecloudbridge.com/blog/${post.slug}`}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          'headline': post.title,
+          'description': post.excerpt,
+          'image': [getImageUrl(post.coverImage)],
+          'datePublished': post.publishedAt,
+          'dateModified': post.publishedAt,
+          'author': {
+            '@type': 'Organization',
+            'name': 'eCloudBridge Technology Team',
+            'url': 'https://ecloudbridge.com/about'
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'eCloudBridge',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://ecloudbridge.com/dc2764ac-81de-4147-94c0-0c35f1327f51.png'
+            }
+          },
+          'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': `https://ecloudbridge.com/blog/${post.slug}`
+          },
+          'articleSection': post.category,
+          'keywords': `${post.category}, DevOps, Cloud, eCloudBridge`
+        }}
       />
       <Navigation />
 

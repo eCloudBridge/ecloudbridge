@@ -10,9 +10,9 @@ const ContactPage = () => {
   return (
       <>
       <SEO 
-        title="Contact Us – Get in Touch"
-        description="Contact the eCloudBridge team to discuss cloud migration, DevOps transformation, or any cloud infrastructure needs. Based in Bengaluru, India, serving clients globally."
-        keywords="contact eCloudBridge, cloud consulting contact, DevOps inquiry, cloud services Bangalore"
+        title="Contact eCloudBridge – Cloud & DevOps Consulting India"
+        description="Get in touch with eCloudBridge for cloud migration, Kubernetes, SRE, or DevOps transformation projects. Our experts in Bengaluru, India serve enterprise clients globally. Free initial consultation available."
+        keywords="contact eCloudBridge, cloud consulting Bangalore, DevOps inquiry India, cloud migration consulting, hire DevOps engineers India, Kubernetes consulting contact, cloud services Bengaluru"
         canonical="https://ecloudbridge.com/contact"
       />
       <div className="min-h-screen bg-background">
