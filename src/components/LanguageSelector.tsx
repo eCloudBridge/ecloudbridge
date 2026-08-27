@@ -224,7 +224,7 @@ const LanguageSelector = ({ className }: { className?: string }) => {
         onValueChange={translatePage}
         disabled={isTranslating}
       >
-        <SelectTrigger className={`w-10 h-10 p-0 rounded-full bg-transparent border-0 shadow-none hover:bg-white/10 focus:ring-0 [&>svg]:hidden [&>span]:hidden flex items-center justify-center transition-colors ${className}`}>
+        <SelectTrigger aria-label="Select Language" className={`w-10 h-10 p-0 rounded-full bg-transparent border-0 shadow-none hover:bg-white/10 focus:ring-0 [&>svg]:hidden [&>span]:hidden flex items-center justify-center transition-colors ${className}`}>
           <div className="flex items-center justify-center w-full h-full">
             <Globe className="h-6 w-6" />
           </div>

@@ -168,6 +168,7 @@ const Footer = () => {
                 href="https://instagram.com/ecloudbridge"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="eCloudBridge on Instagram"
                 className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110"
               >
                 <Instagram className="h-5 w-5" />
@@ -176,6 +177,7 @@ const Footer = () => {
                 href="https://linkedin.com/company/ecloudbridge"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="eCloudBridge on LinkedIn"
                 className="p-3 bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-all duration-300 cursor-pointer hover:scale-110"
               >
                 <Linkedin className="h-5 w-5" />

@@ -105,7 +105,7 @@ const Products = () => {
                   rel="noopener noreferrer"
                   className="w-full text-center block bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-orange-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl mt-auto z-10 relative"
                 >
-                  Learn More
+                  Learn More about {product.title}
                 </a>
               </div>
 
