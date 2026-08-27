@@ -57,6 +57,7 @@ const ChatWidget = () => {
         {!isOpen && (
           <Button
             onClick={() => setIsOpen(true)}
+            aria-label="Open chat widget"
             className="w-14 h-14 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center"
           >
             <MessageCircle className="w-6 h-6" />
@@ -75,6 +76,7 @@ const ChatWidget = () => {
               <Button
                 variant="ghost"
                 size="sm"
+                aria-label="Close chat widget"
                 onClick={() => setIsOpen(false)}
                 className="text-white hover:bg-white/20 p-1"
               >
